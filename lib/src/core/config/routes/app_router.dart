@@ -1,5 +1,5 @@
-
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/feature/salary_details/presentation/screens/salary_details_screen.dart';
 import 'package:ct_clean/src/feature/task_details/presentation/screens/task_details_screens.dart';
 
 class AppRouter {
@@ -11,10 +11,14 @@ class AppRouter {
         );
       case Routes.layoutScreen:
         return MaterialPageRoute(
-          builder: (context) =>   LayoutScreen(),
-        );  case Routes.taskDetailsScreen:
+          builder: (context) => LayoutScreen(),
+        );
+      case Routes.taskDetailsScreen:
         return MaterialPageRoute(
-          builder: (context) =>   TaskDetailsScreen(),
+          builder: (context) => TaskDetailsScreen(),
+        );case Routes.salaryDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => SalaryDetailsScreen(),
         );
 
       default:
@@ -51,4 +55,5 @@ class Routes {
   static const String loginScreen = "loginScreen";
   static const String layoutScreen = "layoutScreen";
   static const String taskDetailsScreen = "TaskDetailsScreen";
+  static const String salaryDetailsScreen = "SalaryDetailsScreen";
 }

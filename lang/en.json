@@ -32,5 +32,16 @@
   "clientApproached" : "Client Approached",
   "administration" : "Administration",
   "contactTheAdministrationThrough" : "Contact The Administration Through",
-  "whatsApp" : "What's App"
+  "whatsApp" : "What's App",
+  "selectMonth" : "Select Month",
+  "selectYear" : "Select Year",
+  "totalSalary" : "Total Salary",
+  "totalCommissions" : "Total Commissions",
+  "commissionDate" : "Commission Date",
+  "commissionValue" : "Commission Value",
+  "theReason" : "The Reason",
+  "totalDiscounts" : "Total Discounts",
+  "discountDate" : "Discount Date",
+  "discountValue" : "Discount Value"
+
  }

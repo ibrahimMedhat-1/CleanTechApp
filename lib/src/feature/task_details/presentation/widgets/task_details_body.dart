@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/feature/task_details/presentation/widgets/dialog/administration_dialog.dart';
 
 class TaskDetailsBody extends StatelessWidget {
   const TaskDetailsBody({super.key});
@@ -43,7 +42,7 @@ class TaskDetailsBody extends StatelessWidget {
                 child: ButtonWidget(
                   onPressed: () => showAdaptiveDialog(
                     context: context,
-                    builder: (context) => AdministrationDialog(),
+                    builder: (context) => ContactTheAdministrationDialog(),
                   ),
                   text: "${AppStrings.administration.tr(context)} 📞",
                 ),

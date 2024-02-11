@@ -1,14 +1,12 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class BaseText extends StatelessWidget {
-  const BaseText({
-    super.key,
-    required this.title,
-    required this.subTitle,
-  });
+  const BaseText(
+      {super.key, required this.title, required this.subTitle, this.textColor});
 
   final String title;
   final String subTitle;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,10 @@ class BaseText extends StatelessWidget {
         children: [
           TextSpan(
             text: title,
-            style: FontStyles.interSize18_400Primary.copyWith(fontSize: 16.sp),
+            style: FontStyles.interSize18_400Primary.copyWith(
+              fontSize: 16.sp,
+              color: textColor,
+            ),
           ),
           TextSpan(
             text: subTitle,

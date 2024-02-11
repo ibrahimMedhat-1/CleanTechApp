@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.loginScreen,
           theme: ThemeData(
             appBarTheme: AppBarTheme(
+
               backgroundColor: AppColors.primary
             ),
             iconTheme: IconThemeData(

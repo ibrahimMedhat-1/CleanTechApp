@@ -38,7 +38,18 @@ static const String clientApproached = "clientApproached";
 static const String administration = "administration";
 static const String contactTheAdministrationThrough = "contactTheAdministrationThrough";
 static const String whatsApp = "whatsApp";
-
+/// salary Details
+///
+static const String selectMonth = "selectMonth";
+static const String selectYear = "selectYear";
+static const String totalSalary = "totalSalary";
+static const String totalCommissions = "totalCommissions";
+static const String totalDiscounts = "totalDiscounts";
+static const String commissionDate = "commissionDate";
+static const String commissionValue = "commissionValue";
+static const String theReason = "theReason";
+static const String discountDate = "discountDate";
+static const String discountValue = "discountValue";
 
 
 

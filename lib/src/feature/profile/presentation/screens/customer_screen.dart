@@ -1,6 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/widgets/animated_indicator.dart';
-import 'package:flutter/cupertino.dart';
 
 class CustomerScreen extends StatelessWidget {
   const CustomerScreen({super.key});
@@ -117,9 +115,7 @@ class CustomerScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: 160.w
-                      ),
+                      constraints: BoxConstraints(maxWidth: 160.w),
                       child: Column(
                         children: [
                           20.isHeight,
@@ -145,9 +141,7 @@ class CustomerScreen extends StatelessWidget {
                       ),
                     ),
                     ConstrainedBox(
-                      constraints: BoxConstraints(
-                          maxWidth: 160.w
-                      ),
+                      constraints: BoxConstraints(maxWidth: 160.w),
                       child: Column(
                         children: [
                           20.isHeight,
@@ -160,7 +154,8 @@ class CustomerScreen extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                AppStrings.tasksCompletedForThisMonth.tr(context),
+                                AppStrings.tasksCompletedForThisMonth
+                                    .tr(context),
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
@@ -179,15 +174,17 @@ class CustomerScreen extends StatelessWidget {
           ),
           62.isHeight,
           ButtonWidget(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: MediaQuery.sizeOf(context).width * 0.15),
-
-          borderRadius: 12.r,
+            margin: EdgeInsetsDirectional.symmetric(
+                horizontal: MediaQuery.sizeOf(context).width * 0.15),
+            borderRadius: 12.r,
             text: AppStrings.salaryDetails.tr(context),
+            onPressed: () =>
+                CustomNavigator.instance.pushNamed(Routes.salaryDetailsScreen),
           ),
           15.isHeight,
           ButtonWidget(
-            margin: EdgeInsetsDirectional.symmetric(horizontal: MediaQuery.sizeOf(context).width * 0.15),
-
+            margin: EdgeInsetsDirectional.symmetric(
+                horizontal: MediaQuery.sizeOf(context).width * 0.15),
             borderRadius: 12.r,
             text: AppStrings.scheduleOfPreviousTasks.tr(context),
           ),

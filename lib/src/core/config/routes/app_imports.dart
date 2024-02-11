@@ -7,6 +7,9 @@ export 'package:ct_clean/src/core/customs/base_text.dart';
 export 'package:ct_clean/src/feature/task_details/presentation/widgets/task_details_body.dart';
 export 'package:ct_clean/src/feature/task_details/presentation/widgets/task_details_map.dart';
 export 'package:ct_clean/src/feature/task_details/presentation/widgets/steps_widget.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/widgets/dialog/connect_administration_dialog.dart';
+export 'package:ct_clean/src/core/config/routes/app_router.dart';
+export 'package:ct_clean/src/core/widgets/animated_indicator.dart';
 
 
 export 'package:bloc/bloc.dart';

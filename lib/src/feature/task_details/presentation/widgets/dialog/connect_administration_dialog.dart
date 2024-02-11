@@ -1,7 +1,7 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class AdministrationDialog extends StatelessWidget {
-  const AdministrationDialog({super.key});
+class ContactTheAdministrationDialog extends StatelessWidget {
+  const ContactTheAdministrationDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,12 @@ class AdministrationDialog extends StatelessWidget {
                 child: Assets.images.logo.image(),
               ),
               19.isHeight,
-              Text(AppStrings.contactTheAdministrationThrough.tr(context)),
+              Text(
+                AppStrings.contactTheAdministrationThrough.tr(context),
+                style: FontStyles.interSize16_400White.copyWith(
+                  color: AppColors.black,
+                ),
+              ),
               26.isHeight,
               Row(
                 children: [

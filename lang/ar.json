@@ -32,5 +32,15 @@
   "clientApproached" : "تم التوجه للعميل",
   "administration" : "الادارة",
   "contactTheAdministrationThrough" : "تواصل مع الادارة من خلال",
-  "whatsApp" : "الواتساب"
+  "whatsApp" : "الواتساب",
+  "selectMonth" : "اختر الشهر",
+  "selectYear" : "اختر السنة",
+  "totalSalary" : "اجمالي الراتب : ",
+  "totalCommissions" : "اجمالي العمولات : ",
+  "commissionDate" : "تاريخ العمولة : ",
+  "commissionValue" : "قيمة العمولة : ",
+  "theReason" : "السبب : ",
+  "totalDiscounts" : "اجمالي الخصومات  : ",
+  "discountDate" : "تاريخ الخصم : ",
+  "discountValue" : "قيمة الخصم : "
  }
