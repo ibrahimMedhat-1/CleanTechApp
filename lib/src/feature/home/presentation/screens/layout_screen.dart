@@ -4,7 +4,7 @@ class LayoutScreen extends StatelessWidget {
   LayoutScreen({super.key});
 
   List<Widget> screens = [
-HomeScreen(),
+    HomeScreen(),
     MessageScreen(),
     CustomerScreen(),
   ];

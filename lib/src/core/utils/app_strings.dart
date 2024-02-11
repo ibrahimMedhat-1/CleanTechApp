@@ -27,6 +27,17 @@ static const String tasksCompletedForThisMonth = "tasksCompletedForThisMonth";
 static const String salaryDetails = "salaryDetails";
 static const String scheduleOfPreviousTasks = "scheduleOfPreviousTasks";
 
+// Task Details Screen
+static const String taskDetails = "taskDetails";
+static const String placeAddress = "placeAddress";
+static const String theClientHasBeenApproached = "theClientHasBeenApproached";
+static const String haveBeenReached = "haveBeenReached";
+static const String beginningOfDischarge = "beginningOfDischarge";
+static const String beenCompleted = "beenCompleted";
+static const String clientApproached = "clientApproached";
+static const String administration = "administration";
+static const String contactTheAdministrationThrough = "contactTheAdministrationThrough";
+static const String whatsApp = "whatsApp";
 
 
 

@@ -22,5 +22,15 @@
   "number" : "عدد ",
   "tasksCompletedForThisMonth" : " المهام المنجزة لهذا الشهر ",
   "salaryDetails" : "تفاصيل الراتب",
-  "scheduleOfPreviousTasks" : "جدول المهام السابقة"
+  "scheduleOfPreviousTasks" : "جدول المهام السابقة",
+  "taskDetails" : "تفاصيل المهمة",
+  "placeAddress" : "عنوان المكان : ",
+  "theClientHasBeenApproached" : "تم التوجه للعميل",
+  "haveBeenReached" : "تم الوصول",
+  "beginningOfDischarge": "بداية التفريغ",
+  "beenCompleted" : "تم الانتهاء",
+  "clientApproached" : "تم التوجه للعميل",
+  "administration" : "الادارة",
+  "contactTheAdministrationThrough" : "تواصل مع الادارة من خلال",
+  "whatsApp" : "الواتساب"
  }

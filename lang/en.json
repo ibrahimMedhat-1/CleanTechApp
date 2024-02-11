@@ -22,5 +22,15 @@
   "number" : "Number",
   "tasksCompletedForThisMonth" : "Tasks Completed For This Month",
   "salaryDetails" : "Salary Details",
-  "scheduleOfPreviousTasks" : "Schedule Of Previous Tasks"
+  "scheduleOfPreviousTasks" : "Schedule Of Previous Tasks",
+  "taskDetails" : "Task Details",
+  "placeAddress": "Place Address",
+  "theClientHasBeenApproached" : "The Client Has Been Approached",
+  "haveBeenReached" : "Have Been Reached",
+  "beginningOfDischarge" : "Beginning Of Discharge",
+  "beenCompleted" : "Been Completed",
+  "clientApproached" : "Client Approached",
+  "administration" : "Administration",
+  "contactTheAdministrationThrough" : "Contact The Administration Through",
+  "whatsApp" : "What's App"
  }

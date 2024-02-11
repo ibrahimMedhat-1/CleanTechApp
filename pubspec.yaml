@@ -45,6 +45,7 @@ dev_dependencies:
   build_runner: ^2.1.5
   flutter_gen_runner: ^5.1.0+1
 
+
 flutter_gen:
   integrations:
     flutter_svg: true

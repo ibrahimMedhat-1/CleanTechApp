@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           navigatorKey: navigationKey,
-          locale: Locale("en"),
+          locale: Locale("ar"),
           supportedLocales: AppLocalizationsSetup.supportedLocales,
           localeResolutionCallback:
           AppLocalizationsSetup.localeResolutionCallback,

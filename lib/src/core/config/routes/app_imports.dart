@@ -1,5 +1,49 @@
 export 'package:ct_clean/src/core/config/theme/colors/colors.dart';
 export 'package:ct_clean/src/feature/home/presentation/widgets/task_item.dart';
+export 'package:ct_clean/src/core/config/routes/navigation.dart';
+export 'package:ct_clean/src/core/customs/custom_back_button.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/manager/map/map_cubit.dart';
+export 'package:ct_clean/src/core/customs/base_text.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/widgets/task_details_body.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/widgets/task_details_map.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/widgets/steps_widget.dart';
+
+
+export 'package:bloc/bloc.dart';
+export 'package:ct_clean/src/core/helper/location/location_helper.dart';
+export 'package:geolocator/geolocator.dart';
+export 'package:google_maps_flutter/google_maps_flutter.dart';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export 'package:ct_clean/src/feature/home/presentation/widgets/tasks_list.dart';
 export 'package:ct_clean/src/feature/home/presentation/screens/home_screen.dart';
 export 'package:ct_clean/src/feature/message/presentation/screens/message_screen.dart';

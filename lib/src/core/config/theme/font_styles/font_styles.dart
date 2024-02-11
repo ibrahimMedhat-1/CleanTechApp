@@ -34,5 +34,9 @@ class FontStyles {
     color: AppColors.primary,
     fontSize: 14.sp,
     fontWeight: FontWeight.w800,
+  );static TextStyle interSize16_400White = TextStyle(
+    color: AppColors.white,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
   );
 }

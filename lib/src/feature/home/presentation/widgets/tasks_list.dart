@@ -1,4 +1,6 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/config/routes/app_router.dart';
+import 'package:ct_clean/src/core/config/routes/navigation.dart';
 
 class TasksList extends StatelessWidget {
   const TasksList({super.key});
@@ -10,7 +12,9 @@ class TasksList extends StatelessWidget {
         padding: EdgeInsetsDirectional.symmetric(vertical: 20.w),
         itemCount: 20,
         itemBuilder: (context, index) {
-          return const TaskItem();
+          return   TaskItem(
+            onPress: () => CustomNavigator.instance.pushNamed(Routes.taskDetailsScreen),
+          );
         },
       ),
     );

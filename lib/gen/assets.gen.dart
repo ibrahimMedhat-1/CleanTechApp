@@ -41,6 +41,10 @@ class $AssetsImagesGen {
   AssetGenImage get backgroundLogin =>
       const AssetGenImage('assets/images/background_login.png');
 
+  /// File path: assets/images/call_icon.png
+  AssetGenImage get callIcon =>
+      const AssetGenImage('assets/images/call_icon.png');
+
   /// File path: assets/images/customer.png
   AssetGenImage get customer =>
       const AssetGenImage('assets/images/customer.png');
@@ -71,9 +75,14 @@ class $AssetsImagesGen {
   AssetGenImage get splashScreen =>
       const AssetGenImage('assets/images/splash_screen.png');
 
+  /// File path: assets/images/whats_app.png
+  AssetGenImage get whatsApp =>
+      const AssetGenImage('assets/images/whats_app.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         backgroundLogin,
+        callIcon,
         customer,
         home,
         logo,
@@ -81,7 +90,8 @@ class $AssetsImagesGen {
         messaging,
         question,
         splash12,
-        splashScreen
+        splashScreen,
+        whatsApp
       ];
 }
 

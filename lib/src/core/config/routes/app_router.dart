@@ -1,5 +1,6 @@
 
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/feature/task_details/presentation/screens/task_details_screens.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -11,6 +12,9 @@ class AppRouter {
       case Routes.layoutScreen:
         return MaterialPageRoute(
           builder: (context) =>   LayoutScreen(),
+        );  case Routes.taskDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) =>   TaskDetailsScreen(),
         );
 
       default:
@@ -46,4 +50,5 @@ Route animateWidget(Widget myWidget) {
 class Routes {
   static const String loginScreen = "loginScreen";
   static const String layoutScreen = "layoutScreen";
+  static const String taskDetailsScreen = "TaskDetailsScreen";
 }
