@@ -17,7 +17,7 @@ class SalaryDetailsScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          Assets.images.logoWhite.image(),
+          Assets.svgs.logoWhite.svg(width: 120.w),
           const CustomBackButton(),
         ],
         leadingWidth: 150.w,
@@ -28,7 +28,7 @@ class SalaryDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               107.isHeight,
-              DayAndMonthDropDown(),
+              const DayAndMonthDropDown(),
               41.isHeight,
               TotalSalaryCard(),
               21.isHeight,

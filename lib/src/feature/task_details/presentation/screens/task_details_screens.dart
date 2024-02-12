@@ -17,7 +17,7 @@ class TaskDetailsScreen extends StatelessWidget {
             ),
           ),
           actions: [
-            Assets.images.logoWhite.image(),
+            Assets.svgs.logoWhite.svg(width: 120.w),
             const CustomBackButton(),
           ],
           leadingWidth: 150.w,
@@ -31,7 +31,6 @@ class TaskDetailsScreen extends StatelessWidget {
               TaskDetailsMap(),
               60.isHeight,
               TaskDetailsBody(),
-
             ],
           ),
         ));

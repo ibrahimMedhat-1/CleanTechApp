@@ -18,7 +18,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
             ),
           ),
           actions: [
-            Assets.images.logoWhite.image(),
+            Assets.svgs.logoWhite.svg(width: 120.w),
             const CustomBackButton(),
           ],
           leadingWidth: 190.w,
