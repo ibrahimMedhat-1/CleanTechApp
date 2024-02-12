@@ -50,7 +50,10 @@ static const String commissionValue = "commissionValue";
 static const String theReason = "theReason";
 static const String discountDate = "discountDate";
 static const String discountValue = "discountValue";
-
+//Schedule of previous tasks
+static const String schedulePreviousTasks = "schedulePreviousTasks";
+static const String tasksNotCompleted = "tasksNotCompleted";
+static const String tasksAlreadyCompleted = "tasksAlreadyCompleted";
 
 
 

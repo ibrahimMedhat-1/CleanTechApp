@@ -42,5 +42,8 @@
   "theReason" : "السبب : ",
   "totalDiscounts" : "اجمالي الخصومات  : ",
   "discountDate" : "تاريخ الخصم : ",
-  "discountValue" : "قيمة الخصم : "
+  "discountValue" : "قيمة الخصم : ",
+  "schedulePreviousTasks" : "جدول المهام السابقة",
+  "tasksNotCompleted": "مهام لم تتم",
+  "tasksAlreadyCompleted" : "مهام تمت بالفعل"
  }

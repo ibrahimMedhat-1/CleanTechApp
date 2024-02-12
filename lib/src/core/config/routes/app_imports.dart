@@ -10,6 +10,9 @@ export 'package:ct_clean/src/feature/task_details/presentation/widgets/steps_wid
 export 'package:ct_clean/src/feature/task_details/presentation/widgets/dialog/connect_administration_dialog.dart';
 export 'package:ct_clean/src/core/config/routes/app_router.dart';
 export 'package:ct_clean/src/core/widgets/animated_indicator.dart';
+export 'package:ct_clean/src/feature/salary_details/presentation/screens/salary_details_screen.dart';
+export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/screens/schedule_previous_tasks_screen.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/screens/task_details_screens.dart';
 
 
 export 'package:bloc/bloc.dart';

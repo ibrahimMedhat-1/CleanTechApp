@@ -1,6 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/feature/salary_details/presentation/screens/salary_details_screen.dart';
-import 'package:ct_clean/src/feature/task_details/presentation/screens/task_details_screens.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -16,9 +14,14 @@ class AppRouter {
       case Routes.taskDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => TaskDetailsScreen(),
-        );case Routes.salaryDetailsScreen:
+        );
+      case Routes.salaryDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => SalaryDetailsScreen(),
+        );
+      case Routes.schedulePreviousTaskScreen:
+        return MaterialPageRoute(
+          builder: (context) => SchedulePreviousTaskScreen(),
         );
 
       default:
@@ -56,4 +59,5 @@ class Routes {
   static const String layoutScreen = "layoutScreen";
   static const String taskDetailsScreen = "TaskDetailsScreen";
   static const String salaryDetailsScreen = "SalaryDetailsScreen";
+  static const String schedulePreviousTaskScreen = "schedulePreviousTaskScreen";
 }

@@ -187,6 +187,8 @@ class CustomerScreen extends StatelessWidget {
                 horizontal: MediaQuery.sizeOf(context).width * 0.15),
             borderRadius: 12.r,
             text: AppStrings.scheduleOfPreviousTasks.tr(context),
+            onPressed: () => CustomNavigator.instance
+                .pushNamed(Routes.schedulePreviousTaskScreen),
           ),
           38.isHeight,
         ],

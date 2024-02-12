@@ -42,6 +42,9 @@
   "theReason" : "The Reason",
   "totalDiscounts" : "Total Discounts",
   "discountDate" : "Discount Date",
-  "discountValue" : "Discount Value"
+  "discountValue" : "Discount Value",
+  "schedulePreviousTasks" : "Schedule Previous Tasks",
+  "tasksNotCompleted" : "Tasks Not Completed",
+  "tasksAlreadyCompleted" : "Tasks Already Completed"
 
  }
