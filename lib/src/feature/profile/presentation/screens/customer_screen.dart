@@ -174,7 +174,7 @@ class CustomerScreen extends StatelessWidget {
               ),
             ),
           ),
-          62.isHeight,
+          30.isHeight,
           ButtonWidget(
             margin: EdgeInsetsDirectional.symmetric(
                 horizontal: MediaQuery.sizeOf(context).width * 0.15),
@@ -192,7 +192,16 @@ class CustomerScreen extends StatelessWidget {
             onPressed: () => CustomNavigator.instance
                 .pushNamed(Routes.schedulePreviousTaskScreen),
           ),
-          38.isHeight,
+          15.isHeight,
+          ButtonWidget(
+            margin: EdgeInsetsDirectional.symmetric(
+                horizontal: MediaQuery.sizeOf(context).width * 0.15),
+            borderRadius: 12.r,
+            text: AppStrings.signOut.tr(context),
+            onPressed: () => CustomNavigator.instance
+                .pushNamedAndRemoveUntil(Routes.loginScreen, (route) => false),
+          ),
+          // 38.isHeight,
         ],
       ),
     );

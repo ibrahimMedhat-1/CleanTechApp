@@ -31,7 +31,8 @@ class LoginForm extends StatelessWidget {
                   color: AppColors.white,
                 ),
                 25.isHeight,
-                const LanguageDropDown(),
+                LanguageDropDown(
+                    label: AppStrings.chooseTheLanguage.tr(context)),
                 27.isHeight,
                 ButtonWidget(
                   text: AppStrings.login.tr(context),

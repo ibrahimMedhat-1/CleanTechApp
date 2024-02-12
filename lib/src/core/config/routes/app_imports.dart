@@ -9,6 +9,9 @@ export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_c
 export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_discounts_card.dart';
 export 'package:ct_clean/src/core/config/locale/app_localizations_setup.dart';
 export 'package:ct_clean/src/feature/auth/login/presentation/widgets/language_drop_down.dart';
+export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/widgets/list_previous_tasks.dart';
+export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/widgets/calender_widget.dart';
+export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/widgets/table_tasks_done.dart';
 
 
 

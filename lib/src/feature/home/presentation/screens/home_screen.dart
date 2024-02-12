@@ -54,7 +54,9 @@ class HomeScreen extends StatelessWidget {
                     style: FontStyles.interSize18_400Primary,
                   )
                 ],
-              )
+              ),
+              Spacer(),
+              LanguageDropDown(isExpanded: false),
             ],
           ),
           33.isHeight,

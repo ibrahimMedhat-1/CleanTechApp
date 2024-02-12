@@ -33,6 +33,7 @@ static const String salaryDetails = "salaryDetails";
 static const String scheduleOfPreviousTasks = "scheduleOfPreviousTasks";
 static const String numberOfSongsToday = "numberOfSongsToday";
 static const String numberOfTasksCompleted = "numberOfTasksCompleted";
+static const String signOut = "signOut";
 
 // Task Details Screen
 static const String taskDetails = "taskDetails";

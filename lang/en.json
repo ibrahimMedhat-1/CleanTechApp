@@ -51,10 +51,11 @@
 ,"putANote" :"Put A Note..",
   "back" : "Back",
   "confirmStep" : "Confirm Step",
-  "numberOfSongsToday" : "Number Of Songs Today",
+  "numberOfSongsToday" : "Number Of Tasks Today",
   "numberOfTasksCompleted" : "Number Of Tasks Completed",
   "arabic" : "Arabic",
   "english" : "English",
   "chooseTheLanguage" : "Choose The Language",
-  "language" : "Language"
+  "language" : "Language",
+  "signOut" : "Sign Out"
  }
