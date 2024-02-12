@@ -12,19 +12,33 @@ class ContactTheAdministrationDialog extends StatelessWidget {
         Container(
           width: 320.w,
           height: 238.h,
+          decoration: BoxDecoration(
           color: AppColors.primary2,
+            borderRadius: BorderRadiusDirectional.circular(8.r)
+          ),
           child: Column(
             children: [
               Container(
                 height: 91.h,
+                width: double.infinity,
                 padding: EdgeInsetsDirectional.only(
                   top: 26.h,
                   bottom: 18.h,
                   start: 51.w,
                   end: 45.w,
                 ),
+                decoration: BoxDecoration(
                 color: AppColors.white,
-                child: Assets.images.logo.image(),
+                  borderRadius: BorderRadiusDirectional.only(
+                    topStart: Radius.circular(8.r),
+                    topEnd: Radius.circular(8.r)
+                  )
+                ),
+                child: Assets.images.logo.image(
+                  width: double.infinity,
+                  height: 91.h,
+                  fit: BoxFit.cover
+                ),
               ),
               19.isHeight,
               Text(

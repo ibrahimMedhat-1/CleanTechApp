@@ -36,12 +36,13 @@ class ConfirmStepDialog extends StatelessWidget {
                         end: 45.w,
                       ),
                       decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadiusDirectional.only(
-                            topEnd: Radius.circular(12.r),
-                            topStart: Radius.circular(12.r),
-                          )),
-                      child: Assets.images.logo.image(),
+                        color: AppColors.white,
+                        borderRadius: BorderRadiusDirectional.only(
+                          topEnd: Radius.circular(12.r),
+                          topStart: Radius.circular(12.r),
+                        ),
+                      ),
+                      child: Assets.images.logo.image(fit: BoxFit.cover),
                     ),
                     16.isHeight,
                     Padding(
