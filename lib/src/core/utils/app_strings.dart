@@ -26,6 +26,8 @@ static const String number = "number";
 static const String tasksCompletedForThisMonth = "tasksCompletedForThisMonth";
 static const String salaryDetails = "salaryDetails";
 static const String scheduleOfPreviousTasks = "scheduleOfPreviousTasks";
+static const String numberOfSongsToday = "numberOfSongsToday";
+static const String numberOfTasksCompleted = "numberOfTasksCompleted";
 
 // Task Details Screen
 static const String taskDetails = "taskDetails";
@@ -38,6 +40,12 @@ static const String clientApproached = "clientApproached";
 static const String administration = "administration";
 static const String contactTheAdministrationThrough = "contactTheAdministrationThrough";
 static const String whatsApp = "whatsApp";
+static const String connection = "connection";
+static const String youCanLeaveANoteOrContinueWithoutIt = "youCanLeaveANoteOrContinueWithoutIt";
+static const String putANote = "putANote";
+static const String back = "back";
+static const String confirmStep = "confirmStep";
+
 /// salary Details
 ///
 static const String selectMonth = "selectMonth";

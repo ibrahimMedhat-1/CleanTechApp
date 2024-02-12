@@ -35,9 +35,12 @@ class LayoutScreen extends StatelessWidget {
           backgroundColor: AppColors.white,
           index: homeCubit.currentIndex,
           items: [
-            Assets.images.home.image(),
-            Assets.images.messaging.image(),
-            Assets.images.customer.image()
+            Assets.svgs.home.svg(),
+            Padding(
+              padding: EdgeInsets.all(5.w),
+              child: Assets.svgs.message.svg(),
+            ),
+            Assets.svgs.person.svg()
           ],
           color: AppColors.primary2,
           onTap: homeCubit.changeIndex,

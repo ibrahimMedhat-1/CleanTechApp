@@ -45,6 +45,12 @@
   "discountValue" : "Discount Value",
   "schedulePreviousTasks" : "Schedule Previous Tasks",
   "tasksNotCompleted" : "Tasks Not Completed",
-  "tasksAlreadyCompleted" : "Tasks Already Completed"
-
+  "tasksAlreadyCompleted" : "Tasks Already Completed",
+  "connection" : "Connection",
+  "youCanLeaveANoteOrContinueWithoutIt" : "You Can Leave A Note Or Continue Without It"
+,"putANote" :"Put A Note..",
+  "back" : "Back",
+  "confirmStep" : "Confirm Step",
+  "numberOfSongsToday" : "Number Of Songs Today",
+  "numberOfTasksCompleted" : "Number Of Tasks Completed"
  }

@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:flutter/cupertino.dart';
 
 class SchedulePreviousTaskScreen extends StatelessWidget {
   const SchedulePreviousTaskScreen({super.key});
@@ -20,7 +21,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
             Assets.images.logoWhite.image(),
             const CustomBackButton(),
           ],
-          leadingWidth: 170.w,
+          leadingWidth: 190.w,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,9 +50,11 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
               child: Card(
                 child: Padding(
                   padding: EdgeInsetsDirectional.symmetric(
-                      horizontal: 10.w, vertical: 10.h),
+                    horizontal: 5.w,
+                    vertical: 10.h,
+                  ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -59,19 +62,19 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                AppStrings.numberOfMonthlyTasks.tr(context),
+                                AppStrings.numberOfSongsToday.tr(context),
                                 style: FontStyles.interSize14_800Primary,
                               ),
-                              10.isWight,
+                              5.isWight,
                               Container(
-                                height: 30.h,
-                                width: 30.w,
+                                height: 25.h,
+                                width: 25.w,
                                 decoration: BoxDecoration(
                                   color: AppColors.primary3,
                                   shape: BoxShape.circle,
                                 ),
-                                child: Center(
-                                  child: const Text(
+                                child: const Center(
+                                  child: Text(
                                     "24",
                                     style: TextStyle(
                                       color: AppColors.white,
@@ -85,19 +88,19 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                AppStrings.numberOfMonthlyTasks.tr(context),
+                                AppStrings.numberOfTasksCompleted.tr(context),
                                 style: FontStyles.interSize14_800Primary,
                               ),
-                              10.isWight,
+                              5.isWight,
                               Container(
-                                height: 30.h,
-                                width: 30.w,
+                                height: 25.h,
+                                width: 25.w,
                                 decoration: BoxDecoration(
                                   color: AppColors.primary3,
                                   shape: BoxShape.circle,
                                 ),
-                                child: Center(
-                                  child: const Text(
+                                child: const Center(
+                                  child: Text(
                                     "4",
                                     style: TextStyle(
                                       color: AppColors.white,
@@ -110,15 +113,16 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      10.isWight,
+                      5.isWight,
                       SizedBox(
-                        width: 70.w,
-                        height: 70.h,
+                        width: 50.w,
+                        height: 50.h,
                         child: AnimatedCircularProgressIndicator(
-                          percentage: 30 / 100,
+                          percentage: 70 / 100,
+                          strokeWidth: 7.w,
                         ),
                       ),
-                      10.isWight,
+                      5.isWight,
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +134,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                                 width: 20.w,
                                 color: AppColors.red,
                                 child: const Icon(
-                                  Icons.cancel_outlined,
+                                  CupertinoIcons.xmark,
                                   size: 20,
                                   color: AppColors.white,
                                 ),
@@ -146,7 +150,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                                 width: 20.w,
                                 color: AppColors.primary,
                                 child: const Icon(
-                                  Icons.cancel_outlined,
+                                  Icons.check,
                                   size: 20,
                                   color: AppColors.white,
                                 ),
@@ -174,9 +178,11 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                   child: Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusDirectional.circular(12.r),
-                        side: BorderSide(
-                            color: AppColors.gray2.withOpacity(0.4))),
+                      borderRadius: BorderRadiusDirectional.circular(12.r),
+                      side: BorderSide(
+                        color: AppColors.gray2.withOpacity(0.4),
+                      ),
+                    ),
                     child: Row(
                       children: [
                         Column(
@@ -256,8 +262,8 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                           color: AppColors.black,
                         ),
                         Container(
-                          height: 70,
-                          width: 70,
+                          height: 50,
+                          width: 50,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.r),
                               color: AppColors.primary),

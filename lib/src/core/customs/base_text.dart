@@ -10,21 +10,24 @@ class BaseText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(
-      TextSpan(
-        children: [
-          TextSpan(
-            text: title,
-            style: FontStyles.interSize18_400Primary.copyWith(
-              fontSize: 16.sp,
-              color: textColor,
+    return Expanded(
+      child: Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(
+              text: title,
+              style: FontStyles.interSize18_400Primary.copyWith(
+                fontSize: 18.sp,
+                color: textColor,
+              ),
             ),
-          ),
-          TextSpan(
-            text: subTitle,
-            style: FontStyles.interSize13_400Black,
-          ),
-        ],
+            TextSpan(
+              text: subTitle,
+
+              style: FontStyles.interSize13_400Black.copyWith(fontSize: 16.sp),
+            ),
+          ],
+        ),
       ),
     );
   }

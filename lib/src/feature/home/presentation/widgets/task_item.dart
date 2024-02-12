@@ -23,7 +23,7 @@ class TaskItem extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                height: 130.h,
+                height: double.infinity,
                 width: 24.w,
                 color: AppColors.primary,
               ),
@@ -44,63 +44,32 @@ class TaskItem extends StatelessWidget {
                 margin: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
                 color: AppColors.black,
               ),
-              Expanded(
+              SizedBox(
+                width: 250.w,
+                height: 150.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     10.isHeight,
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppStrings.placeName.tr(context),
-                            style: FontStyles.interSize18_400Primary
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          TextSpan(
-                            text: "اسم المكان المقصود",
-                            style: FontStyles.interSize18_500Black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppStrings.address.tr(context),
-                            style: FontStyles.interSize18_400Primary
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          TextSpan(
-                            text: "عنوان المكان المقصود",
-                            style: FontStyles.interSize18_500Black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppStrings.time.tr(context),
-                            style: FontStyles.interSize18_400Primary
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          TextSpan(
-                            text: "عنوان المكان المقصود",
-                            style: FontStyles.interSize18_500Black,
-                          ),
-                        ],
-                      ),
+                    BaseText(
+                        title: AppStrings.placeName.tr(context),
+                        subTitle: "اسم المكان المقصود"),
+                    BaseText(
+                        title: AppStrings.address.tr(context),
+                        subTitle: "عنوان المكان المقصود"),
+                    BaseText(
+                      title: AppStrings.time.tr(context),
+                      subTitle: "عنوان المكان المقصود",
                     ),
                     10.isHeight,
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        AppStrings.clickToSeeDetails.tr(context),
-                        textAlign: TextAlign.center,
-                        style: FontStyles.interSize10_400Gray,
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          AppStrings.clickToSeeDetails.tr(context),
+                          textAlign: TextAlign.center,
+                          style: FontStyles.interSize10_400Gray,
+                        ),
                       ),
                     )
                   ],

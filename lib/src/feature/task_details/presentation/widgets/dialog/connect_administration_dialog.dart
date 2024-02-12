@@ -43,7 +43,9 @@ class ContactTheAdministrationDialog extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Assets.images.whatsApp.image(),
+                          Assets.svgs.whatsappIcon
+                              .svg(width: 30.w, height: 30.h),
+                          10.isWight,
                           Text(
                             AppStrings.whatsApp.tr(context),
                             style: FontStyles.interSize16_400White,
@@ -58,9 +60,10 @@ class ContactTheAdministrationDialog extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Assets.images.callIcon.image(),
+                          Assets.svgs.callIcon.svg(height: 30.h, width: 30.w),
+                          10.isWight,
                           Text(
-                            AppStrings.whatsApp.tr(context),
+                            AppStrings.connection.tr(context),
                             style: FontStyles.interSize16_400White,
                           )
                         ],

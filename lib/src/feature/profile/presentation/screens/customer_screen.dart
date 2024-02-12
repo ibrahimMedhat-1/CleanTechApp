@@ -130,6 +130,7 @@ class CustomerScreen extends StatelessWidget {
                               Text(
                                 AppStrings.tasksCompletedForTheDay.tr(context),
                                 overflow: TextOverflow.ellipsis,
+                                style: FontStyles.interSize13_400Black,
                               ),
                               Text(
                                 "${AppStrings.number.tr(context)} = 4",
@@ -157,6 +158,7 @@ class CustomerScreen extends StatelessWidget {
                                 AppStrings.tasksCompletedForThisMonth
                                     .tr(context),
                                 overflow: TextOverflow.ellipsis,
+                                style: FontStyles.interSize13_400Black,
                               ),
                               Text(
                                 "${AppStrings.number.tr(context)} = 44",

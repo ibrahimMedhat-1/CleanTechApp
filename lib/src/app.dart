@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: AppRouter().generateRoute,
           initialRoute: Routes.loginScreen,
           theme: ThemeData(
+            fontFamily: "Almarai",
             appBarTheme: AppBarTheme(
 
               backgroundColor: AppColors.primary

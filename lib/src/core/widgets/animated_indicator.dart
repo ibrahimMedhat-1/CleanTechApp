@@ -5,9 +5,11 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
     Key? key,
     required this.percentage,
     // required this.label,
+    this.strokeWidth = 10
   }) : super(key: key);
 
   final double percentage;
+  final double strokeWidth;
 
   // final String label;
 
@@ -24,7 +26,7 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
             CircularProgressIndicator(
               value: value,
               color: AppColors.primary3,
-              strokeWidth: 10,
+              strokeWidth: strokeWidth,
               strokeCap: StrokeCap.round,
               backgroundColor: AppColors.gray3,
             ),

@@ -1,4 +1,43 @@
 export 'package:ct_clean/src/core/config/theme/colors/colors.dart';
+export 'package:ct_clean/src/feature/task_details/logic/models/steps_data_model.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/manager/task_details_cubit/task_details_cubit.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/widgets/dialog/confirm_step_dialog.dart';
+export 'package:ct_clean/src/core/widgets/drop_down.dart';
+export 'package:ct_clean/src/feature/salary_details/presentation/widgets/day_month_drop_down.dart';
+export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_salary_card.dart';
+export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_commission_card.dart';
+export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_discounts_card.dart';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export 'package:ct_clean/src/feature/home/presentation/widgets/task_item.dart';
 export 'package:ct_clean/src/core/config/routes/navigation.dart';
 export 'package:ct_clean/src/core/customs/custom_back_button.dart';
@@ -13,43 +52,10 @@ export 'package:ct_clean/src/core/widgets/animated_indicator.dart';
 export 'package:ct_clean/src/feature/salary_details/presentation/screens/salary_details_screen.dart';
 export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/screens/schedule_previous_tasks_screen.dart';
 export 'package:ct_clean/src/feature/task_details/presentation/screens/task_details_screens.dart';
-
-
 export 'package:bloc/bloc.dart';
 export 'package:ct_clean/src/core/helper/location/location_helper.dart';
 export 'package:geolocator/geolocator.dart';
 export 'package:google_maps_flutter/google_maps_flutter.dart';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export 'package:ct_clean/src/feature/home/presentation/widgets/tasks_list.dart';
 export 'package:ct_clean/src/feature/home/presentation/screens/home_screen.dart';
 export 'package:ct_clean/src/feature/message/presentation/screens/message_screen.dart';
@@ -58,7 +64,7 @@ export 'package:ct_clean/src/feature/home/presentation/manager/home_cubit.dart';
 export 'package:flutter/material.dart';
 export 'package:ct_clean/src/feature/auth/login/presentation/screens/login_screen.dart';
 export 'package:ct_clean/src/feature/home/presentation/screens/layout_screen.dart';
- export 'package:ct_clean/src/feature/profile/presentation/screens/customer_screen.dart';
+export 'package:ct_clean/src/feature/profile/presentation/screens/customer_screen.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:ct_clean/src/core/helper/error/failures.dart';
 export 'package:ct_clean/src/core/utils/constant.dart';
@@ -79,4 +85,4 @@ export 'package:ct_clean/src/core/widgets/button.dart';
 export 'package:ct_clean/src/core/widgets/visibility_password.dart';
 export 'package:ct_clean/src/feature/auth/login/presentation/widgets/login_form.dart';
 export 'package:ct_clean/src/core/config/theme/font_styles/font_styles.dart';
- export 'package:curved_navigation_bar/curved_navigation_bar.dart';
+export 'package:curved_navigation_bar/curved_navigation_bar.dart';

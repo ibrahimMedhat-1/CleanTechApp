@@ -15,6 +15,7 @@ class FontStyles {
     color: AppColors.black,
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
+    overflow: TextOverflow.ellipsis
   );
   static TextStyle interSize18_400Primary = TextStyle(
     color: AppColors.primary,
@@ -25,6 +26,8 @@ class FontStyles {
     color: AppColors.black,
     fontSize: 13.sp,
     fontWeight: FontWeight.w400,
+    overflow: TextOverflow.ellipsis,
+
   );
   static TextStyle interSize10_400Gray = TextStyle(
     color: AppColors.gray1,

@@ -1,5 +1,6 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/feature/task_details/presentation/manager/map/map_cubit.dart';
+import 'package:ct_clean/src/feature/task_details/presentation/manager/task_details_cubit/task_details_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -18,4 +19,6 @@ Future<void> setUpLocators() async {
       ..askUserToEnableLocation()
       ..getCurrentLocation(),
   );
+  // Task Details Cubit
+  sl.registerLazySingleton<TaskDetailsCubit>(() => TaskDetailsCubit());
 }

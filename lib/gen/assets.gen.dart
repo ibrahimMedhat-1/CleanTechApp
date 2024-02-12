@@ -38,6 +38,26 @@ class $AssetsDemoGen {
   List<AssetGenImage> get values => [demo1, moneytransfer];
 }
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/Almarai-Bold.ttf
+  String get almaraiBold => 'assets/fonts/Almarai-Bold.ttf';
+
+  /// File path: assets/fonts/Almarai-ExtraBold.ttf
+  String get almaraiExtraBold => 'assets/fonts/Almarai-ExtraBold.ttf';
+
+  /// File path: assets/fonts/Almarai-Light.ttf
+  String get almaraiLight => 'assets/fonts/Almarai-Light.ttf';
+
+  /// File path: assets/fonts/Almarai-Regular.ttf
+  String get almaraiRegular => 'assets/fonts/Almarai-Regular.ttf';
+
+  /// List of all assets
+  List<String> get values =>
+      [almaraiBold, almaraiExtraBold, almaraiLight, almaraiRegular];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -52,12 +72,36 @@ class $AssetsImagesGen {
   AssetGenImage get callIcon =>
       const AssetGenImage('assets/images/call_icon.png');
 
+  /// File path: assets/images/cancle_icon.png
+  AssetGenImage get cancleIcon =>
+      const AssetGenImage('assets/images/cancle_icon.png');
+
+  /// File path: assets/images/car_icon.png
+  AssetGenImage get carIcon =>
+      const AssetGenImage('assets/images/car_icon.png');
+
+  /// File path: assets/images/correct_icon.png
+  AssetGenImage get correctIcon =>
+      const AssetGenImage('assets/images/correct_icon.png');
+
   /// File path: assets/images/customer.png
   AssetGenImage get customer =>
       const AssetGenImage('assets/images/customer.png');
 
+  /// File path: assets/images/done_icon.png
+  AssetGenImage get doneIcon =>
+      const AssetGenImage('assets/images/done_icon.png');
+
+  /// File path: assets/images/go_to _client.png
+  AssetGenImage get goToClient =>
+      const AssetGenImage('assets/images/go_to _client.png');
+
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
+  /// File path: assets/images/location_icon.png
+  AssetGenImage get locationIcon =>
+      const AssetGenImage('assets/images/location_icon.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
@@ -103,8 +147,14 @@ class $AssetsImagesGen {
         minus,
         backgroundLogin,
         callIcon,
+        cancleIcon,
+        carIcon,
+        correctIcon,
         customer,
+        doneIcon,
+        goToClient,
         home,
+        locationIcon,
         logo,
         logoWhite,
         messaging,
@@ -121,9 +171,25 @@ class $AssetsImagesGen {
 class $AssetsSvgsGen {
   const $AssetsSvgsGen();
 
+  /// File path: assets/svgs/call_icon.svg
+  SvgGenImage get callIcon => const SvgGenImage('assets/svgs/call_icon.svg');
+
   /// File path: assets/svgs/have_problem.svg
   SvgGenImage get haveProblem =>
       const SvgGenImage('assets/svgs/have_problem.svg');
+
+  /// File path: assets/svgs/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/svgs/home.svg');
+
+  /// File path: assets/svgs/message.svg
+  SvgGenImage get message => const SvgGenImage('assets/svgs/message.svg');
+
+  /// File path: assets/svgs/person.svg
+  SvgGenImage get person => const SvgGenImage('assets/svgs/person.svg');
+
+  /// File path: assets/svgs/primary_logo.svg
+  SvgGenImage get primaryLogo =>
+      const SvgGenImage('assets/svgs/primary_logo.svg');
 
   /// File path: assets/svgs/question.svg
   SvgGenImage get question => const SvgGenImage('assets/svgs/question.svg');
@@ -136,15 +202,30 @@ class $AssetsSvgsGen {
   SvgGenImage get visibilityOffField =>
       const SvgGenImage('assets/svgs/visibilityOffField.svg');
 
+  /// File path: assets/svgs/whatsapp_icon.svg
+  SvgGenImage get whatsappIcon =>
+      const SvgGenImage('assets/svgs/whatsapp_icon.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [haveProblem, question, visibilityField, visibilityOffField];
+  List<SvgGenImage> get values => [
+        callIcon,
+        haveProblem,
+        home,
+        message,
+        person,
+        primaryLogo,
+        question,
+        visibilityField,
+        visibilityOffField,
+        whatsappIcon
+      ];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsDemoGen demo = $AssetsDemoGen();
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
   static const $LangGen lang = $LangGen();
