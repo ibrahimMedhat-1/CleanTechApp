@@ -79,5 +79,4 @@ export 'package:ct_clean/src/core/widgets/button.dart';
 export 'package:ct_clean/src/core/widgets/visibility_password.dart';
 export 'package:ct_clean/src/feature/auth/login/presentation/widgets/login_form.dart';
 export 'package:ct_clean/src/core/config/theme/font_styles/font_styles.dart';
-export 'package:ct_clean/src/feature/home/presentation/manager/home_cubit.dart';
-export 'package:curved_navigation_bar/curved_navigation_bar.dart';
+ export 'package:curved_navigation_bar/curved_navigation_bar.dart';
