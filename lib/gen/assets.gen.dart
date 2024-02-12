@@ -70,6 +70,10 @@ class $AssetsImagesGen {
   AssetGenImage get messaging =>
       const AssetGenImage('assets/images/messaging.png');
 
+  /// File path: assets/images/place_logo.png
+  AssetGenImage get placeLogo =>
+      const AssetGenImage('assets/images/place_logo.png');
+
   /// File path: assets/images/question.png
   AssetGenImage get question =>
       const AssetGenImage('assets/images/question.png');
@@ -104,6 +108,7 @@ class $AssetsImagesGen {
         logo,
         logoWhite,
         messaging,
+        placeLogo,
         question,
         splash12,
         splashScreen,
