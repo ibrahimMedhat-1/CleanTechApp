@@ -58,6 +58,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
@@ -113,7 +114,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      5.isWight,
+                      10.isWight,
                       SizedBox(
                         width: 50.w,
                         height: 50.h,
@@ -122,7 +123,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                           strokeWidth: 7.w,
                         ),
                       ),
-                      5.isWight,
+                      10.isWight,
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +141,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                                 ),
                               ),
                               5.isWight,
-                              Text(AppStrings.tasksNotCompleted.tr(context))
+                              Text(AppStrings.tasksNotCompleted.tr(context),style: TextStyle(fontSize: 12.sp),)
                             ],
                           ),
                           Row(
@@ -156,7 +157,7 @@ class SchedulePreviousTaskScreen extends StatelessWidget {
                                 ),
                               ),
                               5.isWight,
-                              Text(AppStrings.tasksAlreadyCompleted.tr(context))
+                              Text(AppStrings.tasksAlreadyCompleted.tr(context),style: TextStyle(fontSize: 12.sp))
                             ],
                           ),
                         ],
