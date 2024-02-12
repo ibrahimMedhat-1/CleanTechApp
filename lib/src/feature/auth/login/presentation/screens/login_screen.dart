@@ -14,11 +14,11 @@ class LoginScreen extends StatelessWidget {
             Container(
                 color: AppColors.primary,
                 width: double.infinity,
-                child: Assets.images.backgroundLogin.image(height: 388)),
+                child: Assets.images.backgroundLogin.image(height: 348)),
             Positioned(
               bottom: 0,
               child: Container(
-                height: 544.h,
+                height: 600.h,
                 width: MediaQuery.sizeOf(context).width,
                 padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
                 decoration: BoxDecoration(
