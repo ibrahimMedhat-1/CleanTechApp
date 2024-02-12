@@ -26,7 +26,7 @@ class LayoutScreen extends StatelessWidget {
               return Text(title, style: FontStyles.interSize18_600White);
             },
           ),
-          actions: [ Assets.svgs.logoWhite.svg(width: 120.w), 15.isWight],
+          actions: [Assets.svgs.logoWhite.svg(width: 120.w), 15.isWight],
         ),
         body: BlocBuilder(
             bloc: homeCubit,
