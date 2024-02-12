@@ -29,18 +29,12 @@ class LoginScreen extends StatelessWidget {
                     )),
                 child: Column(
                   children: [
-                    20.isHeight,
-                    // Assets.images.logo.image(),
-                    Container(
-                      // color: Colors.amberAccent,
-
-                      child: Assets.svgs.primaryLogo.svg(
-                        height: 120.h,
-                        // fit: BoxFit.f,
-                        width: 344.w,
-                      ),
+                    // 20.isHeight,
+                    Assets.svgs.primaryLogo.svg(
+                      height: 120.h,
+                      width: 344.w,
                     ),
-                    88.isHeight,
+                    10.isHeight,
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Text(
@@ -52,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     25.isHeight,
-                      LoginForm(),
+                    LoginForm(),
                   ],
                 ),
               ),

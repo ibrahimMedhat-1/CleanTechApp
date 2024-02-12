@@ -3,6 +3,11 @@ static const String logInToContinue = "logInToContinue";
 static const String mobile = "mobile";
 static const String password = "password";
 static const String login = "login";
+static const String arabic = "arabic";
+static const String english = "english";
+static const String chooseTheLanguage = "chooseTheLanguage";
+static const String language = "language";
+
 // Home Screen
 static const String home = "home";
 static const String contactTheAdministration = "contactTheAdministration";

@@ -52,5 +52,9 @@
   "back" : "Back",
   "confirmStep" : "Confirm Step",
   "numberOfSongsToday" : "Number Of Songs Today",
-  "numberOfTasksCompleted" : "Number Of Tasks Completed"
+  "numberOfTasksCompleted" : "Number Of Tasks Completed",
+  "arabic" : "Arabic",
+  "english" : "English",
+  "chooseTheLanguage" : "Choose The Language",
+  "language" : "Language"
  }

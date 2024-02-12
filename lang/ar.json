@@ -52,5 +52,9 @@
   "back" : "الرجوع",
   "confirmStep" : "تأكيد الخطوة",
   "numberOfSongsToday" : "عدد المهام الهذا اليوم :",
-  "numberOfTasksCompleted" : "عدد المهام المنجزة :"
+  "numberOfTasksCompleted" : "عدد المهام المنجزة :",
+  "arabic" : "العربية",
+  "english" : "الانجليزية",
+  "chooseTheLanguage" : "قم باختيار اللغة",
+  "language" : "- اختار اللغة -"
  }

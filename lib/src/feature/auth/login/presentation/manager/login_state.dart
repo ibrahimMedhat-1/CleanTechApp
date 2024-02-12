@@ -5,3 +5,4 @@ abstract class LoginState {}
 
 class LoginInitial extends LoginState {}
 class ShowLoginPassword extends LoginState {}
+class ChangeLangState extends LoginState {}

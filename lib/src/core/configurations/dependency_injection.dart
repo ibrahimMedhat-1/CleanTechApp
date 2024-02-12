@@ -10,7 +10,7 @@ Future<void> setUpLocators() async {
   // getIt.registerSingleton(Dio());
   // getIt.registerSingleton<ApiService>(ApiService(getIt.get<Dio>()));
 
-  sl.registerFactory<LoginCubit>(() => LoginCubit());
+  sl.registerLazySingleton<LoginCubit>(() => LoginCubit());
 
   sl.registerFactory<HomeCubit>(() => HomeCubit());
   // Map Cubit

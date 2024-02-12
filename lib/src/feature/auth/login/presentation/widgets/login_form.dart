@@ -1,7 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/config/routes/app_router.dart';
-import 'package:ct_clean/src/core/config/routes/navigation.dart';
-import 'package:ct_clean/src/feature/auth/login/presentation/manager/login_cubit.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});
@@ -33,6 +30,8 @@ class LoginForm extends StatelessWidget {
                   borderRadius: 8.r,
                   color: AppColors.white,
                 ),
+                25.isHeight,
+                const LanguageDropDown(),
                 27.isHeight,
                 ButtonWidget(
                   text: AppStrings.login.tr(context),
@@ -40,8 +39,9 @@ class LoginForm extends StatelessWidget {
                   borderRadius: 8.r,
                   margin: EdgeInsetsDirectional.symmetric(
                       horizontal: MediaQuery.sizeOf(context).width * 0.1),
-                  onPressed: () =>
-                      CustomNavigator.instance.pushNamedAndRemoveUntil(Routes.layoutScreen,(route) => false),
+                  onPressed: () => CustomNavigator.instance
+                      .pushNamedAndRemoveUntil(
+                          Routes.layoutScreen, (route) => false),
                 ),
               ],
             );

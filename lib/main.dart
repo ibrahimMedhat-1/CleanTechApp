@@ -6,5 +6,5 @@ void main()async {
   await setUpLocators();
   await CacheHelper.initCacheHelper();
    Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  runApp(  MyApp());
 }

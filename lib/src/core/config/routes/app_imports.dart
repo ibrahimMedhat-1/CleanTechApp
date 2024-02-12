@@ -7,6 +7,8 @@ export 'package:ct_clean/src/feature/salary_details/presentation/widgets/day_mon
 export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_salary_card.dart';
 export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_commission_card.dart';
 export 'package:ct_clean/src/feature/salary_details/presentation/widgets/total_discounts_card.dart';
+export 'package:ct_clean/src/core/config/locale/app_localizations_setup.dart';
+export 'package:ct_clean/src/feature/auth/login/presentation/widgets/language_drop_down.dart';
 
 
 
