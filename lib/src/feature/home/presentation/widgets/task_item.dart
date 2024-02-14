@@ -26,13 +26,18 @@ class TaskItem extends StatelessWidget {
               Container(
                 height: double.infinity,
                 width: 24.w,
-                color: AppColors.primary,
+                color:
+                    item.missionType == 0 ? AppColors.primary : AppColors.red,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "تجاري",
+                    item.companyType == 0
+                        ? AppStrings.commercial.tr(context)
+                        : item.companyType == 1
+                            ? AppStrings.devastation.tr(context)
+                            : AppStrings.compressor.tr(context),
                     style: FontStyles.interSize13_400Black
                         .copyWith(fontSize: 22.sp),
                   ),
@@ -54,14 +59,14 @@ class TaskItem extends StatelessWidget {
                     10.isHeight,
                     BaseText(
                         title: AppStrings.placeName.tr(context),
-                        subTitle: "اسم المكان المقصود"),
+                        subTitle: item.company ?? ""),
                     BaseText(
                         title: AppStrings.address.tr(context),
                         subTitle: item.address ?? ""),
                     BaseText(
                       title: AppStrings.time.tr(context),
-                      subTitle: item.date ?? "",
-                      // "عنوان المكان المقصود",
+                      subTitle: "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
+                     subTitleFontSize: 14.sp,
                     ),
                     10.isHeight,
                     Expanded(

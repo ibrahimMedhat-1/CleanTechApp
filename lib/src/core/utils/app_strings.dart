@@ -19,6 +19,10 @@ static const String placeName = "placeName";
 static const String address = "address";
 static const String time = "time";
 static const String clickToSeeDetails = "clickToSeeDetails";
+static const String commercial = "commercial";
+static const String devastation = "devastation";
+static const String compressor = "compressor";
+static const String atTime = "atTime";
 // Messages Screen
 static const String inCaseThereIsAProblemOrInquiry = "inCaseThereIsAProblemOrInquiry";
 // Customer Screen

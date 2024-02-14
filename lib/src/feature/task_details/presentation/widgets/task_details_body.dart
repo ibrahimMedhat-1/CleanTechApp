@@ -1,9 +1,10 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class TaskDetailsBody extends StatelessWidget {
-  TaskDetailsBody({super.key});
+  TaskDetailsBody({super.key, required this.item});
 
   final taskDetailsCubit = sl<TaskDetailsCubit>();
+  final MissionModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -14,34 +15,33 @@ class TaskDetailsBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           SizedBox(
-             height: 140.h,
-             child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 Row(
-                   children: [
-                     BaseText(
-                       title: AppStrings.placeName.tr(context),
-                       subTitle: "اسم المكان المقصود",
-                     ),
-                     Assets.images.placeLogo.image()
-                   ],
-                 ),
-                 19.isHeight,
-                 BaseText(
-                   title: AppStrings.placeAddress.tr(context),
-                   subTitle: "عنوان المكان المقصود",
-                 ),
-                 19.isHeight,
-                 BaseText(
-                   title: "${AppStrings.taskDetails.tr(context)} : ",
-                   subTitle:
-                   "التوجة الي المكان المقصود  و بدا تفريغ الحاوية و اتمام ما هو مطلوب ",
-                 ),
-               ],
-             ),
-           ),
+            SizedBox(
+              height: 140.h,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      BaseText(
+                        title: AppStrings.placeName.tr(context),
+                        subTitle: item.company ?? '',
+                      ),
+                      Assets.images.placeLogo.image()
+                    ],
+                  ),
+                  19.isHeight,
+                  BaseText(
+                    title: AppStrings.placeAddress.tr(context),
+                    subTitle: item.address ?? '',
+                  ),
+                  19.isHeight,
+                  BaseText(
+                    title: "${AppStrings.taskDetails.tr(context)} : ",
+                    subTitle: item.description ?? '',
+                  ),
+                ],
+              ),
+            ),
             19.isHeight,
             BlocBuilder(
               bloc: taskDetailsCubit,

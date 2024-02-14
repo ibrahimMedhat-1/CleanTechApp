@@ -57,5 +57,9 @@
   "english" : "English",
   "chooseTheLanguage" : "Choose The Language",
   "language" : "Language",
-  "signOut" : "Sign Out"
+  "signOut" : "Sign Out",
+  "commercial" : "Commercial",
+  "devastation" : "Devastation",
+  "compressor" : "Compressor",
+  "atTime" : "At Time"
  }

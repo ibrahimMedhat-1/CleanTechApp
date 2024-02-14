@@ -21,7 +21,7 @@ class TasksList extends StatelessWidget {
                     return TaskItem(
                       item: item,
                       onPress: () => CustomNavigator.instance
-                          .pushNamed(Routes.taskDetailsScreen),
+                          .pushNamed(Routes.taskDetailsScreen, arguments: item),
                     );
                   },
                 ),

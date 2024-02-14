@@ -1,7 +1,13 @@
+import 'dart:convert';
+
+import 'package:ct_clean/src/core/functions/functions.dart';
+
 import '../../../../core/config/routes/app_imports.dart';
 
 class TaskDetailsMap extends StatefulWidget {
-  const TaskDetailsMap({super.key});
+  const TaskDetailsMap({super.key, required this.item});
+
+  final MissionModel item;
 
   @override
   State<TaskDetailsMap> createState() => _TaskDetailsMapState();
@@ -14,6 +20,8 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
   void initState() {
     super.initState();
     mapCubit.askUserToEnableLocation();
+    mapCubit.goToSelectedLocation(
+        lat: widget.item.latitude ?? 0.0, lng: widget.item.longitude ?? 0.0);
   }
 
   @override
@@ -46,6 +54,12 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
                       myLocationButtonEnabled: false,
                       initialCameraPosition:
                           cubit.setCurrentLocationCameraPosition(),
+                      onTap: (argument) {
+                        print(argument);
+                        AppFunctions().openMap( lat: argument.latitude, lng:argument.longitude);
+
+
+                      },
                       onMapCreated: (GoogleMapController controller) async =>
                           cubit.mapController.complete(controller),
                       // markers: cubit.markers,

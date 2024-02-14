@@ -1,7 +1,9 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
-  const TaskDetailsScreen({super.key});
+  const TaskDetailsScreen({super.key, required this.item});
+
+  final MissionModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,10 @@ class TaskDetailsScreen extends StatelessWidget {
           child: ListView(
             children: [
               24.isHeight,
-              Row(),
-              TaskDetailsMap(),
+              const Row(),
+              TaskDetailsMap(item: item),
               60.isHeight,
-              TaskDetailsBody(),
+              TaskDetailsBody(item: item),
             ],
           ),
         ));

@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          TasksList(),
+          const TasksList(),
           20.isHeight
         ],
       ),
