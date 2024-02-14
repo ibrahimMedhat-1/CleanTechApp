@@ -25,9 +25,10 @@ Future<void> setUpLocators() async {
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl())..getMissionsList());
   // Map Cubit
   sl.registerLazySingleton<MapCubit>(
-    () => MapCubit()
+    () => MapCubit(sl())
       ..askUserToEnableLocation()
-      ..getCurrentLocation(),
+
+      ..getStreamLocation(),
   );
   // Task Details Cubit
   sl.registerFactory<TaskDetailsRepo>(() => TaskDetailsRepoImpl(sl()));

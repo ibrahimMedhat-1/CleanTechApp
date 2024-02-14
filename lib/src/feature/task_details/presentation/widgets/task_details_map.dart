@@ -36,13 +36,14 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
           child: BlocConsumer<MapCubit, MapState>(
             bloc: mapCubit,
             listener: (context, state) {
-              if (state is GetCurrentLocationError) {
-                mapCubit.getCurrentLocation();
-              }
+
             },
             builder: (context, state) {
               var cubit = context.read<MapCubit>();
-              var position = cubit.position;
+              var position = widget.item.latitude != null &&
+                      widget.item.longitude != null
+                  ? LatLng(widget.item.latitude!, widget.item.longitude!)
+                  : null;
 
               return position == null
                   ? const Center(child: CircularProgressIndicator())
@@ -53,18 +54,26 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
                       zoomControlsEnabled: false,
                       myLocationButtonEnabled: false,
                       initialCameraPosition:
-                          cubit.setCurrentLocationCameraPosition(),
+                          cubit.setCurrentLocationCameraPosition(
+                              lat: widget.item.latitude ?? 0.0,
+                              lng: widget.item.longitude ?? 0.0),
                       onTap: (argument) {
                         print(argument);
-                        AppFunctions().openMap( lat: argument.latitude, lng:argument.longitude);
-
-
+                        AppFunctions().openMap(
+                          lat: argument.latitude,
+                          lng: argument.longitude,
+                        );
                       },
-                      onMapCreated: (GoogleMapController controller) async =>
-                          cubit.mapController.complete(controller),
-                      // markers: cubit.markers,
+                      onMapCreated: (GoogleMapController controller) async {
+                        cubit.mapController.complete(controller);
+                        // mapCubit.goToSelectedLocation(
+                        //     lat: widget.item.latitude ?? 0.0,
+                        //     lng: widget.item.longitude ?? 0.0);
+                      },
+
+                      markers: cubit.markers,
                       // onCameraMove: cubit.onCameraMove,
-                    );
+                      );
             },
           ),
         ),

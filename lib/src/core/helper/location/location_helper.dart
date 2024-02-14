@@ -28,4 +28,7 @@ class LocationHelper {
   static Future<Position> getCurrentLocation() async {
     return await Geolocator.getCurrentPosition();
   }
+  static Stream<Position> getStreamLocation() {
+    return Geolocator.getPositionStream();
+  }
 }

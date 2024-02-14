@@ -19,4 +19,8 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
     result.fold((l) => emit(ChangeMissionStateFailure(l)),
         (r) => emit(ChangeMissionStateSuccess()));
   }
+
+
+
+
 }

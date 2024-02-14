@@ -6,5 +6,6 @@ class EndPoint {
   static const String contacts = "/contacts";
   static const String missions = "/missions";
   static const String changeStatus = "/changestatus";
+  static const String sendStreamPosition = "/location";
 
 }

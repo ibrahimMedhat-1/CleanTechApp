@@ -1,19 +1,21 @@
 import 'dart:async';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:dartz/dartz.dart';
+
 part 'map_state.dart';
 
 class MapCubit extends Cubit<MapState> {
-  MapCubit() : super(MapInitial());
+  MapCubit(this.repo) : super(MapInitial());
+  TaskDetailsRepo repo;
 
   // Maps
-// To OPen location and get Permission
+  // To OPen location and get Permission
   void askUserToEnableLocation() {
     emit(EnableLocationLoading());
     try {
       LocationHelper().isLocationEnabled();
       LocationHelper().getPermissionLocation();
       emit(EnableLocationSuccess());
-      getCurrentLocation();
     } catch (e) {
       emit(EnableLocationError());
     }
@@ -22,29 +24,57 @@ class MapCubit extends Cubit<MapState> {
   LatLng? latLng;
   Position? position;
 
-  void getCurrentLocation() {
-    emit(GetCurrentLocationLoading());
-    LocationHelper.getCurrentLocation().then((value) {
+  // void getCurrentLocation() {
+  //   emit(GetCurrentLocationLoading());
+  //   LocationHelper.getCurrentLocation().then((value) {
+  //     position = value;
+  //     latLng = LatLng(value.latitude, value.longitude);
+  //     emit(GetCurrentLocationSuccess());
+  //   }).catchError((e) {
+  //     emit(GetCurrentLocationError());
+  //   });
+  // }
+  void getStreamLocation() {
+    emit(GetStreamLocationLoading());
+    LocationHelper.getStreamLocation().listen((value) {
       position = value;
       latLng = LatLng(value.latitude, value.longitude);
-      emit(GetCurrentLocationSuccess());
-    }).catchError((e) {
-      emit(GetCurrentLocationError());
+      print("latitude getStreamLocation  ${value.latitude}");
+      sendStreamLocation(lat: value.latitude, lng: value.longitude);
+      emit(GetStreamLocationSuccess());
+    }).onError((e) {
+      emit(GetStreamLocationError());
+    });
+  }
+
+  void sendStreamLocation({required double lat, required double lng}) async {
+    emit(SendStreamLocationLoading());
+
+    Either<Failures, GlobalModel> result = await repo.sendStreamPosition(
+      StreamPositionParams(lat: lat, lng: lng),
+    );
+    result.fold((l) {
+      emit(SendStreamLocationError());
+      print(l.errMessage);
+    }, (r) {
+      emit(SendStreamLocationSuccess());
     });
   }
 
   final Completer<GoogleMapController> mapController = Completer();
 
-  CameraPosition setCurrentLocationCameraPosition() {
+  CameraPosition setCurrentLocationCameraPosition(
+      {required double lat, required double lng}) {
     final CameraPosition _myCurrentLocationCameraPoition = CameraPosition(
       target: LatLng(
-        position!.latitude,
-        position!.longitude,
+        lat,
+        lng,
       ),
       bearing: 0.0,
       tilt: 0.0,
       zoom: 12,
     );
+
     return _myCurrentLocationCameraPoition;
   }
 
@@ -52,10 +82,21 @@ class MapCubit extends Cubit<MapState> {
       {required double lat, required double lng}) async {
     final GoogleMapController controller = await mapController.future;
     controller.animateCamera(
-        CameraUpdate.newCameraPosition(getSelectionCameraPosition(
-      lat: lat,
-      lng: lng,
-    )));
+      CameraUpdate.newCameraPosition(
+        getSelectionCameraPosition(
+          lat: lat,
+          lng: lng,
+        ),
+      ),
+    );
+    currentMarker = Marker(
+      markerId: const MarkerId("1"),
+      onTap: () {},
+      position: LatLng(lat, lng),
+      infoWindow: const InfoWindow(title: "Location"),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+    );
+    addMarker(currentMarker);
   }
 
   CameraPosition getSelectionCameraPosition(
@@ -71,20 +112,20 @@ class MapCubit extends Cubit<MapState> {
 
   late Marker currentMarker;
 
-  void onCameraMove(CameraPosition cameraPosition) {
-    latLng = cameraPosition.target;
-
-    print("cameraPosition ${cameraPosition.target.latitude}");
-    currentMarker = Marker(
-      markerId: const MarkerId("1"),
-      onTap: () {},
-      position: LatLng(
-          cameraPosition.target.latitude, cameraPosition.target.longitude),
-      infoWindow: const InfoWindow(title: "Location"),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-    );
-    addMarker(currentMarker);
-  }
+  // void onCameraMove(CameraPosition cameraPosition) {
+  //   latLng = cameraPosition.target;
+  //
+  //   print("cameraPosition ${cameraPosition.target.latitude}");
+  //   currentMarker = Marker(
+  //     markerId: const MarkerId("1"),
+  //     onTap: () {},
+  //     position: LatLng(
+  //         cameraPosition.target.latitude, cameraPosition.target.longitude),
+  //     infoWindow: const InfoWindow(title: "Location"),
+  //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+  //   );
+  //   addMarker(currentMarker);
+  // }
 
   Set<Marker> markers = {};
 
