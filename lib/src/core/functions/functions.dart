@@ -1,5 +1,5 @@
-
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Future<DateTime?> customShowDateTime(
   BuildContext context, {
@@ -59,13 +59,20 @@ class AppFunctions {
   //   }
   // }
 
-//   void callUsWithWhatApp() async {
-//     final Uri whatsAppNumber = Uri.parse("https://wa.me/+966550383555");
-//     if (await canLaunchUrl(whatsAppNumber)) {
-//       launchUrl(whatsAppNumber);
-//     }
-//   }
-//
+  void callUsWithWhatApp(String whatsApp) async {
+    final Uri whatsAppNumber = Uri.parse("https://wa.me/$whatsApp");
+    if (await canLaunchUrl(whatsAppNumber)) {
+      launchUrl(whatsAppNumber);
+    }
+  }
+
+  void callUsWithPhone(String phone) async {
+    final uri = Uri.parse("tel:$phone");
+    if (await canLaunchUrl(uri)) {
+      launchUrl(uri);
+    }
+  }
+
 //   void goToMail() async {
 //     final Uri emailLaunchUri = Uri(
 //       scheme: 'mailto',

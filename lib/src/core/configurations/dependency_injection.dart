@@ -28,5 +28,8 @@ Future<void> setUpLocators() async {
   // Profile
   sl.registerFactory<ProfileRepo>(() => ProfileRepoImpl(sl()));
   sl.registerLazySingleton<ProfileCubit>(
-      () => ProfileCubit(sl())..getProfile(UserLocal.driverId ?? 0));
+    () => ProfileCubit(sl())
+      ..getProfile(UserLocal.driverId ?? 0)
+      ..getContacts(),
+  );
 }

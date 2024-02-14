@@ -13,6 +13,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
   void initState() {
      super.initState();
      profileCubit.getProfile(UserLocal.driverId ?? 0);
+
   }
   @override
   Widget build(BuildContext context) {
