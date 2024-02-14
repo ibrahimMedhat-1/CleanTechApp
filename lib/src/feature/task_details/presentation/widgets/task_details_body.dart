@@ -57,11 +57,12 @@ class TaskDetailsBody extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child:
-                      // BlocBuilder(
-                      //   bloc: taskDetailsCubit,
-                      //   builder: (context, state) =>
+                      BlocBuilder(
+                        bloc: taskDetailsCubit,
+                        builder: (context, state) =>
                       ButtonWidget(
-                    text: AppStrings.clientApproached.tr(context),
+                    text: getButtonStringConfirm(context),
+                    // AppStrings.clientApproached.tr(context),
                     onPressed: () {
                       showAdaptiveDialog(
                         context: context,
@@ -70,7 +71,7 @@ class TaskDetailsBody extends StatelessWidget {
                       );
                     },
                   ),
-                  // ),
+                  ),
                 ),
                 24.isWight,
                 Expanded(
@@ -90,4 +91,13 @@ class TaskDetailsBody extends StatelessWidget {
       ),
     );
   }
+
+  String getButtonStringConfirm(BuildContext context) =>
+      taskDetailsCubit.currentStepIndex <= 0
+          ? AppStrings.clientApproached.tr(context)
+          : taskDetailsCubit.currentStepIndex == 1
+              ? AppStrings.haveBeenReached.tr(context)
+              : taskDetailsCubit.currentStepIndex == 2
+                  ? AppStrings.beginningOfDischarge.tr(context)
+                  : AppStrings.beenCompleted.tr(context);
 }

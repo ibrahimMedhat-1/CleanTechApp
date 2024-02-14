@@ -9,6 +9,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
 
   void onChangeSteps(ChangeStateParams params) {
     currentStepIndex++;
+
     changeMissionState(params);
     emit(ChangeStepsIndexState());
   }
