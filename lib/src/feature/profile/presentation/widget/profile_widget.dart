@@ -1,5 +1,6 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/core/extensions/string_extension.dart';
+import 'package:flutter/cupertino.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -38,7 +39,6 @@ class ProfileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  // AppStrings.userName.tr(context),
                   cubit.profileModel?.name ?? ''.loadingString,
                   style: FontStyles.interSize18_500Black,
                 ),
@@ -51,14 +51,21 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       TextSpan(
                         text: cubit.profileModel?.car ?? '███▒▒▒ 70…',
-                        // "النوع المستخدم لليوم",
                         style: FontStyles.interSize13_400Black,
                       ),
                     ],
                   ),
                 )
               ],
-            )
+            ),
+            IconButton(
+              onPressed: () {
+                CacheHelper.removeData(key: MyCashKey.driverId);
+                CustomNavigator.instance.pushNamedAndRemoveUntil(
+                    Routes.loginScreen, (route) => false);
+              },
+              icon: Assets.svgs.logout.svg(),
+            ),
           ],
         );
       },

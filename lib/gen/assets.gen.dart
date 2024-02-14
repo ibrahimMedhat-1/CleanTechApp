@@ -195,6 +195,9 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/logo_white.svg
   SvgGenImage get logoWhite => const SvgGenImage('assets/svgs/logo_white.svg');
 
+  /// File path: assets/svgs/logout.svg
+  SvgGenImage get logout => const SvgGenImage('assets/svgs/logout.svg');
+
   /// File path: assets/svgs/message.svg
   SvgGenImage get message => const SvgGenImage('assets/svgs/message.svg');
 
@@ -226,6 +229,7 @@ class $AssetsSvgsGen {
         haveProblem,
         home,
         logoWhite,
+        logout,
         message,
         person,
         primaryLogo,

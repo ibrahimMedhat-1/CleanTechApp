@@ -50,14 +50,14 @@ class _CustomerScreenState extends State<CustomerScreen> {
                   .pushNamed(Routes.schedulePreviousTaskScreen),
             ),
             15.isHeight,
-            ButtonWidget(
-              margin: EdgeInsetsDirectional.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).width * 0.15),
-              borderRadius: 12.r,
-              text: AppStrings.signOut.tr(context),
-              onPressed: () => CustomNavigator.instance.pushNamedAndRemoveUntil(
-                  Routes.loginScreen, (route) => false),
-            ),
+            // ButtonWidget(
+            //   margin: EdgeInsetsDirectional.symmetric(
+            //       horizontal: MediaQuery.sizeOf(context).width * 0.15),
+            //   borderRadius: 12.r,
+            //   text: AppStrings.signOut.tr(context),
+            //   onPressed: () => CustomNavigator.instance.pushNamedAndRemoveUntil(
+            //       Routes.loginScreen, (route) => false),
+            // ),
             // 38.isHeight,
           ],
         ),
