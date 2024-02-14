@@ -28,18 +28,10 @@ class CacheHelper {
 
 //cache
 enum MyCashKey {
-  clientId,
+  driverId,
   token,
-  firstOnce,
-  newProductImage,
   lang,
-  landing,
-  clientName,
-  clientEmail,
-  clientPhone,
-  licenseEx,
-  birthDate,
-  nationalityId,
+
   
   
 }

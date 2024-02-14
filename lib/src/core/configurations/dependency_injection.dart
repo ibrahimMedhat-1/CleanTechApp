@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/feature/auth/login/logic/data/login_repo_impl.dart';
 import 'package:ct_clean/src/feature/task_details/presentation/manager/map/map_cubit.dart';
 import 'package:ct_clean/src/feature/task_details/presentation/manager/task_details_cubit/task_details_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -7,10 +8,11 @@ final sl = GetIt.instance;
 
 Future<void> setUpLocators() async {
   // api service
-  // getIt.registerSingleton(Dio());
-  // getIt.registerSingleton<ApiService>(ApiService(getIt.get<Dio>()));
-
-  sl.registerLazySingleton<LoginCubit>(() => LoginCubit());
+  sl.registerSingleton<Dio>(Dio());
+  sl.registerSingleton<ApiService>(ApiService(sl<Dio>()));
+  // Login
+  sl.registerFactory<LoginRepo>(() => LoginRepoImpl(sl()));
+  sl.registerLazySingleton<LoginCubit>(() => LoginCubit(sl()));
 
   sl.registerFactory<HomeCubit>(() => HomeCubit());
   // Map Cubit

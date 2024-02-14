@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-
 class ApiService {
   final Dio _authDio;
+
   ApiService(this._authDio);
 
   Future<Response> postData({
@@ -17,6 +17,9 @@ class ApiService {
     _authDio.options.headers = {
       'Accept': 'application/json',
       'Authorization': 'Bearer ${UserLocal.token}',
+    };
+    _authDio.options.headers = {
+      "language": UserLocal.lang,
     };
     Response response = await _authDio
         .post(

@@ -12,9 +12,10 @@ class LoginScreen extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-                color: AppColors.primary,
-                width: double.infinity,
-                child: Assets.images.backgroundLogin.image(height: 348)),
+              color: AppColors.primary,
+              width: double.infinity,
+              child: Assets.images.backgroundLogin.image(height: 348),
+            ),
             Positioned(
               bottom: 0,
               child: Container(
@@ -22,14 +23,14 @@ class LoginScreen extends StatelessWidget {
                 width: MediaQuery.sizeOf(context).width,
                 padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
                 decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadiusDirectional.only(
-                      topEnd: Radius.circular(50.r),
-                      topStart: Radius.circular(50.r),
-                    )),
+                  color: AppColors.white,
+                  borderRadius: BorderRadiusDirectional.only(
+                    topEnd: Radius.circular(50.r),
+                    topStart: Radius.circular(50.r),
+                  ),
+                ),
                 child: Column(
                   children: [
-                    // 20.isHeight,
                     Assets.svgs.primaryLogo.svg(
                       height: 120.h,
                       width: 344.w,
@@ -40,9 +41,10 @@ class LoginScreen extends StatelessWidget {
                       child: Text(
                         AppStrings.logInToContinue.tr(context),
                         style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.primary),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.primary,
+                        ),
                       ),
                     ),
                     25.isHeight,
