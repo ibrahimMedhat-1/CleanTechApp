@@ -18,7 +18,13 @@ export 'package:ct_clean/src/core/configurations/api_service.dart';
 export 'package:ct_clean/src/core/helper/error/failures.dart';
 export 'package:ct_clean/src/core/utils/end_point.dart';
 export 'package:ct_clean/src/feature/auth/login/logic/data/login_repo.dart';
+export 'package:ct_clean/src/feature/profile/logic/model/profile_model.dart';
+export 'package:ct_clean/src/feature/profile/presentation/widget/number_tasks_day_month.dart';
+export 'package:ct_clean/src/feature/profile/presentation/widget/profile_widget.dart';
+export 'package:ct_clean/src/feature/profile/presentation/widget/tasks_done_day_month.dart';
+export 'package:ct_clean/src/feature/profile/presentation/manager/profile_cubit.dart';
 
+export 'package:ct_clean/src/feature/profile/logic/data/profile_repo.dart';
 
 
 

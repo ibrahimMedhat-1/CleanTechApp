@@ -51,8 +51,11 @@ extension StrNullableExtension on String? {
     }
     return null;
   }
-}
 
+}
+ extension LoadingString on String{
+  String get loadingString => '███▒▒▒ 70…$this';
+ }
 extension GenralValidation on String {
   bool validatorEmail() =>
       RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9+_.-]+.[com]").hasMatch(this);

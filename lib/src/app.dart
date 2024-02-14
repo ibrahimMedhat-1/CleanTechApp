@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
         builder: (context, child) {
-          return BlocBuilder<LoginCubit,LoginState>(
+          return BlocBuilder<LoginCubit, LoginState>(
             bloc: loginCubit,
             builder: (context, state) {
               return MaterialApp(
@@ -26,7 +26,9 @@ class MyApp extends StatelessWidget {
                 localizationsDelegates:
                     AppLocalizationsSetup.localizationsDelegates,
                 onGenerateRoute: AppRouter().generateRoute,
-                initialRoute: Routes.loginScreen,
+                initialRoute: UserLocal.driverId == null
+                    ? Routes.loginScreen
+                    : Routes.layoutScreen,
                 theme: ThemeData(
                   fontFamily: "Almarai",
                   appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
