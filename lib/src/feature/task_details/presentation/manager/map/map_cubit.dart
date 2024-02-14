@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/functions/functions.dart';
 import 'package:dartz/dartz.dart';
 
 part 'map_state.dart';
@@ -91,7 +92,10 @@ class MapCubit extends Cubit<MapState> {
     );
     currentMarker = Marker(
       markerId: const MarkerId("1"),
-      onTap: () {},
+      onTap: () => AppFunctions().openMap(
+        lat: lat,
+        lng: lng,
+      ),
       position: LatLng(lat, lng),
       infoWindow: const InfoWindow(title: "Location"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
