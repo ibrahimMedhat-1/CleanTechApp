@@ -4,5 +4,7 @@ class EndPoint {
   static const String login = "/login";
   static const String profile = "/profile";
   static const String contacts = "/contacts";
+  static const String missions = "/missions";
+  static const String changeStatus = "/changestatus";
 
 }

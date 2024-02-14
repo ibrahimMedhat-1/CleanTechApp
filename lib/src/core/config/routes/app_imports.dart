@@ -1,4 +1,39 @@
 export 'package:ct_clean/src/core/config/theme/colors/colors.dart';
+export 'package:ct_clean/src/feature/home/logic/model/mission_model.dart';
+export 'package:ct_clean/src/core/model/global_model.dart';
+export 'package:ct_clean/src/feature/task_details/logic/models/change_state_params.dart';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export 'package:ct_clean/src/feature/task_details/logic/models/steps_data_model.dart';
 export 'package:ct_clean/src/feature/task_details/presentation/manager/task_details_cubit/task_details_cubit.dart';
 export 'package:ct_clean/src/feature/task_details/presentation/widgets/dialog/confirm_step_dialog.dart';
@@ -23,36 +58,7 @@ export 'package:ct_clean/src/feature/profile/presentation/widget/number_tasks_da
 export 'package:ct_clean/src/feature/profile/presentation/widget/profile_widget.dart';
 export 'package:ct_clean/src/feature/profile/presentation/widget/tasks_done_day_month.dart';
 export 'package:ct_clean/src/feature/profile/presentation/manager/profile_cubit.dart';
-
 export 'package:ct_clean/src/feature/profile/logic/data/profile_repo.dart';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export 'package:ct_clean/src/feature/home/presentation/widgets/task_item.dart';
 export 'package:ct_clean/src/core/config/routes/navigation.dart';

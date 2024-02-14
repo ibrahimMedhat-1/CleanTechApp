@@ -1,9 +1,10 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key, this.onPress});
+  const TaskItem({super.key, this.onPress, required this.item});
 
   final VoidCallback? onPress;
+  final MissionModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +57,11 @@ class TaskItem extends StatelessWidget {
                         subTitle: "اسم المكان المقصود"),
                     BaseText(
                         title: AppStrings.address.tr(context),
-                        subTitle: "عنوان المكان المقصود"),
+                        subTitle: item.address ?? ""),
                     BaseText(
                       title: AppStrings.time.tr(context),
-                      subTitle: "عنوان المكان المقصود",
+                      subTitle: item.date ?? "",
+                      // "عنوان المكان المقصود",
                     ),
                     10.isHeight,
                     Expanded(
