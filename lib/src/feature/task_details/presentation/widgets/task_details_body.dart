@@ -26,7 +26,7 @@ class TaskDetailsBody extends StatelessWidget {
                         title: AppStrings.placeName.tr(context),
                         subTitle: item.company ?? '',
                       ),
-                      Assets.images.placeLogo.image()
+                      // Assets.images.placeLogo.image()
                     ],
                   ),
                   19.isHeight,
