@@ -1,8 +1,4 @@
-import 'package:bloc/bloc.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/feature/task_details/logic/data/task_details_repo.dart';
-import 'package:meta/meta.dart';
-
 part 'task_details_state.dart';
 
 class TaskDetailsCubit extends Cubit<TaskDetailsState> {

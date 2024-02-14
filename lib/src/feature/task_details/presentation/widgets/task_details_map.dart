@@ -1,9 +1,20 @@
 import '../../../../core/config/routes/app_imports.dart';
 
-class TaskDetailsMap extends StatelessWidget {
-  TaskDetailsMap({super.key});
+class TaskDetailsMap extends StatefulWidget {
+  const TaskDetailsMap({super.key});
 
+  @override
+  State<TaskDetailsMap> createState() => _TaskDetailsMapState();
+}
+
+class _TaskDetailsMapState extends State<TaskDetailsMap> {
   final mapCubit = sl<MapCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+    mapCubit.askUserToEnableLocation();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +25,17 @@ class TaskDetailsMap extends StatelessWidget {
         height: 204.h,
         child: Card(
           elevation: 10,
-          child: BlocBuilder<MapCubit, MapState>(
+          child: BlocConsumer<MapCubit, MapState>(
+            bloc: mapCubit,
+            listener: (context, state) {
+              if (state is GetCurrentLocationError) {
+                mapCubit.getCurrentLocation();
+              }
+            },
             builder: (context, state) {
               var cubit = context.read<MapCubit>();
               var position = cubit.position;
+
               return position == null
                   ? const Center(child: CircularProgressIndicator())
                   : GoogleMap(

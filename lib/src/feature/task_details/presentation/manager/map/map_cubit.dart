@@ -1,13 +1,9 @@
 import 'dart:async';
-
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-
- part 'map_state.dart';
+part 'map_state.dart';
 
 class MapCubit extends Cubit<MapState> {
   MapCubit() : super(MapInitial());
-
-
 
   // Maps
 // To OPen location and get Permission
@@ -17,6 +13,7 @@ class MapCubit extends Cubit<MapState> {
       LocationHelper().isLocationEnabled();
       LocationHelper().getPermissionLocation();
       emit(EnableLocationSuccess());
+      getCurrentLocation();
     } catch (e) {
       emit(EnableLocationError());
     }
@@ -56,9 +53,9 @@ class MapCubit extends Cubit<MapState> {
     final GoogleMapController controller = await mapController.future;
     controller.animateCamera(
         CameraUpdate.newCameraPosition(getSelectionCameraPosition(
-          lat: lat,
-          lng: lng,
-        )));
+      lat: lat,
+      lng: lng,
+    )));
   }
 
   CameraPosition getSelectionCameraPosition(
@@ -71,7 +68,9 @@ class MapCubit extends Cubit<MapState> {
     );
     return selectCameraPosition;
   }
+
   late Marker currentMarker;
+
   void onCameraMove(CameraPosition cameraPosition) {
     latLng = cameraPosition.target;
 
@@ -87,19 +86,10 @@ class MapCubit extends Cubit<MapState> {
     addMarker(currentMarker);
   }
 
-
-
-  Set<Marker> markers = Set();
+  Set<Marker> markers = {};
 
   void addMarker(Marker marker) {
     markers.add(marker);
     emit(AddMarkerSuccessInBranches());
   }
-
-
-
-
-
-
-
 }
