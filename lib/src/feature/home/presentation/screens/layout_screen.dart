@@ -19,9 +19,11 @@ class LayoutScreen extends StatelessWidget {
           title: BlocBuilder(
             bloc: homeCubit,
             builder: (context, state) {
-              String title = homeCubit.currentIndex == 1
-                  ? AppStrings.contactTheAdministration.tr(context)
-                  : AppStrings.home.tr(context);
+              String title = homeCubit.currentIndex == 0
+                  ? AppStrings.home.tr(context)
+                  : homeCubit.currentIndex == 1
+                      ? AppStrings.contactTheAdministration.tr(context)
+                      : AppStrings.personalScreen.tr(context);
 
               return Text(title, style: FontStyles.interSize18_600White);
             },

@@ -38,6 +38,7 @@ static const String scheduleOfPreviousTasks = "scheduleOfPreviousTasks";
 static const String numberOfSongsToday = "numberOfSongsToday";
 static const String numberOfTasksCompleted = "numberOfTasksCompleted";
 static const String signOut = "signOut";
+static const String personalScreen = "personalScreen";
 
 // Task Details Screen
 static const String taskDetails = "taskDetails";
