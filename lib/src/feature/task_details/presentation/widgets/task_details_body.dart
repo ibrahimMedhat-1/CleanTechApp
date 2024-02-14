@@ -64,7 +64,7 @@ class TaskDetailsBody extends StatelessWidget {
                         // taskDetailsCubit.onChangeSteps();
                         showAdaptiveDialog(
                           context: context,
-                          builder: (context) => ConfirmStepDialog(),
+                          builder: (context) => ConfirmStepDialog(missionId: item.id ?? 0),
                         );
                       },
                     ),

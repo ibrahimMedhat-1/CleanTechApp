@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+
 part 'task_details_state.dart';
 
 class TaskDetailsCubit extends Cubit<TaskDetailsState> {
@@ -6,17 +7,15 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   TaskDetailsRepo repo;
   int currentStepIndex = 0;
 
-  void onChangeSteps() {
+  void onChangeSteps(ChangeStateParams params) {
     currentStepIndex++;
-    changeMissionState();
+    changeMissionState(params);
     emit(ChangeStepsIndexState());
   }
 
-  ChangeStateParams changeStateParams = ChangeStateParams(missionId: 1);
-
-  void changeMissionState() async {
+  void changeMissionState(ChangeStateParams params) async {
     emit(ChangeMissionStateLoading());
-    final result = await repo.changeMissionState(changeStateParams);
+    final result = await repo.changeMissionState(params);
     result.fold((l) => emit(ChangeMissionStateFailure(l)),
         (r) => emit(ChangeMissionStateSuccess()));
   }

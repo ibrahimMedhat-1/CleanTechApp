@@ -1,9 +1,16 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class ConfirmStepDialog extends StatelessWidget {
-  ConfirmStepDialog({super.key});
+  ConfirmStepDialog({
+    super.key,
+    required this.missionId,
+  });
+
+  final int missionId;
 
   final taskDetailsCubit = sl<TaskDetailsCubit>();
+  final mapCubit = sl<MapCubit>();
+  TextEditingController noteController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +71,7 @@ class ConfirmStepDialog extends StatelessWidget {
                             hint: AppStrings.putANote.tr(context),
                             color: AppColors.white,
                             borderRadius: 8.r,
+                            controller: noteController,
                           ),
                           21.isHeight,
                           Row(
@@ -77,16 +85,35 @@ class ConfirmStepDialog extends StatelessWidget {
                                 ),
                               ),
                               10.isWight,
-                              Expanded(
+                              BlocProvider.value(
+                                value: mapCubit,
                                 child: BlocBuilder(
-                                  bloc: taskDetailsCubit,
+                                  bloc: mapCubit,
                                   builder: (context, state) {
-                                    return ButtonWidget(
-                                      text: AppStrings.confirmStep.tr(context),
-                                      onPressed: () {
-                                        taskDetailsCubit.onChangeSteps();
-                                        CustomNavigator.instance.pop();
-                                      },
+                                    return Expanded(
+                                      child: BlocBuilder(
+                                        bloc: taskDetailsCubit,
+                                        builder: (context, state) {
+                                          return ButtonWidget(
+                                            text: AppStrings.confirmStep
+                                                .tr(context),
+                                            onPressed: () {
+                                              taskDetailsCubit.onChangeSteps(
+                                                  ChangeStateParams(
+                                                missionId: missionId,
+                                                latitude: mapCubit
+                                                        .position?.latitude ??
+                                                    0.0,
+                                                longitude: mapCubit
+                                                        .position?.longitude ??
+                                                    0.0,
+                                                comment: noteController.text,
+                                              ));
+                                              CustomNavigator.instance.pop();
+                                            },
+                                          );
+                                        },
+                                      ),
                                     );
                                   },
                                 ),

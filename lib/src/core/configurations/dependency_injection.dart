@@ -24,7 +24,7 @@ Future<void> setUpLocators() async {
   sl.registerFactory<HomeRepo>(() => HomeRepoImpl(sl()));
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl())..getMissionsList());
   // Map Cubit
-  sl.registerFactory<MapCubit>(
+  sl.registerLazySingleton<MapCubit>(
     () => MapCubit()
       ..askUserToEnableLocation()
       ..getCurrentLocation(),

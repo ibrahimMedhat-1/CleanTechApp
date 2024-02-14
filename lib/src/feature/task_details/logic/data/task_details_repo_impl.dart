@@ -10,6 +10,10 @@ class TaskDetailsRepoImpl extends TaskDetailsRepo {
   @override
   Future<Either<Failures, GlobalModel>> changeMissionState(
       ChangeStateParams params) async {
+print(" missionId ${params.missionId}");
+print(" comment ${params.comment}");
+print(" latitude ${params.latitude}");
+print(" longitude ${params.longitude}");
     try {
       final response = await apiService.postData(
           url: EndPoint.changeStatus, data: {}, query: params.toMap());
