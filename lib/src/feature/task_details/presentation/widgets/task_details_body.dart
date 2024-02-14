@@ -56,19 +56,21 @@ class TaskDetailsBody extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 2,
-                  child: BlocBuilder(
-                    bloc: taskDetailsCubit,
-                    builder: (context, state) => ButtonWidget(
-                      text: AppStrings.clientApproached.tr(context),
-                      onPressed: () {
-                        // taskDetailsCubit.onChangeSteps();
-                        showAdaptiveDialog(
-                          context: context,
-                          builder: (context) => ConfirmStepDialog(missionId: item.id ?? 0),
-                        );
-                      },
-                    ),
+                  child:
+                      // BlocBuilder(
+                      //   bloc: taskDetailsCubit,
+                      //   builder: (context, state) =>
+                      ButtonWidget(
+                    text: AppStrings.clientApproached.tr(context),
+                    onPressed: () {
+                      showAdaptiveDialog(
+                        context: context,
+                        builder: (context) =>
+                            ConfirmStepDialog(missionId: item.id ?? 0),
+                      );
+                    },
                   ),
+                  // ),
                 ),
                 24.isWight,
                 Expanded(

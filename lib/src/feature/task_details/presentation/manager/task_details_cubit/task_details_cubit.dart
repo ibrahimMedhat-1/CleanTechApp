@@ -5,7 +5,7 @@ part 'task_details_state.dart';
 class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   TaskDetailsCubit(this.repo) : super(TaskDetailsInitial());
   TaskDetailsRepo repo;
-  int currentStepIndex = 0;
+  int currentStepIndex = -1;
 
   void onChangeSteps(ChangeStateParams params) {
     currentStepIndex++;

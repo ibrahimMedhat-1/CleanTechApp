@@ -30,12 +30,18 @@ class $AssetsDemoGen {
   /// File path: assets/demo/demo1.png
   AssetGenImage get demo1 => const AssetGenImage('assets/demo/demo1.png');
 
+  /// File path: assets/demo/demo2.png
+  AssetGenImage get demo2 => const AssetGenImage('assets/demo/demo2.png');
+
+  /// File path: assets/demo/demo3.png
+  AssetGenImage get demo3 => const AssetGenImage('assets/demo/demo3.png');
+
   /// File path: assets/demo/moneytransfer.png
   AssetGenImage get moneytransfer =>
       const AssetGenImage('assets/demo/moneytransfer.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [demo1, moneytransfer];
+  List<AssetGenImage> get values => [demo1, demo2, demo3, moneytransfer];
 }
 
 class $AssetsFontsGen {
@@ -138,6 +144,10 @@ class $AssetsImagesGen {
   AssetGenImage get totalSalary =>
       const AssetGenImage('assets/images/total_salary.png');
 
+  /// File path: assets/images/vertical_divider.png
+  AssetGenImage get verticalDivider =>
+      const AssetGenImage('assets/images/vertical_divider.png');
+
   /// File path: assets/images/whats_app.png
   AssetGenImage get whatsApp =>
       const AssetGenImage('assets/images/whats_app.png');
@@ -164,6 +174,7 @@ class $AssetsImagesGen {
         splashScreen,
         totalCommissions,
         totalSalary,
+        verticalDivider,
         whatsApp
       ];
 }

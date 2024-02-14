@@ -33,15 +33,11 @@ class TaskItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    item.companyType == 0
-                        ? AppStrings.commercial.tr(context)
-                        : item.companyType == 1
-                            ? AppStrings.devastation.tr(context)
-                            : AppStrings.compressor.tr(context),
+                    getTypeName(context),
                     style: FontStyles.interSize13_400Black
                         .copyWith(fontSize: 22.sp),
                   ),
-                  Assets.demo.demo1.image(height: 80.h),
+                  getTypeImage(),
                 ],
               ),
               Container(
@@ -65,8 +61,9 @@ class TaskItem extends StatelessWidget {
                         subTitle: item.address ?? ""),
                     BaseText(
                       title: AppStrings.time.tr(context),
-                      subTitle: "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
-                     subTitleFontSize: 14.sp,
+                      subTitle:
+                          "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
+                      subTitleFontSize: 14.sp,
                     ),
                     10.isHeight,
                     Expanded(
@@ -88,4 +85,16 @@ class TaskItem extends StatelessWidget {
       ),
     );
   }
+
+  String getTypeName(BuildContext context) => item.companyType == 0
+      ? AppStrings.commercial.tr(context)
+      : item.companyType == 1
+          ? AppStrings.devastation.tr(context)
+          : AppStrings.compressor.tr(context);
+
+  Widget getTypeImage() => item.companyType == 0
+      ? Assets.demo.demo1.image(height: 80.h)
+      : item.companyType == 1
+          ? Assets.demo.demo2.image(height: 80.h)
+          : Assets.demo.demo3.image(height: 80.h);
 }
