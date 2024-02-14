@@ -50,7 +50,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/vertical_divider.png"
+  image_path: "assets/images/splash12.png"
   min_sdk_android: 21
 
 flutter_gen:
