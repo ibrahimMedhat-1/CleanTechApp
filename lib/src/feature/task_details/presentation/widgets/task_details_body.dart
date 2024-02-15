@@ -92,11 +92,11 @@ class TaskDetailsBody extends StatelessWidget {
   }
 
   String getButtonStringConfirm(BuildContext context) =>
-      taskDetailsCubit.currentStepIndex <= 0
+      taskDetailsCubit.currentStepIndex < 0
           ? AppStrings.clientApproached.tr(context)
-          : taskDetailsCubit.currentStepIndex == 1
+          : taskDetailsCubit.currentStepIndex == 0
               ? AppStrings.haveBeenReached.tr(context)
-              : taskDetailsCubit.currentStepIndex == 2
+              : taskDetailsCubit.currentStepIndex == 1
                   ? AppStrings.beginningOfDischarge.tr(context)
                   : AppStrings.beenCompleted.tr(context);
 }

@@ -4,7 +4,7 @@ class StepsWidget extends StatelessWidget {
   StepsWidget({
     super.key,
     this.currentIndex = 0,
-      this.onTap,
+    this.onTap,
   });
 
   int currentIndex;
@@ -16,7 +16,7 @@ class StepsWidget extends StatelessWidget {
       children: List.generate(
         StepsDataModel.listSteps(context).length,
         (index) => InkWell(
-          onTap:onTap == null ? null : () => onTap!(index) ,
+          onTap: onTap == null ? null : () => onTap!(index),
           child: buildOneStep(
             title: StepsDataModel.listSteps(context)[index].title,
             index: index,
@@ -95,10 +95,10 @@ class StepsWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: AppColors.gray1)),
-              child: currentIndex == index ? image : null,
+              child: currentIndex >= index ? image : null,
             ),
             10.isWight,
-            Text(title)
+            Text(title),
           ],
         ),
         4.isHeight,
