@@ -4,6 +4,7 @@ part of 'salary_cubit.dart';
 abstract class SalaryState {}
 
 class SalaryInitial extends SalaryState {}
+class SelectMonthState extends SalaryState {}
 
 class SalaryLoading extends SalaryState {}
 

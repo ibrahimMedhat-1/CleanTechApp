@@ -15,7 +15,7 @@ class DayAndMonthDropDown extends StatelessWidget {
               child: Dropdown(
                 dropColor: AppColors.white,
                 borderSideColor: AppColors.black,
-                items: const [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                items: cubit.getListMonthByCurrentYear,
                 itemToString: (value) => value.toString(),
                 itemsColor: AppColors.black,
                 onChanged: cubit.monthOnChange,

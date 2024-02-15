@@ -17,9 +17,20 @@ class SalaryCubit extends Cubit<SalaryState> {
       emit(SalarySuccess());
     });
   }
+  int? selectedYear;
 void yearOnChange(int? year) {
     params = params.copyWith(year: year);
+    selectedYear = year;
     getSalaryDetails();
+  }
+  List<int> get getListMonthByCurrentYear {
+  if(selectedYear == null) return [];
+    if(selectedYear == DateTime.now().year){
+
+      return List.generate(DateTime.now().month -1 , (index) => index + 1);
+    }else{
+      return List.generate(12, (index) => index + 1);
+    }
   }
 
   void monthOnChange(int? month) {
