@@ -29,6 +29,7 @@ class CacheHelper {
 //cache
 enum MyCashKey {
   driverId,
+  driverName,
   token,
   lang,
 

@@ -1,6 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/core/extensions/string_extension.dart';
-import 'package:flutter/cupertino.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -40,18 +39,31 @@ class ProfileWidget extends StatelessWidget {
               children: [
                 Text(
                   cubit.profileModel?.name ?? ''.loadingString,
-                  style: FontStyles.interSize18_500Black,
+                  style: TextStyle(
+                      color: AppColors.black,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      overflow: TextOverflow.ellipsis),
                 ),
                 Text.rich(
                   TextSpan(
                     children: [
                       TextSpan(
                         text: "${AppStrings.carType.tr(context)} ",
-                        style: FontStyles.interSize18_400Primary,
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       TextSpan(
                         text: cubit.profileModel?.car ?? '███▒▒▒ 70…',
-                        style: FontStyles.interSize13_400Black,
+                        style: TextStyle(
+                          color: AppColors.black,
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w400,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
@@ -61,6 +73,7 @@ class ProfileWidget extends StatelessWidget {
             IconButton(
               onPressed: () {
                 CacheHelper.removeData(key: MyCashKey.driverId);
+                CacheHelper.removeData(key: MyCashKey.driverName);
                 CustomNavigator.instance.pushNamedAndRemoveUntil(
                     Routes.loginScreen, (route) => false);
               },

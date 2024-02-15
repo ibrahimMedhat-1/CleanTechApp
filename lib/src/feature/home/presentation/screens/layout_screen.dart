@@ -25,7 +25,14 @@ class LayoutScreen extends StatelessWidget {
                       ? AppStrings.contactTheAdministration.tr(context)
                       : AppStrings.personalScreen.tr(context);
 
-              return Text(title, style: FontStyles.interSize18_600White);
+              return Text(
+                title,
+                style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              );
             },
           ),
           actions: [Assets.svgs.logoWhite.svg(width: 120.w), 15.isWight],

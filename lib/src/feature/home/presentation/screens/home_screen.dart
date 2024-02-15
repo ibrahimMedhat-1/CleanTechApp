@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.black.withOpacity(0.5),
                       spreadRadius: 1,
                       blurRadius: 1,
-                      offset: Offset(0, 1),
+                      offset: const Offset(0, 1),
                     ),
                   ],
                   shape: BoxShape.circle,
@@ -40,18 +40,30 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: "${AppStrings.welcome.tr(context)} ",
-                          style: FontStyles.interSize20_700Primary,
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                         TextSpan(
-                          text: "Ahmed Fayez",
-                          style: FontStyles.interSize18_500Black,
+                          text: UserLocal.driverName ?? '',
+                          style: TextStyle(
+                              color: AppColors.black,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w500,
+                              overflow: TextOverflow.ellipsis),
                         ),
                       ],
                     ),
                   ),
                   Text(
                     AppStrings.todayItinerary.tr(context),
-                    style: FontStyles.interSize18_400Primary,
+                    style: TextStyle(
+                      color: AppColors.primary,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
                   )
                 ],
               ),
