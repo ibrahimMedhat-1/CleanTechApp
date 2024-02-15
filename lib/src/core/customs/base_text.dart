@@ -28,8 +28,9 @@ class BaseText extends StatelessWidget {
             ),
             TextSpan(
               text: subTitle,
+
               style: FontStyles.interSize13_400Black
-                  .copyWith(fontSize: subTitleFontSize ?? 16.sp),
+                  .copyWith(fontSize: subTitleFontSize ?? 16.sp,overflow: TextOverflow.ellipsis ),
             ),
           ],
         ),

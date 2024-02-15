@@ -16,7 +16,7 @@ class TaskDetailsBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 140.h,
+              height: 70.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,13 +34,41 @@ class TaskDetailsBody extends StatelessWidget {
                     title: AppStrings.placeAddress.tr(context),
                     subTitle: item.address ?? '',
                   ),
-                  19.isHeight,
-                  BaseText(
-                    title: "${AppStrings.taskDetails.tr(context)} : ",
-                    subTitle: item.description ?? '',
-                  ),
+
+
+                  // BaseText(
+                  //     title: "${AppStrings.taskDetails.tr(context)} :mmnn ",
+                  //     subTitle:
+                  // ),
                 ],
               ),
+            ),
+            19.isHeight,
+            Row(
+              children: [
+                Text(
+                  "${AppStrings.taskDetails.tr(context)} : ",
+                  style: FontStyles.interSize18_400Primary.copyWith(
+                    fontSize: 18.sp,
+                    color: AppColors.primary,
+                    // overflow: TextOverflow.clip,
+                  ),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.45,
+                  ),
+                  child: Text(
+                    (item.description ?? ''),
+                    maxLines: 3,
+                    style: FontStyles.interSize13_400Black.copyWith(
+                        fontSize: 16.sp,
+
+                        // overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                )
+              ],
             ),
             19.isHeight,
             BlocBuilder(
