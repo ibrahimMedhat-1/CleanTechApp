@@ -4,6 +4,9 @@ import 'package:ct_clean/src/feature/home/logic/data/home_repo.dart';
 import 'package:ct_clean/src/feature/home/logic/data/home_repo_impl.dart';
 import 'package:ct_clean/src/feature/profile/logic/data/profile_repo_impl.dart';
 import 'package:ct_clean/src/feature/profile/presentation/manager/profile_cubit.dart';
+import 'package:ct_clean/src/feature/salary_details/logic/data/salary_details_repo.dart';
+import 'package:ct_clean/src/feature/salary_details/logic/data/salary_details_repo_impl.dart';
+import 'package:ct_clean/src/feature/salary_details/presentation/manager/salary_cubit.dart';
 import 'package:ct_clean/src/feature/task_details/logic/data/task_details_repo.dart';
 import 'package:ct_clean/src/feature/task_details/logic/data/task_details_repo_impl.dart';
 import 'package:ct_clean/src/feature/task_details/presentation/manager/map/map_cubit.dart';
@@ -40,4 +43,7 @@ Future<void> setUpLocators() async {
       ..getProfile(UserLocal.driverId ?? 0)
       ..getContacts(),
   );
+  //salary
+  sl.registerFactory<SalaryDetailsRepo>(() => SalaryDetailsRepoImpl(sl()));
+  sl.registerLazySingleton<SalaryCubit>(() => SalaryCubit(sl()));
 }

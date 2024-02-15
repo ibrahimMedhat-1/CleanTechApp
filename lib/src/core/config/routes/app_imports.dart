@@ -4,6 +4,9 @@ export 'package:ct_clean/src/core/model/global_model.dart';
 export 'package:ct_clean/src/feature/task_details/logic/models/change_state_params.dart';
 export 'package:ct_clean/src/feature/task_details/logic/data/task_details_repo.dart';
 export 'package:ct_clean/src/feature/task_details/logic/models/stream_position_params.dart';
+export 'package:ct_clean/src/feature/salary_details/logic/model/salary_details_model.dart';
+export 'package:ct_clean/src/feature/salary_details/logic/model/salary_details_params.dart';
+export 'package:ct_clean/src/feature/salary_details/presentation/manager/salary_cubit.dart';
 
 
 

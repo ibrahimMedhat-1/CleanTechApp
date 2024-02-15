@@ -23,6 +23,7 @@ static const String commercial = "commercial";
 static const String devastation = "devastation";
 static const String compressor = "compressor";
 static const String atTime = "atTime";
+static const String sAR = "sAR";
 // Messages Screen
 static const String inCaseThereIsAProblemOrInquiry = "inCaseThereIsAProblemOrInquiry";
 // Customer Screen

@@ -5,65 +5,73 @@ class TotalDiscountsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return    Card(
-      elevation: 5,
-      child: ExpansionTile(
-        shape: const RoundedRectangleBorder(side: BorderSide.none),
-        title: ListTile(
-          contentPadding: EdgeInsets.zero,
-          leading: Assets.images.minus.image(),
-          title: Row(
-            children: [
-              Text(
-                AppStrings.totalDiscounts.tr(context),
-                style: FontStyles.interSize16_400White.copyWith(
-                  color: AppColors.black,
+    return
+      BlocBuilder<SalaryCubit, SalaryState>(
+        builder: (context, state) {
+          var cubit = context.read<SalaryCubit>();
+          return Card(
+            elevation: 5,
+            child: ExpansionTile(
+              shape: const RoundedRectangleBorder(side: BorderSide.none),
+              title: ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: Assets.images.minus.image(),
+                title: Row(
+                  children: [
+                    Text(
+                      AppStrings.totalDiscounts.tr(context),
+                      style: FontStyles.interSize16_400White.copyWith(
+                        color: AppColors.black,
+                      ),
+                    ),
+                    Text(
+                      "${cubit.salaryDetailsModel?.totalDeductions ?? 0.0} ${AppStrings.sAR.tr(context)}",
+                      style: FontStyles.interSize16_400White.copyWith(
+                        color: AppColors.primary,
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Text(
-                "200 ر.س",
-                style: FontStyles.interSize16_400White.copyWith(
-                  color: AppColors.primary,
-                ),
-              )
-            ],
-          ),
-        ),
-        children: List.generate(3, (index) {
-          return SizedBox(
-            height: 150.h,
-            child: Padding(
-              padding: EdgeInsetsDirectional.symmetric(
-                horizontal: 20.w,
-                vertical: 10.h,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(),
-                  BaseText(
-                    title: AppStrings.discountDate.tr(context),
-                    textColor: AppColors.red,
-                    subTitle: "1/7/2024",
-                  ),
-                  BaseText(
-                    title: AppStrings.discountValue.tr(context),
-                    subTitle: "200 ر.س",
-                    textColor: AppColors.red,
+              children: List.generate(
+                  cubit.salaryDetailsModel?.commissions?.length ?? 0, (index) {
+                var item = cubit.salaryDetailsModel?.commissions?[index];
+                return SizedBox(
+                  height: 150.h,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.symmetric(
+                      horizontal: 20.w,
+                      vertical: 10.h,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(),
+                        BaseText(
+                          title: AppStrings.discountDate.tr(context),
+                          textColor: AppColors.red,
+                          subTitle: item?.date ?? '',
+                        ),
+                        BaseText(
+                          title: AppStrings.discountValue.tr(context),
+                          subTitle: "${item?.amount ?? ''} ${AppStrings.sAR.tr(context)}",
+                          textColor: AppColors.red,
 
-                  ),
-                  BaseText(
-                    title: AppStrings.theReason.tr(context),
-                    subTitle: "سبب اعطاء العمولة ",
-                    textColor: AppColors.red,
+                        ),
+                        BaseText(
+                          title: AppStrings.theReason.tr(context),
+                          subTitle: item?.description ?? "",
+                          textColor: AppColors.red,
 
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                );
+              }),
             ),
           );
-        }),
-      ),
-    );
+        },
+      );
   }
 }

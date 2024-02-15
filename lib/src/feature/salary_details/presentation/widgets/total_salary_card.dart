@@ -5,11 +5,11 @@ class TotalSalaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return Card(
       elevation: 5,
       child: ListTile(
-        contentPadding: EdgeInsetsDirectional.symmetric(
-            vertical: 10.h, horizontal: 10.w),
+        contentPadding:
+            EdgeInsetsDirectional.symmetric(vertical: 10.h, horizontal: 10.w),
         leading: Assets.images.totalSalary.image(),
         title: Row(
           children: [
@@ -19,12 +19,13 @@ class TotalSalaryCard extends StatelessWidget {
                 color: AppColors.black,
               ),
             ),
-            Text(
-              "200 ر.س",
-              style: FontStyles.interSize16_400White.copyWith(
-                color: AppColors.primary,
-              ),
-            )
+            BlocBuilder<SalaryCubit, SalaryState>(
+                builder: (context, state) => Text(
+                      "${context.read<SalaryCubit>().salaryDetailsModel?.totalSalary ?? 0.0} ${AppStrings.sAR.tr(context)}",
+                      style: FontStyles.interSize16_400White.copyWith(
+                        color: AppColors.primary,
+                      ),
+                    )),
           ],
         ),
       ),

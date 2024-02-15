@@ -98,7 +98,16 @@ class AppFunctions {
       }
     }
   }
+List<int> generateListYearRange(){
+    Set<int> years = {};
+  int endYear = DateTime.now().year;
+  int startYear = 2020;
+  for (int i = startYear; i <= endYear; i++) {
+    years.add(i);
+  }
+  return years.toList();
 
+}
 
 //   void goToMail() async {
 //     final Uri emailLaunchUri = Uri(
