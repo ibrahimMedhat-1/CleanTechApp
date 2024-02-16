@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/feature/home/presentation/widgets/profile_drivir_in_home.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,67 +11,7 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           29.isHeight,
-          Row(
-            children: [
-              Container(
-                height: 64.h,
-                width: 66.w,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
-                  shape: BoxShape.circle,
-                  color: AppColors.white,
-                ),
-                child: Icon(
-                  Icons.person,
-                  size: 50.sp,
-                ),
-              ),
-              10.isWight,
-              Column(
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "${AppStrings.welcome.tr(context)} ",
-                          style: TextStyle(
-                            color: AppColors.primary,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        TextSpan(
-                          text: UserLocal.driverName ?? '',
-                          style: TextStyle(
-                              color: AppColors.black,
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w500,
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Text(
-                    AppStrings.todayItinerary.tr(context),
-                    style: TextStyle(
-                      color: AppColors.primary,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  )
-                ],
-              ),
-              // Spacer(),
-              // LanguageDropDown(isExpanded: false),
-            ],
-          ),
+          const ProfileDriverInHome(),
           33.isHeight,
           SizedBox(
             height: 55.h,

@@ -19,6 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
     }, (r) {
       CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
       CacheHelper.saveData(key: MyCashKey.driverName, value: r.name);
+      CacheHelper.saveData(key: MyCashKey.image, value: r.image);
       emit(LoginSuccess());
     });
   }

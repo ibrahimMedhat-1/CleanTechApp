@@ -32,6 +32,7 @@ enum MyCashKey {
   driverName,
   token,
   lang,
+  image
 
   
   
