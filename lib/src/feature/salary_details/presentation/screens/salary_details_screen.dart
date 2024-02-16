@@ -38,7 +38,7 @@ class SalaryDetailsScreen extends StatelessWidget {
                 21.isHeight,
                 const TotalCommissionCard(),
                 21.isHeight,
-                TotalDiscountsCard(),
+                const TotalDiscountsCard(),
                 50.isHeight
               ],
             ),

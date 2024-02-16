@@ -1,4 +1,3 @@
-
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class Dropdown<T> extends StatelessWidget {
@@ -20,6 +19,7 @@ class Dropdown<T> extends StatelessWidget {
       this.radius = 7,
       this.borderSideColor,
       this.hintStyle,
+      this.onTap,
       this.itemsColor});
 
   final List<T> items;
@@ -39,6 +39,7 @@ class Dropdown<T> extends StatelessWidget {
   final double radius;
   final Color? borderSideColor;
   final Color? itemsColor;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +72,8 @@ class Dropdown<T> extends StatelessWidget {
           }).toList(),
           validator: validator,
           onChanged: onChanged,
+          onTap: onTap,
+
           value: value,
           isDense: true,
           dropdownColor: dropColor ?? AppColors.primary,
@@ -132,8 +135,10 @@ class MainDropdown<T> extends StatelessWidget {
     required this.list,
     this.value,
   });
+
   final T? value;
   final List<T> list;
+
   @override
   Widget build(BuildContext context) {
     return DropdownButton<T>(

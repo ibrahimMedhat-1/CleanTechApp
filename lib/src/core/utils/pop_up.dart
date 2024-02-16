@@ -52,7 +52,7 @@ OverlayEntry _createToastOverlayEntry(String message) {
 Future<bool> onWillPop({DateTime? currentBackPressTime}) {
   DateTime now = DateTime.now();
   if (currentBackPressTime == null ||
-      now.difference(currentBackPressTime ?? DateTime.now()) >
+      now.difference(currentBackPressTime) >
           const Duration(seconds: 2)) {
     currentBackPressTime = now;
      return Future.value(false);

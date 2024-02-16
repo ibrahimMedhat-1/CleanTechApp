@@ -12,6 +12,7 @@ export 'package:ct_clean/src/feature/schedule_previous_tasks/logic/model/old_mis
 export 'package:ct_clean/src/feature/schedule_previous_tasks/logic/data/old_missions_repo.dart';
 export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/manager/old_mission_cubit.dart';
 export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/widgets/previous_task_item.dart';
+export 'package:ct_clean/src/feature/salary_details/logic/data/salary_details_repo.dart';
 
 
 
