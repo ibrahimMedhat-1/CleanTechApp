@@ -29,13 +29,15 @@ class TaskItem extends StatelessWidget {
                 color:
                     item.missionType == 0 ? AppColors.primary : AppColors.red,
               ),
+              3.isWight,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     getTypeName(context),
+                    textAlign: TextAlign.start,
                     style: FontStyles.interSize13_400Black
-                        .copyWith(fontSize: 22.sp),
+                        .copyWith(fontSize: 21.sp),
                   ),
                   getTypeImage(),
                 ],
@@ -47,7 +49,7 @@ class TaskItem extends StatelessWidget {
                 color: AppColors.black,
               ),
               SizedBox(
-                 width: 230.w,
+                width: 220.w,
                 height: 150.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
