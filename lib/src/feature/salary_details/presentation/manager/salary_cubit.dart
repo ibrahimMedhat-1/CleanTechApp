@@ -23,7 +23,7 @@ class SalaryCubit extends Cubit<SalaryState> {
   void yearOnChange(int? year) {
     params = params.copyWith(year: year);
     if (year == DateTime.now().year) {
-      selectedMonth = 1;
+      selectedMonth = DateTime.now().month -1;
     }
     selectedYear = year;
     getSalaryDetails();
