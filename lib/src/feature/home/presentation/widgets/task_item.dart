@@ -47,7 +47,7 @@ class TaskItem extends StatelessWidget {
                 color: AppColors.black,
               ),
               SizedBox(
-                width: 250.w,
+                 width: 230.w,
                 height: 150.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,10 +57,10 @@ class TaskItem extends StatelessWidget {
                         title: AppStrings.placeName.tr(context),
                         subTitle: item.company ?? ""),
                     BaseText(
-                        title: AppStrings.address.tr(context),
+                        title: "${AppStrings.address.tr(context)} : ",
                         subTitle: item.address ?? ""),
                     BaseText(
-                      title: AppStrings.time.tr(context),
+                      title: "${AppStrings.time.tr(context)} : ",
                       subTitle:
                           "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
                       subTitleFontSize: 14.sp,
