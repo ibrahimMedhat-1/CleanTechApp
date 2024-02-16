@@ -1,14 +1,26 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class LayoutScreen extends StatelessWidget {
+class LayoutScreen extends StatefulWidget {
   LayoutScreen({super.key});
 
+  @override
+  State<LayoutScreen> createState() => _LayoutScreenState();
+}
+
+class _LayoutScreenState extends State<LayoutScreen> {
   List<Widget> screens = [
     HomeScreen(),
     MessageScreen(),
     CustomerScreen(),
   ];
+
   final homeCubit = sl<HomeCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+    homeCubit.changeIndex(0);
+  }
 
   @override
   Widget build(BuildContext context) {
