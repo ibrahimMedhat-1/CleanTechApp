@@ -11,6 +11,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
     currentStepIndex++;
 
     changeMissionState(params);
+    print(currentStepIndex);
     emit(ChangeStepsIndexState());
   }
 

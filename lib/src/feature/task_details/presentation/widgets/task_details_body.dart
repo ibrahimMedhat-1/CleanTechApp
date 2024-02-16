@@ -88,15 +88,14 @@ class TaskDetailsBody extends StatelessWidget {
                     bloc: taskDetailsCubit,
                     builder: (context, state) => ButtonWidget(
                       text: getButtonStringConfirm(context),
-                      // AppStrings.clientApproached.tr(context),
-                      onPressed: () {
+                       onPressed: () =>taskDetailsCubit.currentStepIndex < 3 ?
                         showAdaptiveDialog(
                           context: context,
                           builder: (context) => ConfirmStepDialog(
                             missionId: item.id ?? 0,
                           ),
-                        );
-                      },
+                        ) : null,
+                      color: taskDetailsCubit.currentStepIndex < 3 ? AppColors.primary : AppColors.primary2,
                     ),
                   ),
                 ),
