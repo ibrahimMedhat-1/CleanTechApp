@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
                 title: 'Clean Tech',
                 debugShowCheckedModeBanner: false,
                 navigatorKey: navigationKey,
-                locale: Locale(loginCubit.language),
+                locale: Locale(UserLocal.lang ?? "ar"),
                 supportedLocales: AppLocalizationsSetup.supportedLocales,
                 localeResolutionCallback:
                     AppLocalizationsSetup.localeResolutionCallback,

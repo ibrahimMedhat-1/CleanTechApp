@@ -5,6 +5,8 @@ void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await setUpLocators();
   await CacheHelper.initCacheHelper();
+  print(UserLocal.lang);
+
    Bloc.observer = MyBlocObserver();
   runApp(  MyApp());
 }

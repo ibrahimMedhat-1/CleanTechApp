@@ -43,7 +43,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   void changeLang(String lang) {
     language = lang;
-    CacheHelper.saveData(key: MyCashKey.lang, value: lang);
+    CacheHelper.saveData(key: MyCashKey.lang, value: language);
+    print(UserLocal.lang);
     emit(ChangeLangState());
   }
 }
