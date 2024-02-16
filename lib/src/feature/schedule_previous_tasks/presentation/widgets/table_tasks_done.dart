@@ -22,9 +22,17 @@ class TableTasksDone extends StatelessWidget {
               SizedBox(
                 width: 50.w,
                 height: 50.h,
-                child: AnimatedCircularProgressIndicator(
-                  percentage: 70 / 100,
-                  strokeWidth: 7.w,
+                child: BlocBuilder<OldMissionCubit, OldMissionState>(
+                  builder: (context, state) =>
+                      AnimatedCircularProgressIndicator(
+                    percentage: (context
+                                .read<OldMissionCubit>()
+                                .oldMissionModel
+                                ?.percentage ??
+                            0) /
+                        100,
+                    strokeWidth: 7.w,
+                  ),
                 ),
               ),
               10.isWight,
@@ -55,12 +63,19 @@ class TableTasksDone extends StatelessWidget {
                 color: AppColors.primary3,
                 shape: BoxShape.circle,
               ),
-              child: const Center(
-                child: Text(
-                  "24",
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.bold,
+              child: Center(
+                child: BlocBuilder<OldMissionCubit, OldMissionState>(
+                  builder: (context, state) => Text(
+                    (context
+                                .read<OldMissionCubit>()
+                                .oldMissionModel
+                                ?.totalMissions ??
+                            0)
+                        .toString(),
+                    style: const TextStyle(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -81,12 +96,19 @@ class TableTasksDone extends StatelessWidget {
                 color: AppColors.primary3,
                 shape: BoxShape.circle,
               ),
-              child: const Center(
-                child: Text(
-                  "4",
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.bold,
+              child: Center(
+                child: BlocBuilder<OldMissionCubit, OldMissionState>(
+                  builder: (context, state) => Text(
+                    (context
+                                .read<OldMissionCubit>()
+                                .oldMissionModel
+                                ?.completedMissions ??
+                            0)
+                        .toString(),
+                    style: const TextStyle(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

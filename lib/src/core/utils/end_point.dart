@@ -8,5 +8,6 @@ class EndPoint {
   static const String changeStatus = "/changestatus";
   static const String sendStreamPosition = "/location";
   static const String salary = "/salary";
+  static const String oldMissions = "/oldmissions";
 
 }

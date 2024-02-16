@@ -13,11 +13,13 @@ class CalenderWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.r)),
       height: 286.h,
       width: 387.w,
-      child: CalendarDatePicker(
-        initialDate: DateTime.now(),
-        firstDate: DateTime.now().subtract(const Duration(days: 365)),
-        lastDate: DateTime.now().add(const Duration(days: 365)),
-        onDateChanged: (value) {},
+      child: BlocBuilder<OldMissionCubit, OldMissionState>(
+        builder: (context, state) => CalendarDatePicker(
+          initialDate: DateTime.now(),
+          firstDate: DateTime.now().subtract(const Duration(days: 365)),
+          lastDate: DateTime.now().add(const Duration(days: 365)),
+          onDateChanged: context.read<OldMissionCubit>().calenderOnDateChanged
+        ),
       ),
     );
   }
