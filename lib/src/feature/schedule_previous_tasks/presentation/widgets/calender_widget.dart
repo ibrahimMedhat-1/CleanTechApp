@@ -17,7 +17,7 @@ class CalenderWidget extends StatelessWidget {
         builder: (context, state) => CalendarDatePicker(
           initialDate: DateTime.now(),
           firstDate: DateTime.now().subtract(const Duration(days: 365)),
-          lastDate: DateTime.now().add(const Duration(days: 365)),
+          lastDate: DateTime.now(),
           onDateChanged: context.read<OldMissionCubit>().calenderOnDateChanged
         ),
       ),
