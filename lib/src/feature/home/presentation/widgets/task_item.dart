@@ -59,10 +59,10 @@ class TaskItem extends StatelessWidget {
                         title: AppStrings.placeName.tr(context),
                         subTitle: item.company ?? ""),
                     BaseText(
-                        title: "${AppStrings.address.tr(context)} : ",
+                        title: AppStrings.address.tr(context),
                         subTitle: item.address ?? ""),
                     BaseText(
-                      title: "${AppStrings.time.tr(context)} : ",
+                      title: AppStrings.time.tr(context),
                       subTitle:
                           "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
                       subTitleFontSize: 14.sp,

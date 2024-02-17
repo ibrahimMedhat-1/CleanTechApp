@@ -22,13 +22,14 @@ class PreviousTaskItem extends StatelessWidget {
             ),
             child: Row(
               children: [
+                5.isWight,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       getTypeName(context),
                       style: FontStyles.interSize13_400Black
-                          .copyWith(fontSize: 22.sp),
+                          .copyWith(fontSize: 21.sp),
                     ),
                     getTypeImage(),
                   ],
@@ -43,8 +44,7 @@ class PreviousTaskItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    // 10.isHeight,
-                    Text.rich(
+                     Text.rich(
                       TextSpan(
                         children: [
                           TextSpan(
@@ -99,8 +99,8 @@ class PreviousTaskItem extends StatelessWidget {
                   color: AppColors.black,
                 ),
                 Container(
-                  height: 50,
-                  width: 50,
+                  // height: 50,
+                  // width: 40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.r),
                     color: item.status == 0 ? AppColors.primary : AppColors.red,
@@ -109,12 +109,12 @@ class PreviousTaskItem extends StatelessWidget {
                       ? Icon(
                           Icons.check,
                           color: AppColors.white,
-                          size: 60.sp,
+                          size: 50.sp,
                         )
                       : Icon(
                           Icons.close,
                           color: AppColors.white,
-                          size: 60.sp,
+                          size: 50.sp,
                         ),
                 )
               ],

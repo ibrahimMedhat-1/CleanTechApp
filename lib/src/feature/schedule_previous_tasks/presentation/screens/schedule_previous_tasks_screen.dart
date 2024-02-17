@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/manager/old_mission_cubit.dart';
 
 class SchedulePreviousTaskScreen extends StatelessWidget {
   SchedulePreviousTaskScreen({super.key});

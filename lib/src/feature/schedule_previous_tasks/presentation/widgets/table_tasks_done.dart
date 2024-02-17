@@ -16,9 +16,10 @@ class TableTasksDone extends StatelessWidget {
             vertical: 10.h,
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               buildColumn1(context),
-              10.isWight,
+              // 10.isWight,
               SizedBox(
                 width: 50.w,
                 height: 50.h,
@@ -35,7 +36,7 @@ class TableTasksDone extends StatelessWidget {
                   ),
                 ),
               ),
-              10.isWight,
+              // 10.isWight,
               buildColumn2(context),
             ],
           ),

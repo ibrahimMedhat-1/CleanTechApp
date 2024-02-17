@@ -77,7 +77,11 @@ class ProfileWidget extends StatelessWidget {
                 CustomNavigator.instance.pushNamedAndRemoveUntil(
                     Routes.loginScreen, (route) => false);
               },
-              icon: Assets.svgs.logout.svg(),
+              icon:
+                  // Icon(Icons.logout),
+                  RotatedBox(
+                      quarterTurns: UserLocal.lang == "en" ? 2 : 0,
+                      child: Assets.svgs.logout.svg()),
             ),
           ],
         );
