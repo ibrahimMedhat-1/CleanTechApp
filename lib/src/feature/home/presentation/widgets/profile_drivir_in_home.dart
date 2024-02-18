@@ -32,6 +32,13 @@ class ProfileDriverInHome extends StatelessWidget {
             child: Image.network(
               UserLocal.image ?? '',
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(
+                  Icons.person,
+                  size: 50.sp,
+                );
+
+              },
             ),
           ),
         ),
