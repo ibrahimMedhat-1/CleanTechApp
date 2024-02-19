@@ -76,8 +76,6 @@
 // // Call Background Service in Android
 // }
 
-
-
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
@@ -90,7 +88,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 const notificationChannelId = 'my_foreground';
 const notificationId = 888;
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin();
 
 Future<void> initializeServices() async {
   final service = FlutterBackgroundService();
@@ -98,13 +96,13 @@ Future<void> initializeServices() async {
     notificationChannelId, // id
     'MY FOREGROUND SERVICE', // title
     description:
-    'This channel is used for important notifications.', // description
+        'This channel is used for important notifications.', // description
     importance: Importance.low, // importance must be at low or higher level
   );
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-      AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
   await service.configure(
     androidConfiguration: AndroidConfiguration(
@@ -156,34 +154,15 @@ void onStart(ServiceInstance service) async {
           title: "App in foreground...",
           content: "Update ${DateTime.now()}",
         );
+        // showNotification();
+
       } else {
         print("AhmedTracing: Background Mode");
         service.setForegroundNotificationInfo(
           title: "App in background...",
           content: "Update ${DateTime.now()}",
         );
-
-
-        int rndmIndex = Random().nextInt(100);
-
-        AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails(
-          '$rndmIndex.0',
-          "AhmedApp",
-          channelDescription: 'تطبيق اذكار وادعية وتلاوة وقراءة القرءان الكريم',
-          importance: Importance.max,
-          priority: Priority.high,
-          showWhen: false,
-        );
-        NotificationDetails platformChannelSpecifics =
-        NotificationDetails(android: androidNotificationDetails);
-          await flutterLocalNotificationsPlugin.show(
-            rndmIndex,
-            'AhmedApp',
-            "AhmedApp",
-            platformChannelSpecifics,
-            payload: 'item x',
-          );
+        // showNotification();
       }
     }
     // perform some operation on background
@@ -193,4 +172,27 @@ void onStart(ServiceInstance service) async {
       {"current_date": DateTime.now().toIso8601String()},
     );
   });
+}
+
+// show notification Function
+Future<void> showNotification() async {
+  int rndmIndex = Random().nextInt(100);
+  AndroidNotificationDetails androidNotificationDetails =
+      AndroidNotificationDetails(
+    '$rndmIndex.0',
+    "AhmedApp",
+    channelDescription: 'تطبيق اذكار وادعية وتلاوة وقراءة القرءان الكريم',
+    importance: Importance.max,
+    priority: Priority.high,
+    showWhen: false,
+  );
+  NotificationDetails platformChannelSpecifics =
+      NotificationDetails(android: androidNotificationDetails);
+  await flutterLocalNotificationsPlugin.show(
+    rndmIndex,
+    'AhmedApp',
+    "AhmedApp",
+    platformChannelSpecifics,
+    payload: 'item x',
+  );
 }

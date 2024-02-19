@@ -1,37 +1,24 @@
-
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/core/services/background_service.dart';
-import 'dart:async';
-import 'dart:ui';
-import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Permission.notification.isDenied.then((value) {
-    if(value){
-      Permission.notification.request();
-    }
-  });
+  await Permission.notification.isDenied.then((value) =>
+    value== true ? Permission.notification.request() : null
+  );
   await setUpLocators();
   await CacheHelper.initCacheHelper();
   print(UserLocal.lang);
-   Bloc.observer = MyBlocObserver();
-
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
-  const AndroidInitializationSettings androidInitializationSettings =
-  AndroidInitializationSettings('@mipmap/ic_launcher');
-
-  const InitializationSettings initializationSettings = InitializationSettings(
-    android: androidInitializationSettings,
-  );
-  await flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
-  );
+  Bloc.observer = MyBlocObserver();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings androidInitializationSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+  const InitializationSettings initializationSettings =
+      InitializationSettings(android: androidInitializationSettings);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   await initializeServices();
   FlutterBackgroundService().invoke("setAsBackground");
-  runApp(  MyApp());
+  runApp(MyApp());
 }
