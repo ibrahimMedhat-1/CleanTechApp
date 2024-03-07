@@ -15,6 +15,7 @@ class _TasksListState extends State<TasksList> {
     super.initState();
     context.read<HomeCubit>().getMissionsList();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
@@ -34,14 +35,17 @@ class _TasksListState extends State<TasksList> {
                     itemBuilder: (context, index) {
                       MissionModel item = list[index];
                       return TaskItem(
-                        item: item,
-                        onPress: () => CustomNavigator.instance
-                            .pushNamed(Routes.taskDetailsScreen,
-                                arguments: item)
-                            .then((value) {
-                          cubit.getMissionsList();
-                        }),
-                      );
+                          item: item,
+                          onPress: () {
+                            CustomNavigator.instance
+                                .pushNamed(Routes.taskDetailsScreen,
+                                    arguments: item)
+                                .then((value) {
+                              cubit.getMissionsList();
+                            });
+                            CacheHelper.saveData(
+                                key: MyCashKey.missionId, value: item.id ?? 0);
+                          });
                     },
                   ),
                 ),

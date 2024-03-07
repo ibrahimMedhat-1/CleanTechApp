@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:ct_clean/src/core/services/background_service/background_service.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-Future<void> showNotification() async {
+Future<void> showNotification({String? location}) async {
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
     notificationChannelId, // id
     'MY FOREGROUND SERVICE', // title
@@ -30,8 +30,8 @@ Future<void> showNotification() async {
   NotificationDetails(android: androidNotificationDetails);
   await flutterLocalNotificationsPlugin.show(
     rndmIndex,
-    'AhmedApp',
-    "AhmedApp",
+    "Clean Tech",
+    location ?? "0.0 , 0.0",
     platformChannelSpecifics,
     payload: 'item x',
   );

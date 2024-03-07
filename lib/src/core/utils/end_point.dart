@@ -1,3 +1,5 @@
+import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+
 class EndPoint {
   // genral EndPoint
   // auth End Point
@@ -11,4 +13,10 @@ class EndPoint {
   static const String oldMissions = "/oldmissions";
   static const String missionsDetails = "/missionsdetails";
 
+  static String sendLocationFullLink({
+    required Position position,
+    required int driverId,
+    required int missionId,
+  }) =>
+      "http://173.249.51.4/ctservices/location?driverId=$driverId&latitude=${position.latitude}&longitude=${position.longitude}&missionId=$missionId";
 }
