@@ -16,7 +16,8 @@ export 'package:ct_clean/src/feature/salary_details/logic/data/salary_details_re
 export 'package:ct_clean/src/feature/task_details/logic/models/change_mission_state_model.dart';
 export 'package:ct_clean/src/feature/task_details/logic/models/mission_details_model.dart';
 
-
+export 'package:ct_clean/src/core/functions/functions.dart';
+export 'package:ct_clean/src/core/widgets/loading.dart';
 
 
 
@@ -99,7 +100,6 @@ export 'package:ct_clean/src/feature/auth/login/presentation/screens/login_scree
 export 'package:ct_clean/src/feature/home/presentation/screens/layout_screen.dart';
 export 'package:ct_clean/src/feature/profile/presentation/screens/customer_screen.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
-export 'package:ct_clean/src/core/helper/error/failures.dart';
 export 'package:ct_clean/src/core/utils/constant.dart';
 export 'package:ct_clean/src/core/utils/user_local.dart';
 export 'package:dio/dio.dart';

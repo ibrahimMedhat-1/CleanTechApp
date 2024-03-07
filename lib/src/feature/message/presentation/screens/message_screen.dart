@@ -5,10 +5,10 @@ class MessageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
         context.read<HomeCubit>().changeIndex(0);
-        return false;
       },
       child: Padding(
         padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),

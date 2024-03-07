@@ -1,14 +1,7 @@
-import 'dart:convert';
-
-import 'package:ct_clean/src/core/functions/functions.dart';
-import 'package:ct_clean/src/core/widgets/loading.dart';
-
 import '../../../../core/config/routes/app_imports.dart';
 
 class TaskDetailsMap extends StatefulWidget {
-  const TaskDetailsMap({
-    super.key,
-  });
+  const TaskDetailsMap({super.key});
 
   @override
   State<TaskDetailsMap> createState() => _TaskDetailsMapState();

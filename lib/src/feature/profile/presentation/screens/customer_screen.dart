@@ -9,28 +9,29 @@ class CustomerScreen extends StatefulWidget {
 
 class _CustomerScreenState extends State<CustomerScreen> {
   final profileCubit = sl<ProfileCubit>();
-@override
-  void initState() {
-     super.initState();
-     profileCubit.getProfile(UserLocal.driverId ?? 0);
 
+  @override
+  void initState() {
+    super.initState();
+    profileCubit.getProfile(UserLocal.driverId ?? 0);
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: profileCubit,
-      child: WillPopScope(
-        onWillPop: ()async {
-         context.read<HomeCubit>().changeIndex(0);
-          return false;
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) {
+          context.read<HomeCubit>().changeIndex(0);
         },
         child: Container(
           padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
           width: double.infinity,
           child: RefreshIndicator(
-             onRefresh: () async {
-                profileCubit.getProfile(UserLocal.driverId ?? 0);
-              },
+            onRefresh: () async {
+              profileCubit.getProfile(UserLocal.driverId ?? 0);
+            },
             child: ListView(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
