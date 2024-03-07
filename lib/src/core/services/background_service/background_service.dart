@@ -17,7 +17,7 @@ Future<void> initializeServices() async {
   await service.configure(
     androidConfiguration: AndroidConfiguration(
         onStart: BackgroundServiceOnStartFunction.onStart,
-        isForegroundMode: true,
+        isForegroundMode: false,
         notificationChannelId: notificationChannelId,
         initialNotificationTitle: 'AWESOME SERVICE',
         initialNotificationContent: 'Initializing',
