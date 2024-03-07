@@ -21,7 +21,7 @@ class TotalSalaryCard extends StatelessWidget {
             ),
             BlocBuilder<SalaryCubit, SalaryState>(
                 builder: (context, state) => Text(
-                      "${context.read<SalaryCubit>().salaryDetailsModel?.totalSalary ?? 0.0} ${AppStrings.sAR.tr(context)}",
+                      "${context.read<SalaryCubit>().salaryDetailsModel?.total ?? 0.0} ${AppStrings.sAR.tr(context)}",
                       style: FontStyles.interSize16_400White.copyWith(
                         color: AppColors.primary,
                       ),

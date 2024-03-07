@@ -61,8 +61,7 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
                             Row(
                               children: [
                                 BaseText(
-                                  title: AppStrings.placeName.tr(context) +
-                                      "${taskDetailsCubit.missionDetailsModel?.id ?? "nnnn"}",
+                                  title: AppStrings.placeName.tr(context),
                                   subTitle: item?.company ?? 'Loading...',
                                 ),
                                 // Assets.images.placeLogo.image()

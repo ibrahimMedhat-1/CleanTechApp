@@ -34,8 +34,8 @@ class TotalDiscountsCard extends StatelessWidget {
                 ),
               ),
               children: List.generate(
-                  cubit.salaryDetailsModel?.commissions?.length ?? 0, (index) {
-                var item = cubit.salaryDetailsModel?.commissions?[index];
+                  cubit.salaryDetailsModel?.deductions?.length ?? 0, (index) {
+                var item = cubit.salaryDetailsModel?.deductions?[index];
                 return SizedBox(
                   height: 150.h,
                   child: Padding(

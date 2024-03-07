@@ -14,7 +14,7 @@ class EndPoint {
   static const String missionsDetails = "/missionsdetails";
 
   static String sendLocationFullLink({
-    required Position position,
+    required LatLng position,
     required int driverId,
     required int missionId,
   }) =>

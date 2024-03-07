@@ -30,14 +30,15 @@ Future<void> setUpLocators() async {
   sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl())..getMissionsList());
   // Map Cubit
   sl.registerLazySingleton<MapCubit>(
-    () => MapCubit(sl())
-      ..askUserToEnableLocation()
+      () => MapCubit(sl())..askUserToEnableLocation()
 
       // ..getStreamLocation(),
-  );
+      );
   // Task Details Cubit
   sl.registerFactory<TaskDetailsRepo>(() => TaskDetailsRepoImpl(sl()));
-  sl.registerLazySingleton<TaskDetailsCubit>(() => TaskDetailsCubit(sl()));
+  sl.registerLazySingleton<TaskDetailsCubit>(
+    () => TaskDetailsCubit(sl())..getLocation(),
+  );
   // Profile
   sl.registerFactory<ProfileRepo>(() => ProfileRepoImpl(sl()));
   sl.registerLazySingleton<ProfileCubit>(

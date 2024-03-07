@@ -25,14 +25,15 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   // }
   ChangeMissionStateModel? changeMissionStateModel;
 
-  void getLocation(){
-    LocationHelper.getCurrentLocation().then((value) {
+  void getLocation() {
+    LocationHelper.getStreamLocation().listen((event) {
       changeStateParams = changeStateParams.copyWith(
-        latitude: value.latitude,
-        longitude: value.longitude,
+        latitude: event.latitude,
+        longitude: event.longitude,
       );
     });
   }
+
   void changeMissionState({required int missionId}) async {
     print(" the mission id is $missionId");
     // LocationHelper.getCurrentLocation().then((value) {

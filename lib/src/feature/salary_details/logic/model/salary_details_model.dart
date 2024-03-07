@@ -2,6 +2,7 @@ class SalaryDetailsModel {
   double? totalSalary;
   double? totalCommissions;
   double? totalDeductions;
+  double? total;
   List<Commissions>? commissions;
   List<Commissions>? deductions;
 
@@ -9,6 +10,7 @@ class SalaryDetailsModel {
       {this.totalSalary,
         this.totalCommissions,
         this.totalDeductions,
+        this.total,
         this.commissions,
         this.deductions});
 
@@ -16,6 +18,7 @@ class SalaryDetailsModel {
     totalSalary = json['total_salary'];
     totalCommissions = json['total_commissions'];
     totalDeductions = json['total_deductions'];
+    total = json['total'];
     if (json['commissions'] != null) {
       commissions = <Commissions>[];
       json['commissions'].forEach((v) {
@@ -35,6 +38,7 @@ class SalaryDetailsModel {
     data['total_salary'] = this.totalSalary;
     data['total_commissions'] = this.totalCommissions;
     data['total_deductions'] = this.totalDeductions;
+    data['total'] = this.total;
     if (this.commissions != null) {
       data['commissions'] = this.commissions!.map((v) => v.toJson()).toList();
     }
