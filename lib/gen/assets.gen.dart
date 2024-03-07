@@ -40,8 +40,13 @@ class $AssetsDemoGen {
   AssetGenImage get moneytransfer =>
       const AssetGenImage('assets/demo/moneytransfer.png');
 
+  /// File path: assets/demo/other_cion.png
+  AssetGenImage get otherCion =>
+      const AssetGenImage('assets/demo/other_cion.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [demo1, demo2, demo3, moneytransfer];
+  List<AssetGenImage> get values =>
+      [demo1, demo2, demo3, moneytransfer, otherCion];
 }
 
 class $AssetsFontsGen {
