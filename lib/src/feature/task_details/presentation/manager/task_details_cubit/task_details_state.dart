@@ -15,7 +15,11 @@ class ChangeMissionStateFailure extends TaskDetailsState {
   ChangeMissionStateFailure(this.failures);
 }
 
-class ChangeMissionStateSuccess extends TaskDetailsState {}
+class ChangeMissionStateSuccess extends TaskDetailsState {
+  final ChangeMissionStateModel? changeMissionStateModel;
+
+  ChangeMissionStateSuccess({this.changeMissionStateModel});
+}
 class GetMissionDetailsLoading extends TaskDetailsState{}
 class GetMissionDetailsSuccess extends TaskDetailsState{}
 class GetMissionDetailsFailure extends TaskDetailsState{}

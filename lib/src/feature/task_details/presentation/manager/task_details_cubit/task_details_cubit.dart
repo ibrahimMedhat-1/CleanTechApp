@@ -16,15 +16,47 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   //   emit(ChangeStepsIndexState());
   // }
   // ChangeMissionStateModel? changeMissionStateModel;
-  void changeMissionState(ChangeStateParams params) async {
+  ChangeStateParams changeStateParams = ChangeStateParams();
+
+  TextEditingController noteController = TextEditingController();
+
+  // void noteOnChange(String value) {
+  //   changeStateParams = changeStateParams.copyWith(comment: value);
+  // }
+  ChangeMissionStateModel? changeMissionStateModel;
+
+  void getLocation(){
+    LocationHelper.getCurrentLocation().then((value) {
+      changeStateParams = changeStateParams.copyWith(
+        latitude: value.latitude,
+        longitude: value.longitude,
+      );
+    });
+  }
+  void changeMissionState({required int missionId}) async {
+    print(" the mission id is $missionId");
+    // LocationHelper.getCurrentLocation().then((value) {
+    //   changeStateParams = changeStateParams.copyWith(
+    //     missionId: missionId,
+    //     latitude: value.latitude,
+    //     longitude: value.longitude,
+    //     comment: noteController.text,
+    //   );
+    // });
     emit(ChangeMissionStateLoading());
-    final result = await repo.changeMissionState(params);
+    changeStateParams = changeStateParams.copyWith(
+      missionId: missionId,
+      comment: noteController.text,
+    );
+    final result = await repo.changeMissionState(changeStateParams);
     result.fold(
       (l) => emit(ChangeMissionStateFailure(l)),
       (r) {
-        // changeMissionStateModel = r;
+        changeMissionStateModel = r;
         // print("the changeMissionStateModel is ${changeMissionStateModel?.status}");
-        emit(ChangeMissionStateSuccess());
+        emit(ChangeMissionStateSuccess(changeMissionStateModel: r));
+        noteController.clear();
+        // r.next != 0 ? getMissionDetails(r.next ?? 0) : null;
       },
     );
   }
@@ -32,6 +64,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   MissionDetailsModel? missionDetailsModel;
 
   void getMissionDetails(int missionId) async {
+    print(missionId);
     emit(GetMissionDetailsLoading());
     final result = await repo.getMissionDetails(missionId);
     result.fold((l) {

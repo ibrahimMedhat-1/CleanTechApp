@@ -50,5 +50,5 @@ Future<void> setUpLocators() async {
   sl.registerLazySingleton<SalaryCubit>(() => SalaryCubit(sl()));
   // Old Missions
   sl.registerFactory<OldMissionRepo>(() => OldMissionRepoImpl(sl()));
-  sl.registerFactory<OldMissionCubit>(() => OldMissionCubit(sl()));
+  sl.registerLazySingleton<OldMissionCubit>(() => OldMissionCubit(sl()));
 }

@@ -1,10 +1,23 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class SchedulePreviousTaskScreen extends StatelessWidget {
+class SchedulePreviousTaskScreen extends StatefulWidget {
   SchedulePreviousTaskScreen({super.key});
 
-  final oldMissionCubit = sl<OldMissionCubit>();
+  @override
+  State<SchedulePreviousTaskScreen> createState() => _SchedulePreviousTaskScreenState();
+}
 
+class _SchedulePreviousTaskScreenState extends State<SchedulePreviousTaskScreen> {
+  final oldMissionCubit = sl<OldMissionCubit>();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    oldMissionCubit.getOldMission(OldMissionParams(
+        year: DateTime.now().year,
+        month: DateTime.now().month,
+        day: DateTime.now().day));
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(

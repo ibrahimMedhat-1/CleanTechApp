@@ -46,7 +46,7 @@ class SalaryDetailsModel {
 }
 
 class Commissions {
-  int? amount;
+  double? amount;
   String? description;
   String? date;
 

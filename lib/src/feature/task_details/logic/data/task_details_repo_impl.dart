@@ -9,9 +9,11 @@ class TaskDetailsRepoImpl extends TaskDetailsRepo {
   @override
   Future<Either<Failures, ChangeMissionStateModel>> changeMissionState(
       ChangeStateParams params) async {
+    print("in Repo impl ${params.toMap()}");
     try {
       final response = await apiService.postData(
           url: EndPoint.changeStatus, data: {}, query: params.toMap());
+      print(response.data);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final user = ChangeMissionStateModel.fromJson(response.data);
         return Right(user);

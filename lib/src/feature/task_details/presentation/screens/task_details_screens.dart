@@ -1,9 +1,9 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
-  const TaskDetailsScreen({super.key, required this.item});
+  TaskDetailsScreen({super.key});
 
-  final MissionModel item;
+  final taskDetailsCubit = sl<TaskDetailsCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +24,24 @@ class TaskDetailsScreen extends StatelessWidget {
           ],
           leadingWidth: 150.w,
         ),
-        body: Padding(
-          padding: EdgeInsetsDirectional.symmetric(horizontal: 40.w),
-          child: ListView(
-            children: [
-              24.isHeight,
-              const Row(),
-              TaskDetailsMap(item: item),
-              60.isHeight,
-              TaskDetailsBody(item: item),
-            ],
+        body: BlocProvider.value(
+          value: taskDetailsCubit,
+          child: Padding(
+            padding: EdgeInsetsDirectional.symmetric(horizontal: 40.w),
+            child: RefreshIndicator(
+            onRefresh: ()async {
+              taskDetailsCubit.getMissionDetails(taskDetailsCubit.missionDetailsModel?.id ?? 0);
+            },
+              child: ListView(
+                children: [
+                  24.isHeight,
+                  const Row(),
+                  TaskDetailsMap(),
+                  60.isHeight,
+                  TaskDetailsBody(),
+                ],
+              ),
+            ),
           ),
         ));
   }

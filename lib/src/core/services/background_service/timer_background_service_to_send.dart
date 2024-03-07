@@ -17,7 +17,7 @@ class TimerBackgroundServiceToSend {
           );
           // Make Anything you want
           sendLocation();
-          showNotification();
+          // showNotification();
         } else {
           debugPrint("AhmedTracing: Background Mode");
           service.setForegroundNotificationInfo(
@@ -51,8 +51,9 @@ class TimerBackgroundServiceToSend {
         debugPrint(
             "AhmedTracing: sendLocation ${value.statusCode} , ${positionValue.latitude} , ${positionValue.longitude} ");
         debugPrint("${value.data}");
-        showNotification(
-            location: "${positionValue.latitude} , ${positionValue.longitude}");
+        debugPrint("${MyCashKey.driverId}");
+        // showNotification(
+        //     location: "${positionValue.latitude} , ${positionValue.longitude}");
       }).catchError((e) {
         debugPrint("AhmedTracing: sendLocation Error is ${e.toString()}");
       });

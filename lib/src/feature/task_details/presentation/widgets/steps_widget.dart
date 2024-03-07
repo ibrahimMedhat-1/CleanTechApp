@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/widgets/loading.dart';
 
 class StepsWidget extends StatelessWidget {
   const StepsWidget({super.key, required this.missionId});
@@ -9,26 +10,27 @@ class StepsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<TaskDetailsCubit, TaskDetailsState>(
       listener: (context, state) {
-        if (state is ChangeMissionStateSuccess) {
-          context.read<TaskDetailsCubit>().getMissionDetails(missionId);
+        //
+        if (state is ChangeMissionStateSuccess && state.changeMissionStateModel?.next == 0) {
+          context.read<TaskDetailsCubit>().getMissionDetails(
+              context.read<TaskDetailsCubit>().missionDetailsModel?.id ?? 0);
         }
       },
       builder: (context, state) {
-        return Column(
-          children: List.generate(
-            StepsDataModel.listSteps(context).length,
-            (index) => buildOneStep(
-              title: StepsDataModel.listSteps(context)[index].title,
-              index: index,
-              image: StepsDataModel.listSteps(context)[index].image,
-              currentIndex:( context
-                      .read<TaskDetailsCubit>()
-                      .missionDetailsModel
-                      ?.currentStatus ??
-                  0) -1,
-            ),
-          ),
-        );
+        return state is ChangeMissionStateLoading
+            ? LoadingWidget()
+            : Column(
+                children: List.generate(
+                  StepsDataModel.listSteps(context).length,
+                  (index) => buildOneStep(
+                    title: StepsDataModel.listSteps(context)[index].title,
+                    index: index,
+                    image: StepsDataModel.listSteps(context)[index].image,
+                    currentIndex: (context.read<TaskDetailsCubit>().missionDetailsModel?.currentStatus ??0) -
+                        1,
+                  ),
+                ),
+              );
       },
     );
   }

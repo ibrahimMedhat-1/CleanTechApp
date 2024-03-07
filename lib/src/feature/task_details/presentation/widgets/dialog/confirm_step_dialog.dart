@@ -1,6 +1,6 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class ConfirmStepDialog extends StatelessWidget {
+class ConfirmStepDialog extends StatefulWidget {
   ConfirmStepDialog({
     super.key,
     required this.missionId,
@@ -8,10 +8,20 @@ class ConfirmStepDialog extends StatelessWidget {
 
   final int missionId;
 
-  final taskDetailsCubit = sl<TaskDetailsCubit>();
-  final mapCubit = sl<MapCubit>();
-  TextEditingController noteController = TextEditingController();
+  @override
+  State<ConfirmStepDialog> createState() => _ConfirmStepDialogState();
+}
 
+class _ConfirmStepDialogState extends State<ConfirmStepDialog> {
+  final taskDetailsCubit = sl<TaskDetailsCubit>();
+
+  final mapCubit = sl<MapCubit>();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    taskDetailsCubit.getMissionDetails(widget.missionId);
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -71,7 +81,8 @@ class ConfirmStepDialog extends StatelessWidget {
                             hint: AppStrings.putANote.tr(context),
                             color: AppColors.white,
                             borderRadius: 8.r,
-                            controller: noteController,
+                            controller: taskDetailsCubit.noteController,
+                            // onChanged: taskDetailsCubit.noteOnChange,
                           ),
                           21.isHeight,
                           Row(
@@ -85,36 +96,19 @@ class ConfirmStepDialog extends StatelessWidget {
                                 ),
                               ),
                               10.isWight,
-                              BlocProvider.value(
-                                value: mapCubit,
+                              Expanded(
                                 child: BlocBuilder(
-                                  bloc: mapCubit,
+                                  bloc: taskDetailsCubit,
                                   builder: (context, state) {
-                                    return Expanded(
-                                      child: BlocBuilder(
-                                        bloc: taskDetailsCubit,
-                                        builder: (context, state) {
-                                          return ButtonWidget(
-                                            loading: state is ChangeMissionStateLoading,
-                                            text: AppStrings.confirmStep
-                                                .tr(context),
-                                            onPressed: () {
-                                              taskDetailsCubit.changeMissionState(
-                                                  ChangeStateParams(
-                                                missionId: missionId,
-                                                latitude: mapCubit
-                                                        .position?.latitude ??
-                                                    0.0,
-                                                longitude: mapCubit
-                                                        .position?.longitude ??
-                                                    0.0,
-                                                comment: noteController.text,
-                                              ));
-                                              CustomNavigator.instance.pop();
-                                            },
-                                          );
-                                        },
-                                      ),
+                                    return ButtonWidget(
+                                      loading:
+                                          state is ChangeMissionStateLoading,
+                                      text: AppStrings.confirmStep.tr(context),
+                                      onPressed: () {
+                                        taskDetailsCubit.changeMissionState(missionId:taskDetailsCubit.missionDetailsModel?.id ?? 0);
+                                        print( taskDetailsCubit.missionDetailsModel?.id);
+                                        CustomNavigator.instance.pop();
+                                      },
                                     );
                                   },
                                 ),

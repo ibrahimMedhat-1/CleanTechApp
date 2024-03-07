@@ -4,11 +4,15 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final loginCubit = sl<LoginCubit>();
+  final TaskDetailsCubit taskDetailsCubit = sl<TaskDetailsCubit>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: loginCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: loginCubit),
+        BlocProvider.value(value: taskDetailsCubit),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
         builder: (context, child) {

@@ -12,9 +12,8 @@ class AppRouter {
           builder: (context) => LayoutScreen(),
         );
       case Routes.taskDetailsScreen:
-        final item = settings.arguments as MissionModel;
         return MaterialPageRoute(
-          builder: (context) => TaskDetailsScreen(item: item),
+          builder: (context) => TaskDetailsScreen(),
         );
       case Routes.salaryDetailsScreen:
         return MaterialPageRoute(
