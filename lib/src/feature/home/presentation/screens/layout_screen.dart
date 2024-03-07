@@ -20,6 +20,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   void initState() {
     super.initState();
     homeCubit.changeIndex(0);
+    homeCubit.getMissionsList();
   }
 
   @override
@@ -34,8 +35,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
               String title = homeCubit.currentIndex == 0
                   ? AppStrings.home.tr(context)
                   : homeCubit.currentIndex == 1
-                      ? AppStrings.contactTheAdministration.tr(context)
-                      : AppStrings.personalScreen.tr(context);
+                  ? AppStrings.contactTheAdministration.tr(context)
+                  : AppStrings.personalScreen.tr(context);
 
               return Text(
                 title,
@@ -52,19 +53,24 @@ class _LayoutScreenState extends State<LayoutScreen> {
         body: BlocBuilder(
             bloc: homeCubit,
             builder: (context, state) => screens[homeCubit.currentIndex]),
-        bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: AppColors.white,
-          index: homeCubit.currentIndex,
-          items: [
-            Assets.svgs.home.svg(),
-            Padding(
-              padding: EdgeInsets.all(5.w),
-              child: Assets.svgs.message.svg(),
-            ),
-            Assets.svgs.person.svg()
-          ],
-          color: AppColors.primary2,
-          onTap: homeCubit.changeIndex,
+        bottomNavigationBar: BlocBuilder (
+          bloc: homeCubit,
+          builder: (context, state) {
+            return CurvedNavigationBar(
+              backgroundColor: AppColors.white,
+              index: homeCubit.currentIndex,
+              items: [
+                Assets.svgs.home.svg(),
+                Padding(
+                  padding: EdgeInsets.all(5.w),
+                  child: Assets.svgs.message.svg(),
+                ),
+                Assets.svgs.person.svg()
+              ],
+              color: AppColors.primary2,
+              onTap: homeCubit.changeIndex,
+            );
+          },
         ),
       ),
     );

@@ -7,13 +7,13 @@ class TaskDetailsRepoImpl extends TaskDetailsRepo {
   TaskDetailsRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failures, GlobalModel>> changeMissionState(
+  Future<Either<Failures, ChangeMissionStateModel>> changeMissionState(
       ChangeStateParams params) async {
     try {
       final response = await apiService.postData(
           url: EndPoint.changeStatus, data: {}, query: params.toMap());
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final user = GlobalModel.fromJson(response.data);
+        final user = ChangeMissionStateModel.fromJson(response.data);
         return Right(user);
       } else {
         return left(ServerFailure("Error in server response"));
@@ -28,16 +28,35 @@ class TaskDetailsRepoImpl extends TaskDetailsRepo {
       StreamPositionParams params) async {
     try {
       final response = await apiService.postData(
-          url: EndPoint.sendStreamPosition ,query: params.toMap(),data: {} );
+          url: EndPoint.sendStreamPosition, query: params.toMap(), data: {});
 
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      final user = GlobalModel.fromJson(response.data);
-      return Right(user);
-    } else {
-    return left(ServerFailure("Error in server response"));
-    }
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final user = GlobalModel.fromJson(response.data);
+        return Right(user);
+      } else {
+        return left(ServerFailure("Error in server response"));
+      }
     } catch (e) {
-    return Left(ServerFailure(e.toString()));
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, MissionDetailsModel>> getMissionDetails(
+      int missionId) async {
+    try {
+      final response = await apiService.getData(
+        url: EndPoint.missionsDetails,
+        query: {"missionId": missionId},
+      );
+      if (response.statusCode == 200 || response.data == 201) {
+        final user = MissionDetailsModel.fromJson(response.data);
+        return Right(user);
+      } else {
+        return left(ServerFailure("Error in getMissionDetails"));
+      }
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
     }
   }
 }

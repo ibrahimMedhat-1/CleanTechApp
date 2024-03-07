@@ -1,11 +1,23 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class TaskDetailsBody extends StatelessWidget {
+class TaskDetailsBody extends StatefulWidget {
   TaskDetailsBody({super.key, required this.item});
 
-  final taskDetailsCubit = sl<TaskDetailsCubit>();
   final MissionModel item;
 
+  @override
+  State<TaskDetailsBody> createState() => _TaskDetailsBodyState();
+}
+
+class _TaskDetailsBodyState extends State<TaskDetailsBody> {
+  final taskDetailsCubit = sl<TaskDetailsCubit>();
+
+  final homeCubit = sl<HomeCubit>();
+@override
+  void initState() {
+     super.initState();
+    taskDetailsCubit.getMissionDetails(widget.item.id ?? 0);
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -24,7 +36,7 @@ class TaskDetailsBody extends StatelessWidget {
                     children: [
                       BaseText(
                         title: AppStrings.placeName.tr(context),
-                        subTitle: item.company ?? '',
+                        subTitle: widget.item.company ?? '',
                       ),
                       // Assets.images.placeLogo.image()
                     ],
@@ -32,9 +44,8 @@ class TaskDetailsBody extends StatelessWidget {
                   19.isHeight,
                   BaseText(
                     title: AppStrings.placeAddress.tr(context),
-                    subTitle: item.address ?? '',
+                    subTitle: widget.item.address ?? '',
                   ),
-
 
                   // BaseText(
                   //     title: "${AppStrings.taskDetails.tr(context)} :mmnn ",
@@ -59,26 +70,40 @@ class TaskDetailsBody extends StatelessWidget {
                     maxWidth: MediaQuery.of(context).size.width * 0.45,
                   ),
                   child: Text(
-                    (item.description ?? ''),
+                    (widget.item.description ?? ''),
                     maxLines: 3,
                     style: FontStyles.interSize13_400Black.copyWith(
-                        fontSize: 16.sp,
+                      fontSize: 16.sp,
 
-                        // overflow: TextOverflow.ellipsis,
+                      // overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                )
+                ),
               ],
             ),
             19.isHeight,
-            BlocBuilder(
-              bloc: taskDetailsCubit,
-              builder: (context, state) {
-                return StepsWidget(
-                  currentIndex: taskDetailsCubit.currentStepIndex,
-                );
-              },
-            ),
+            StepsWidget(missionId: widget.item.id ?? 0),
+            // BlocProvider.value(
+            //   value: homeCubit,
+            //   child: BlocBuilder<HomeCubit, HomeState>(
+            //     bloc: homeCubit,
+            //     builder: (context, state) {
+            //       return BlocConsumer(
+            //         bloc: taskDetailsCubit,
+            //         listener: (context, state) {
+            //           if (state is ChangeMissionStateSuccess) {
+            //             homeCubit.getMissionsList();
+            //           }
+            //         },
+            //         builder: (context, state) {
+            //           return StepsWidget(currentIndex: item.currentStatus ?? 0
+            //               // taskDetailsCubit.currentStepIndex,
+            //               );
+            //         },
+            //       );
+            //     },
+            //   ),
+            // ),
             24.isHeight,
             Row(
               children: [
@@ -87,15 +112,24 @@ class TaskDetailsBody extends StatelessWidget {
                   child: BlocBuilder(
                     bloc: taskDetailsCubit,
                     builder: (context, state) => ButtonWidget(
-                      text: getButtonStringConfirm(context),
-                       onPressed: () =>taskDetailsCubit.currentStepIndex < 3 ?
-                        showAdaptiveDialog(
-                          context: context,
-                          builder: (context) => ConfirmStepDialog(
-                            missionId: item.id ?? 0,
-                          ),
-                        ) : null,
-                      color: taskDetailsCubit.currentStepIndex < 3 ? AppColors.primary : AppColors.primary2,
+                      text: getButtonStringConfirm(
+                          context,
+                          ((taskDetailsCubit
+                                  .missionDetailsModel?.currentStatus ??
+                              0)-1)),
+                      onPressed: () => ((taskDetailsCubit
+                          .missionDetailsModel?.currentStatus ?? 0) -1) < 2
+                          ? showAdaptiveDialog(
+                              context: context,
+                              builder: (context) => ConfirmStepDialog(
+                                missionId: widget.item.id ?? 0,
+                              ),
+                            )
+                          : null,
+                      color: ((taskDetailsCubit
+                          .missionDetailsModel?.currentStatus ?? 0) -1) < 2
+                          ? AppColors.primary
+                          : AppColors.primary2,
                     ),
                   ),
                 ),
@@ -118,12 +152,9 @@ class TaskDetailsBody extends StatelessWidget {
     );
   }
 
-  String getButtonStringConfirm(BuildContext context) =>
-      taskDetailsCubit.currentStepIndex < 0
-          ? AppStrings.clientApproached.tr(context)
-          : taskDetailsCubit.currentStepIndex == 0
-              ? AppStrings.haveBeenReached.tr(context)
-              : taskDetailsCubit.currentStepIndex == 1
-                  ? AppStrings.beginningOfDischarge.tr(context)
-                  : AppStrings.beenCompleted.tr(context);
+  String getButtonStringConfirm(BuildContext context, int index) => index < 0
+      ? AppStrings.clientApproached.tr(context)
+      : index == 0
+          ? AppStrings.haveBeenReached.tr(context)
+          : AppStrings.beenCompleted.tr(context);
 }

@@ -6,7 +6,7 @@ import 'package:flutter_background_service_android/flutter_background_service_an
 
 class TimerBackgroundServiceToSend {
   static Timer timerTOSendLocation(ServiceInstance service) {
-    return Timer.periodic(const Duration(hours: 1), (timer) async {
+    return Timer.periodic(const Duration(minutes: 1), (timer) async {
       if (service is AndroidServiceInstance) {
         if (await service.isForegroundService()) {
           debugPrint("AhmedTracing: Foreground Mode");

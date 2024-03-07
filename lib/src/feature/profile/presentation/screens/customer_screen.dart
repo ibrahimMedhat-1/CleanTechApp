@@ -19,47 +19,58 @@ class _CustomerScreenState extends State<CustomerScreen> {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: profileCubit,
-      child: Container(
-        padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            20.isHeight,
-            const ProfileWidget(),
-            30.isHeight,
-            NumberTaskDayAndMonth(),
-            20.isHeight,
-            const TasksDoneDayAndMonth(),
-            30.isHeight,
-            ButtonWidget(
-              margin: EdgeInsetsDirectional.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).width * 0.15),
-              borderRadius: 12.r,
-              text: AppStrings.salaryDetails.tr(context),
-              onPressed: () => CustomNavigator.instance
-                  .pushNamed(Routes.salaryDetailsScreen),
+      child: WillPopScope(
+        onWillPop: ()async {
+         context.read<HomeCubit>().changeIndex(0);
+          return false;
+        },
+        child: Container(
+          padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
+          width: double.infinity,
+          child: RefreshIndicator(
+             onRefresh: () async {
+                profileCubit.getProfile(UserLocal.driverId ?? 0);
+              },
+            child: ListView(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                20.isHeight,
+                const ProfileWidget(),
+                30.isHeight,
+                const NumberTaskDayAndMonth(),
+                20.isHeight,
+                const TasksDoneDayAndMonth(),
+                30.isHeight,
+                ButtonWidget(
+                  margin: EdgeInsetsDirectional.symmetric(
+                      horizontal: MediaQuery.sizeOf(context).width * 0.15),
+                  borderRadius: 12.r,
+                  text: AppStrings.salaryDetails.tr(context),
+                  onPressed: () => CustomNavigator.instance
+                      .pushNamed(Routes.salaryDetailsScreen),
+                ),
+                15.isHeight,
+                ButtonWidget(
+                  margin: EdgeInsetsDirectional.symmetric(
+                      horizontal: MediaQuery.sizeOf(context).width * 0.15),
+                  borderRadius: 12.r,
+                  text: AppStrings.scheduleOfPreviousTasks.tr(context),
+                  onPressed: () => CustomNavigator.instance
+                      .pushNamed(Routes.schedulePreviousTaskScreen),
+                ),
+                15.isHeight,
+                // ButtonWidget(
+                //   margin: EdgeInsetsDirectional.symmetric(
+                //       horizontal: MediaQuery.sizeOf(context).width * 0.15),
+                //   borderRadius: 12.r,
+                //   text: AppStrings.signOut.tr(context),
+                //   onPressed: () => CustomNavigator.instance.pushNamedAndRemoveUntil(
+                //       Routes.loginScreen, (route) => false),
+                // ),
+                // 38.isHeight,
+              ],
             ),
-            15.isHeight,
-            ButtonWidget(
-              margin: EdgeInsetsDirectional.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).width * 0.15),
-              borderRadius: 12.r,
-              text: AppStrings.scheduleOfPreviousTasks.tr(context),
-              onPressed: () => CustomNavigator.instance
-                  .pushNamed(Routes.schedulePreviousTaskScreen),
-            ),
-            15.isHeight,
-            // ButtonWidget(
-            //   margin: EdgeInsetsDirectional.symmetric(
-            //       horizontal: MediaQuery.sizeOf(context).width * 0.15),
-            //   borderRadius: 12.r,
-            //   text: AppStrings.signOut.tr(context),
-            //   onPressed: () => CustomNavigator.instance.pushNamedAndRemoveUntil(
-            //       Routes.loginScreen, (route) => false),
-            // ),
-            // 38.isHeight,
-          ],
+          ),
         ),
       ),
     );

@@ -12,10 +12,16 @@ class SalaryCubit extends Cubit<SalaryState> {
   void getSalaryDetails() async {
     emit(SalaryLoading());
     final result = await repo.getSalaryDetails(params);
-    result.fold((l) => emit(SalaryFailure(l.errMessage)), (r) {
-      salaryDetailsModel = r;
-      emit(SalarySuccess());
-    });
+    result.fold(
+      (l) {
+        print(l.errMessage);
+        emit(SalaryFailure(l.errMessage));
+      },
+      (r) {
+        salaryDetailsModel = r;
+        emit(SalarySuccess());
+      },
+    );
   }
 
   int? selectedYear;
@@ -23,7 +29,7 @@ class SalaryCubit extends Cubit<SalaryState> {
   void yearOnChange(int? year) {
     params = params.copyWith(year: year);
     if (year == DateTime.now().year) {
-      selectedMonth = DateTime.now().month -1;
+      selectedMonth = DateTime.now().month - 1;
     }
     selectedYear = year;
     getSalaryDetails();

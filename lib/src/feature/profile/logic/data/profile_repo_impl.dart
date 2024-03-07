@@ -12,6 +12,7 @@ class ProfileRepoImpl extends ProfileRepo {
     try {
       final response = await apiService
           .getData(url: EndPoint.profile, query: {'driverId': driverId});
+      print(response.data);
       final user = ProfileModel.fromJson(response.data);
       if (user.status == true) {
         return Right(user);

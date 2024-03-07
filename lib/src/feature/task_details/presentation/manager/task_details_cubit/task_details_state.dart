@@ -16,3 +16,6 @@ class ChangeMissionStateFailure extends TaskDetailsState {
 }
 
 class ChangeMissionStateSuccess extends TaskDetailsState {}
+class GetMissionDetailsLoading extends TaskDetailsState{}
+class GetMissionDetailsSuccess extends TaskDetailsState{}
+class GetMissionDetailsFailure extends TaskDetailsState{}

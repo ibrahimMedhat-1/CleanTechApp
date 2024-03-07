@@ -13,6 +13,8 @@ export 'package:ct_clean/src/feature/schedule_previous_tasks/logic/data/old_miss
 export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/manager/old_mission_cubit.dart';
 export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/widgets/previous_task_item.dart';
 export 'package:ct_clean/src/feature/salary_details/logic/data/salary_details_repo.dart';
+export 'package:ct_clean/src/feature/task_details/logic/models/change_mission_state_model.dart';
+export 'package:ct_clean/src/feature/task_details/logic/models/mission_details_model.dart';
 
 
 

@@ -1,7 +1,7 @@
 class SalaryDetailsModel {
-  int? totalSalary;
-  int? totalCommissions;
-  int? totalDeductions;
+  double? totalSalary;
+  double? totalCommissions;
+  double? totalDeductions;
   List<Commissions>? commissions;
   List<Commissions>? deductions;
 

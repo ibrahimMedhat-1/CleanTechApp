@@ -74,6 +74,7 @@ static const String discountValue = "discountValue";
 static const String schedulePreviousTasks = "schedulePreviousTasks";
 static const String tasksNotCompleted = "tasksNotCompleted";
 static const String tasksAlreadyCompleted = "tasksAlreadyCompleted";
+static const String other = "other";
 
 
 

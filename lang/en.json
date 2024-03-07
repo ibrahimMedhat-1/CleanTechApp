@@ -59,9 +59,10 @@
   "language" : "Language",
   "signOut" : "Sign Out",
   "commercial" : "Commercial",
-  "devastation" : "Destruction",
+  "devastation" : "Backfill",
   "compressor" : "Compressor",
   "atTime" : "At Time",
   "personalScreen" : "Personal Screen",
-  "sAR" : "SAR"
+  "sAR" : "SAR",
+  "other" : "Other"
  }

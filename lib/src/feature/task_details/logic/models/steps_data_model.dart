@@ -15,10 +15,10 @@ class StepsDataModel {
           image: Assets.images.locationIcon.image(),
           title: AppStrings.haveBeenReached.tr(context),
         ),
-        StepsDataModel(
-          image: Assets.images.carIcon.image(),
-          title: AppStrings.beginningOfDischarge.tr(context),
-        ),
+        // StepsDataModel(
+        //   image: Assets.images.carIcon.image(),
+        //   title: AppStrings.beginningOfDischarge.tr(context),
+        // ),
         StepsDataModel(
           image: Assets.images.doneIcon.image(),
           title: AppStrings.beenCompleted.tr(context),

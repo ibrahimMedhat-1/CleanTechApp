@@ -1,9 +1,20 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/core/widgets/loading.dart';
 
-class TasksList extends StatelessWidget {
+class TasksList extends StatefulWidget {
   const TasksList({super.key});
 
+  @override
+  State<TasksList> createState() => _TasksListState();
+}
+
+class _TasksListState extends State<TasksList> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<HomeCubit>().getMissionsList();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
@@ -13,17 +24,26 @@ class TasksList extends StatelessWidget {
         return Expanded(
           child: list == null
               ? const LoadingWidget()
-              : ListView.builder(
-                  padding: EdgeInsetsDirectional.symmetric(vertical: 20.w),
-                  itemCount: list.length,
-                  itemBuilder: (context, index) {
-                    MissionModel item = list[index];
-                    return TaskItem(
-                      item: item,
-                      onPress: () => CustomNavigator.instance
-                          .pushNamed(Routes.taskDetailsScreen, arguments: item),
-                    );
+              : RefreshIndicator(
+                  onRefresh: () async {
+                    cubit.getMissionsList();
                   },
+                  child: ListView.builder(
+                    padding: EdgeInsetsDirectional.symmetric(vertical: 20.w),
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      MissionModel item = list[index];
+                      return TaskItem(
+                        item: item,
+                        onPress: () => CustomNavigator.instance
+                            .pushNamed(Routes.taskDetailsScreen,
+                                arguments: item)
+                            .then((value) {
+                          cubit.getMissionsList();
+                        }),
+                      );
+                    },
+                  ),
                 ),
         );
       },

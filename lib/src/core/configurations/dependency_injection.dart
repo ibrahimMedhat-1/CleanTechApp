@@ -33,7 +33,7 @@ Future<void> setUpLocators() async {
     () => MapCubit(sl())
       ..askUserToEnableLocation()
 
-      ..getStreamLocation(),
+      // ..getStreamLocation(),
   );
   // Task Details Cubit
   sl.registerFactory<TaskDetailsRepo>(() => TaskDetailsRepoImpl(sl()));

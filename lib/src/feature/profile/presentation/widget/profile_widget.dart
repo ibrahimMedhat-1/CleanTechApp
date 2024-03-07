@@ -15,35 +15,44 @@ class ProfileWidget extends StatelessWidget {
               width: 104.w,
               height: 103.h,
               child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.circular(50.r)),
-                  clipBehavior: Clip.antiAlias,
-                  child: cubit.profileModel == null
-                      ? Icon(
-                          Icons.person,
-                          size: 60.sp,
-                        )
-                      : cubit.profileModel?.image == null
-                          ? Icon(
-                              Icons.person,
-                              size: 60.sp,
-                            )
-                          : Image.network(
-                              cubit.profileModel?.image ?? '',
-                              fit: BoxFit.cover,
-                            )),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusDirectional.circular(50.r)),
+                clipBehavior: Clip.antiAlias,
+                child: cubit.profileModel == null
+                    ? Icon(
+                        Icons.person,
+                        size: 60.sp,
+                      )
+                    : cubit.profileModel?.image == null
+                        ? Icon(
+                            Icons.person,
+                            size: 60.sp,
+                          )
+                        : Image.network(
+                            cubit.profileModel?.image == null ||
+                                    cubit.profileModel?.image == ''
+                                ? 'http://via.placeholder.com/350x150'
+                                : cubit.profileModel?.image ??
+                                    'http://via.placeholder.com/350x150',
+                            fit: BoxFit.cover,
+                          ),
+              ),
             ),
             10.isWight,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  cubit.profileModel?.name ?? ''.loadingString,
-                  style: TextStyle(
-                      color: AppColors.black,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      overflow: TextOverflow.ellipsis),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                      maxWidth: MediaQuery.sizeOf(context).width * 0.5),
+                  child: Text(
+                    cubit.profileModel?.name ?? ''.loadingString,
+                    style: TextStyle(
+                        color: AppColors.black,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                        overflow: TextOverflow.ellipsis),
+                  ),
                 ),
                 Text.rich(
                   TextSpan(

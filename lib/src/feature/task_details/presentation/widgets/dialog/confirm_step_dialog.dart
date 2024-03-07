@@ -95,10 +95,11 @@ class ConfirmStepDialog extends StatelessWidget {
                                         bloc: taskDetailsCubit,
                                         builder: (context, state) {
                                           return ButtonWidget(
+                                            loading: state is ChangeMissionStateLoading,
                                             text: AppStrings.confirmStep
                                                 .tr(context),
                                             onPressed: () {
-                                              taskDetailsCubit.onChangeSteps(
+                                              taskDetailsCubit.changeMissionState(
                                                   ChangeStateParams(
                                                 missionId: missionId,
                                                 latitude: mapCubit
