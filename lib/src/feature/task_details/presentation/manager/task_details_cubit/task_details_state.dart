@@ -20,6 +20,15 @@ class ChangeMissionStateSuccess extends TaskDetailsState {
 
   ChangeMissionStateSuccess({this.changeMissionStateModel});
 }
+
+class SkipStateLoading extends TaskDetailsState {}
+class SkipStateSuccess extends TaskDetailsState {}
+class SkipStateFailure extends TaskDetailsState {
+  final String msg;
+
+  SkipStateFailure(this.msg);
+}
+
 class GetMissionDetailsLoading extends TaskDetailsState{}
 class GetMissionDetailsSuccess extends TaskDetailsState{
   final MissionDetailsModel missionDetailsModel;

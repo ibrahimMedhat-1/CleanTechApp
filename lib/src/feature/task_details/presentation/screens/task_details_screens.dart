@@ -29,7 +29,7 @@ class TaskDetailsScreen extends StatelessWidget {
         body: BlocProvider.value(
           value: taskDetailsCubit,
           child: Padding(
-            padding: EdgeInsetsDirectional.symmetric(horizontal: 40.w),
+            padding: EdgeInsetsDirectional.symmetric(horizontal: 30.w),
             child: RefreshIndicator(
               onRefresh: () async {
                 taskDetailsCubit.getMissionDetails(

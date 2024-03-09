@@ -61,4 +61,23 @@ class TaskDetailsRepoImpl extends TaskDetailsRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failures, ChangeMissionStateModel>> skip(
+      ChangeStateParams params) async {
+    print("${params.toMap()}  in skip repo impl");
+    try {
+      final response = await apiService
+          .postData(url: EndPoint.skip, query: params.toMap(), data: {});
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final user = ChangeMissionStateModel.fromJson(response.data);
+        return Right(user);
+      } else {
+        return left(ServerFailure("Error in server response"));
+      }
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

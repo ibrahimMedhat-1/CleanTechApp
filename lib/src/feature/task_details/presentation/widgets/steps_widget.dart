@@ -1,5 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/widgets/loading.dart';
+import 'package:shimmer/shimmer.dart';
 
 class StepsWidget extends StatelessWidget {
   const StepsWidget({super.key, required this.missionId});
@@ -11,14 +11,34 @@ class StepsWidget extends StatelessWidget {
     return BlocConsumer<TaskDetailsCubit, TaskDetailsState>(
       listener: (context, state) {
         //
-        if (state is ChangeMissionStateSuccess && state.changeMissionStateModel?.next == 0) {
+        if (state is ChangeMissionStateSuccess &&
+            state.changeMissionStateModel?.next == 0) {
           context.read<TaskDetailsCubit>().getMissionDetails(
               context.read<TaskDetailsCubit>().missionDetailsModel?.id ?? 0);
         }
       },
       builder: (context, state) {
         return state is ChangeMissionStateLoading
-            ? LoadingWidget()
+            ? Column(
+                children: List.generate(
+                  StepsDataModel.listSteps(context).length,
+                  (index) => Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: buildOneStep(
+                      index: index,
+                      title: 'Loading',
+                      image: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: AppColors.gray1)),
+                      ),
+                    ),
+                  ),
+                ),
+              )
             : Column(
                 children: List.generate(
                   StepsDataModel.listSteps(context).length,
@@ -26,7 +46,11 @@ class StepsWidget extends StatelessWidget {
                     title: StepsDataModel.listSteps(context)[index].title,
                     index: index,
                     image: StepsDataModel.listSteps(context)[index].image,
-                    currentIndex: (context.read<TaskDetailsCubit>().missionDetailsModel?.currentStatus ??0) -
+                    currentIndex: (context
+                                .read<TaskDetailsCubit>()
+                                .missionDetailsModel
+                                ?.currentStatus ??
+                            0) -
                         1,
                   ),
                 ),

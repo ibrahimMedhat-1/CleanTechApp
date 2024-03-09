@@ -23,7 +23,6 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   //   changeStateParams = changeStateParams.copyWith(comment: value);
   // }
   ChangeMissionStateModel? changeMissionStateModel;
-  Position? position;
 
   void getLocation() {
     LocationHelper.getStreamLocation().listen((event) {
@@ -62,6 +61,26 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
         emit(ChangeMissionStateSuccess(changeMissionStateModel: r));
         noteController.clear();
         // r.next != 0 ? getMissionDetails(r.next ?? 0) : null;
+      },
+    );
+  }
+
+  void skip(
+      {required int missionId,
+      required double lat,
+      required double lng}) async {
+    emit(ChangeMissionStateLoading());
+    final result = await repo.skip(ChangeStateParams(
+      missionId: missionId,
+      comment: noteController.text,
+      latitude: lat,
+      longitude: lng,
+    ));
+    result.fold(
+      (l) => emit(ChangeMissionStateFailure(l)),
+      (r) {
+        changeMissionStateModel = r;
+        emit(ChangeMissionStateSuccess(changeMissionStateModel: r));
       },
     );
   }

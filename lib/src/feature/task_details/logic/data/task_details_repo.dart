@@ -5,7 +5,11 @@ abstract class TaskDetailsRepo {
   Future<Either<Failures, ChangeMissionStateModel>> changeMissionState(
       ChangeStateParams params);
 
-  Future<Either<Failures, MissionDetailsModel>> getMissionDetails(int missionId);
+  Future<Either<Failures, ChangeMissionStateModel>> skip(
+      ChangeStateParams params);
+
+  Future<Either<Failures, MissionDetailsModel>> getMissionDetails(
+      int missionId);
 
   Future<Either<Failures, GlobalModel>> sendStreamPosition(
       StreamPositionParams params);

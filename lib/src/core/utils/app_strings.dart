@@ -24,6 +24,7 @@ static const String devastation = "devastation";
 static const String compressor = "compressor";
 static const String atTime = "atTime";
 static const String sAR = "sAR";
+static const String skip = "skip";
 // Messages Screen
 static const String inCaseThereIsAProblemOrInquiry = "inCaseThereIsAProblemOrInquiry";
 // Customer Screen
