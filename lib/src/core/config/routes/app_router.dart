@@ -12,8 +12,11 @@ class AppRouter {
           builder: (context) => LayoutScreen(),
         );
       case Routes.taskDetailsScreen:
+        final args = settings.arguments as Map<String, dynamic>;
+        final lat = args['lat'] as double;
+        final lng = args['lng'] as double;
         return MaterialPageRoute(
-          builder: (context) => TaskDetailsScreen(),
+          builder: (context) => TaskDetailsScreen(lat: lat, lng: lng),
         );
       case Routes.salaryDetailsScreen:
         return MaterialPageRoute(

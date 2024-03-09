@@ -1,21 +1,23 @@
 import '../../../../core/config/routes/app_imports.dart';
 
 class TaskDetailsMap extends StatefulWidget {
-  const TaskDetailsMap({super.key});
-
+  const TaskDetailsMap({super.key, required this.lat, required this.lng});
+final double lat;
+final double lng;
   @override
   State<TaskDetailsMap> createState() => _TaskDetailsMapState();
 }
 
 class _TaskDetailsMapState extends State<TaskDetailsMap> {
   final mapCubit = sl<MapCubit>();
+  final taskDetailsCubit = sl<TaskDetailsCubit>();
 
   @override
   void initState() {
     super.initState();
     mapCubit.askUserToEnableLocation();
-    // mapCubit.goToSelectedLocation(
-    //     lat: widget.item.latitude ?? 0.0, lng: widget.item.longitude ?? 0.0);
+    taskDetailsCubit.getMissionDetails(UserLocal.missionId ?? 0);
+    mapCubit.goToSelectedLocation( lat: widget.lat, lng: widget.lng);
   }
 
   @override
@@ -27,7 +29,12 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
         height: 204.h,
         child: Card(
           elevation: 10,
-          child: BlocBuilder<TaskDetailsCubit, TaskDetailsState>(
+          child: BlocConsumer<TaskDetailsCubit, TaskDetailsState>(
+            listener: (context, state) {
+              if (state is GetMissionDetailsSuccess) {
+
+              }
+            },
             builder: (context, state) {
               var taskDCubit = context.read<TaskDetailsCubit>();
               var missionDetails = taskDCubit.missionDetailsModel;

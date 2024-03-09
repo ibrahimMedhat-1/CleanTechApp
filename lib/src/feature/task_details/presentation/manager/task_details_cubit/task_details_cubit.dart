@@ -73,7 +73,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
       emit(GetMissionDetailsFailure());
     }, (r) {
       missionDetailsModel = r;
-      emit(GetMissionDetailsSuccess());
+      emit(GetMissionDetailsSuccess(missionDetailsModel: r));
     });
   }
 }

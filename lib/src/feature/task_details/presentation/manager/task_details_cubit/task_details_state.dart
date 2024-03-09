@@ -21,5 +21,9 @@ class ChangeMissionStateSuccess extends TaskDetailsState {
   ChangeMissionStateSuccess({this.changeMissionStateModel});
 }
 class GetMissionDetailsLoading extends TaskDetailsState{}
-class GetMissionDetailsSuccess extends TaskDetailsState{}
+class GetMissionDetailsSuccess extends TaskDetailsState{
+  final MissionDetailsModel missionDetailsModel;
+
+  GetMissionDetailsSuccess({ required this.missionDetailsModel});
+}
 class GetMissionDetailsFailure extends TaskDetailsState{}

@@ -19,6 +19,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
   @override
   void initState() {
     super.initState();
+    LocationHelper().isLocationEnabled();
+    LocationHelper().getPermissionLocation();
     homeCubit.changeIndex(0);
     homeCubit.getMissionsList();
   }

@@ -1,8 +1,10 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
-  TaskDetailsScreen({super.key});
+  TaskDetailsScreen({super.key, required this.lat, required this.lng});
 
+  final double lat;
+  final double lng;
   final taskDetailsCubit = sl<TaskDetailsCubit>();
 
   @override
@@ -29,14 +31,18 @@ class TaskDetailsScreen extends StatelessWidget {
           child: Padding(
             padding: EdgeInsetsDirectional.symmetric(horizontal: 40.w),
             child: RefreshIndicator(
-            onRefresh: ()async {
-              taskDetailsCubit.getMissionDetails(taskDetailsCubit.missionDetailsModel?.id ?? 0);
-            },
+              onRefresh: () async {
+                taskDetailsCubit.getMissionDetails(
+                    taskDetailsCubit.missionDetailsModel?.id ?? 0);
+              },
               child: ListView(
                 children: [
                   24.isHeight,
                   const Row(),
-                  TaskDetailsMap(),
+                  TaskDetailsMap(
+                    lat: lat,
+                    lng: lng,
+                  ),
                   60.isHeight,
                   TaskDetailsBody(),
                 ],

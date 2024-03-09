@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_state.dart';
 
@@ -12,12 +13,15 @@ class LoginCubit extends Cubit<LoginState> {
   LoginParams params = LoginParams();
 
   void login() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
     emit(LoginLoading());
     Either<Failures, LoginModel> result = await loginRepo.login(params);
     result.fold((l) {
       emit(LoginFailure(msg: l.errMessage));
     }, (r) {
       CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
+      prefs.setInt(MyCashKey.driverId.name, r.id ?? 0);
       CacheHelper.saveData(key: MyCashKey.driverName, value: r.name);
       CacheHelper.saveData(key: MyCashKey.image, value: r.image);
       print(UserLocal.driverId);

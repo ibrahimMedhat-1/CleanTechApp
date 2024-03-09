@@ -1,8 +1,20 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    LocationHelper().isLocationEnabled();
+    LocationHelper().getPermissionLocation();
+  }
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
