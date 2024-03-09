@@ -16,7 +16,6 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   //   emit(ChangeStepsIndexState());
   // }
   // ChangeMissionStateModel? changeMissionStateModel;
-  ChangeStateParams changeStateParams = ChangeStateParams();
 
   TextEditingController noteController = TextEditingController();
 
@@ -24,32 +23,37 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   //   changeStateParams = changeStateParams.copyWith(comment: value);
   // }
   ChangeMissionStateModel? changeMissionStateModel;
+  Position? position;
 
   void getLocation() {
     LocationHelper.getStreamLocation().listen((event) {
-      changeStateParams = changeStateParams.copyWith(
-        latitude: event.latitude,
-        longitude: event.longitude,
-      );
+      position = event;
+      print(position?.longitude);
+      emit(GetStreamLocationState());
+      // changeStateParams = changeStateParams.copyWith(
+      //   latitude: event.latitude,
+      //   longitude: event.longitude,
+      // );
     });
   }
 
-  void changeMissionState({required int missionId}) async {
+  void changeMissionState(
+      {required int missionId,
+      required double lat,
+      required double lng}) async {
     print(" the mission id is $missionId");
-    // LocationHelper.getCurrentLocation().then((value) {
-    //   changeStateParams = changeStateParams.copyWith(
-    //     missionId: missionId,
-    //     latitude: value.latitude,
-    //     longitude: value.longitude,
-    //     comment: noteController.text,
-    //   );
-    // });
+    getLocation();
     emit(ChangeMissionStateLoading());
-    changeStateParams = changeStateParams.copyWith(
+    // changeStateParams = changeStateParams.copyWith(
+    //   missionId: missionId,
+    //   comment: noteController.text,
+    // );
+    final result = await repo.changeMissionState(ChangeStateParams(
       missionId: missionId,
       comment: noteController.text,
-    );
-    final result = await repo.changeMissionState(changeStateParams);
+      latitude: lat,
+      longitude: lng,
+    ));
     result.fold(
       (l) => emit(ChangeMissionStateFailure(l)),
       (r) {

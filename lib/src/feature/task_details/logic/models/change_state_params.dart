@@ -5,10 +5,10 @@ class ChangeStateParams {
   final double longitude;
 
   ChangeStateParams({
-    this.missionId = 0,
-    this.comment = '',
-    this.latitude = 0.0,
-    this.longitude = 0.0,
+    required this.missionId  ,
+    required this.comment ,
+    required  this.latitude ,
+    required this.longitude ,
   });
 
   ChangeStateParams copyWith({

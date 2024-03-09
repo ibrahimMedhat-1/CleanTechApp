@@ -1,4 +1,7 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/utils/pop_up.dart';
+
+Position? position;
 
 class ConfirmStepDialog extends StatefulWidget {
   ConfirmStepDialog({
@@ -16,12 +19,25 @@ class _ConfirmStepDialogState extends State<ConfirmStepDialog> {
   final taskDetailsCubit = sl<TaskDetailsCubit>();
 
   final mapCubit = sl<MapCubit>();
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
     taskDetailsCubit.getMissionDetails(widget.missionId);
+    getLocation();
   }
+
+  void getLocation() {
+    LocationHelper.getCurrentLocation().then((value) {
+      setState(() {
+        position = value;
+        print(position?.longitude);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -105,9 +121,22 @@ class _ConfirmStepDialogState extends State<ConfirmStepDialog> {
                                           state is ChangeMissionStateLoading,
                                       text: AppStrings.confirmStep.tr(context),
                                       onPressed: () {
-                                        taskDetailsCubit.changeMissionState(missionId:taskDetailsCubit.missionDetailsModel?.id ?? 0);
-                                        print( taskDetailsCubit.missionDetailsModel?.id);
-                                        CustomNavigator.instance.pop();
+                                        if (position == null) {
+                                          getLocation();
+                                          // CustomNavigator.instance.pop();
+                                          flutterToast(msg: "Try again");
+                                        } else {
+                                          taskDetailsCubit.changeMissionState(
+                                              missionId: taskDetailsCubit
+                                                      .missionDetailsModel
+                                                      ?.id ??
+                                                  0,
+                                              lat: position?.latitude ?? 0,
+                                              lng: position?.longitude ?? 0);
+                                          print(taskDetailsCubit
+                                              .missionDetailsModel?.id);
+                                          CustomNavigator.instance.pop();
+                                        }
                                       },
                                     );
                                   },

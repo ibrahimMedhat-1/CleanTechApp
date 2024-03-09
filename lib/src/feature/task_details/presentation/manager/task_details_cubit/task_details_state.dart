@@ -27,3 +27,4 @@ class GetMissionDetailsSuccess extends TaskDetailsState{
   GetMissionDetailsSuccess({ required this.missionDetailsModel});
 }
 class GetMissionDetailsFailure extends TaskDetailsState{}
+class GetStreamLocationState extends TaskDetailsState{}

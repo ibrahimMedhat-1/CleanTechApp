@@ -32,12 +32,11 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
               print("*****************************************************");
               taskDetailsCubit
                   .getMissionDetails(state.changeMissionStateModel?.next ?? 0);
+            } else {
+              taskDetailsCubit.getMissionDetails(
+                  taskDetailsCubit.missionDetailsModel?.id ?? 0);
             }
-            else{
-              taskDetailsCubit
-                  .getMissionDetails(taskDetailsCubit.missionDetailsModel?.id ?? 0);
-            }
-            if(state.changeMissionStateModel?.next == null){
+            if (state.changeMissionStateModel?.next == null) {
               CustomNavigator.instance.pop();
             }
           }
@@ -143,19 +142,21 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
                                               ?.currentStatus ??
                                           0) -
                                       1)),
-                              onPressed: () => ((taskDetailsCubit
-                                                  .missionDetailsModel
-                                                  ?.currentStatus ??
-                                              0) -
-                                          1) <
-                                      2
-                                  ? showAdaptiveDialog(
-                                      context: context,
-                                      builder: (context) => ConfirmStepDialog(
-                                        missionId: item?.id ?? 0,
-                                      ),
-                                    )
-                                  : null,
+                              onPressed: () {
+                                taskDetailsCubit.getLocation();
+                                ((taskDetailsCubit.missionDetailsModel
+                                                    ?.currentStatus ??
+                                                0) -
+                                            1) <
+                                        2
+                                    ? showAdaptiveDialog(
+                                        context: context,
+                                        builder: (context) => ConfirmStepDialog(
+                                          missionId: item?.id ?? 0,
+                                        ),
+                                      )
+                                    : null;
+                              },
                               color: ((taskDetailsCubit.missionDetailsModel
                                                   ?.currentStatus ??
                                               0) -
