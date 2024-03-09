@@ -5,7 +5,7 @@ class ProfileDriverInHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Row(
+    return Row(
       children: [
         Container(
           height: 64.h,
@@ -22,25 +22,24 @@ class ProfileDriverInHome extends StatelessWidget {
             shape: BoxShape.circle,
             color: AppColors.white,
           ),
-          child:
-          UserLocal.image == null ?
-          Icon(
-            Icons.person,
-            size: 50.sp,
-          ) : ClipRRect(
-           borderRadius: BorderRadius.circular(50.r),
-            child: Image.network(
-              UserLocal.image ?? '',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Icon(
+          child: UserLocal.image == null
+              ? Icon(
                   Icons.person,
                   size: 50.sp,
-                );
-
-              },
-            ),
-          ),
+                )
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(50.r),
+                  child: Image.network(
+                    UserLocal.image ?? '',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(
+                        Icons.person,
+                        size: 50.sp,
+                      );
+                    },
+                  ),
+                ),
         ),
         10.isWight,
         Column(
@@ -77,8 +76,6 @@ class ProfileDriverInHome extends StatelessWidget {
             )
           ],
         ),
-        // Spacer(),
-        // LanguageDropDown(isExpanded: false),
       ],
     );
   }
