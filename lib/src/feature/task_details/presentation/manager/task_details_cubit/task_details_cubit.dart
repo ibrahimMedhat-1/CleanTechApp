@@ -27,7 +27,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
   void getLocation() {
     LocationHelper.getStreamLocation().listen((event) {
       position = event;
-      print(position?.longitude);
+      // print(position?.longitude);
       emit(GetStreamLocationState());
       // changeStateParams = changeStateParams.copyWith(
       //   latitude: event.latitude,

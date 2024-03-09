@@ -2,8 +2,10 @@ import '../../../../core/config/routes/app_imports.dart';
 
 class TaskDetailsMap extends StatefulWidget {
   const TaskDetailsMap({super.key, required this.lat, required this.lng});
-final double lat;
-final double lng;
+
+  final double lat;
+  final double lng;
+
   @override
   State<TaskDetailsMap> createState() => _TaskDetailsMapState();
 }
@@ -17,7 +19,7 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
     super.initState();
     mapCubit.askUserToEnableLocation();
     taskDetailsCubit.getMissionDetails(UserLocal.missionId ?? 0);
-    mapCubit.goToSelectedLocation( lat: widget.lat, lng: widget.lng);
+    mapCubit.goToSelectedLocation(lat: widget.lat, lng: widget.lng);
   }
 
   @override
@@ -31,9 +33,7 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
           elevation: 10,
           child: BlocConsumer<TaskDetailsCubit, TaskDetailsState>(
             listener: (context, state) {
-              if (state is GetMissionDetailsSuccess) {
-
-              }
+              if (state is GetMissionDetailsSuccess) {}
             },
             builder: (context, state) {
               var taskDCubit = context.read<TaskDetailsCubit>();
@@ -61,8 +61,11 @@ class _TaskDetailsMapState extends State<TaskDetailsMap> {
                                 myLocationButtonEnabled: false,
                                 initialCameraPosition:
                                     cubit.setCurrentLocationCameraPosition(
-                                        lat: missionDetails.latitude ?? 0.0,
-                                        lng: missionDetails.longitude ?? 0.0),
+                                      lat: widget.lat,
+                                      lng: widget.lng,
+                                  // lat: missionDetails.latitude ?? 0.0,
+                                  // lng: missionDetails.longitude ?? 0.0,
+                                ),
                                 onTap: (argument) {
                                   AppFunctions().openMap(
                                     lat: argument.latitude,

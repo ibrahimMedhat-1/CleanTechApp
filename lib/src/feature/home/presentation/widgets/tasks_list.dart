@@ -52,6 +52,8 @@ class _TasksListState extends State<TasksList> {
                           return TaskItem(
                               item: item,
                               onPress: () {
+                                print("lng : ${item.longitude}");
+                                print("lat : ${item.latitude}");
                                 item.id == null || item.id == 0
                                     ? null
                                     : taskDetailsCubit
