@@ -41,6 +41,6 @@ void main() async {
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   TimerBackgroundServiceToSend().getCurrentLocation();
   await initializeServices(); //setAsBackground // setAsForeground
-  FlutterBackgroundService().invoke("setAsForeground");
+  // FlutterBackgroundService().invoke("setAsBackground");
   runApp(MyApp());
 }

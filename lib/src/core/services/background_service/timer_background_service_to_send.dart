@@ -51,7 +51,7 @@ class TimerBackgroundServiceToSend {
 
     void sendLocation() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
+print(prefs.getInt(MyCashKey.missionId.name) ?? 0);
     Dio dio = Dio();
     dio
         .post(EndPoint.sendLocationFullLink(
