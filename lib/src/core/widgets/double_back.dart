@@ -10,7 +10,11 @@ class DoubleBackToCloseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(onWillPop: _handleWillPop, child: child);
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) => _handleWillPop(),
+      child: child,
+    );
   }
 
   Future<bool> _handleWillPop() async {
