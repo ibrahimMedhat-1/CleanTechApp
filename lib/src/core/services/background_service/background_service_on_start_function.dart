@@ -18,6 +18,6 @@ import 'package:flutter_background_service_android/flutter_background_service_an
     service.on('stopService').listen((event) {
       service.stopSelf();
     });
-    TimerBackgroundServiceToSend().timerTOSendLocation(service);
+    // TimerBackgroundServiceToSend().timerTOSendLocation(service);
   }
 

@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

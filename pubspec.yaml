@@ -40,6 +40,7 @@ dependencies:
   permission_handler: ^11.3.0
   # make custom loading
   shimmer: ^3.0.0
+  get_storage: ^2.1.1
 
 
 dev_dependencies:
