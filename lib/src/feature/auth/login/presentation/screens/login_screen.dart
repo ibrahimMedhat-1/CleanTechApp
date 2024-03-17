@@ -25,12 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               color: AppColors.primary,
               width: double.infinity,
-              child: Assets.images.backgroundLogin.image(height: 348),
+              child: Assets.images.backgroundLogin.image(height: 300),
             ),
             Positioned(
               bottom: 0,
               child: Container(
-                height: 600.h,
+                height: 650.h,
                 width: MediaQuery.sizeOf(context).width,
                 padding: EdgeInsetsDirectional.symmetric(horizontal: 20.w),
                 decoration: BoxDecoration(

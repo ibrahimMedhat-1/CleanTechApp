@@ -7,6 +7,8 @@ static const String arabic = "arabic";
 static const String english = "english";
 static const String chooseTheLanguage = "chooseTheLanguage";
 static const String language = "language";
+static const String chooseTheCar = "chooseTheCar";
+
 
 // Home Screen
 static const String home = "home";

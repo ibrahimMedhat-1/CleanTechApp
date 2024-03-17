@@ -15,9 +15,13 @@ export 'package:ct_clean/src/feature/schedule_previous_tasks/presentation/widget
 export 'package:ct_clean/src/feature/salary_details/logic/data/salary_details_repo.dart';
 export 'package:ct_clean/src/feature/task_details/logic/models/change_mission_state_model.dart';
 export 'package:ct_clean/src/feature/task_details/logic/models/mission_details_model.dart';
+export 'package:ct_clean/src/feature/auth/login/logic/model/car_model.dart';
 
 export 'package:ct_clean/src/core/functions/functions.dart';
 export 'package:ct_clean/src/core/widgets/loading.dart';
+export 'package:ct_clean/src/core/extensions/string_extension.dart';
+export 'package:ct_clean/src/core/utils/pop_up.dart';
+export 'package:searchfield/searchfield.dart';
 
 
 

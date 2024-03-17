@@ -17,3 +17,7 @@ class LoginFailure extends LoginState {
 
 class ShowLoginPassword extends LoginState {}
 class ChangeLangState extends LoginState {}
+
+class GetCarsSuccess extends LoginState {}
+class GetCarsLoading extends LoginState {}
+class GetCarsFailure extends LoginState {}

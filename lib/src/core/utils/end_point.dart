@@ -13,6 +13,8 @@ class EndPoint {
   static const String salary = "/salary";
   static const String oldMissions = "/oldmissions";
   static const String missionsDetails = "/missionsdetails";
+  static   String getCars (String plate)=> "/cars?plate=$plate&language=${UserLocal.lang ?? 'en'}";
+
 
   static String sendLocationFullLink({
     required LatLng position,

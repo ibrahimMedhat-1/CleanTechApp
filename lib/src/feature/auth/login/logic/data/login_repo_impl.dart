@@ -24,4 +24,23 @@ class LoginRepoImpl extends LoginRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failures, List<CarModel>>> getCars(String plate) async {
+    List<CarModel> list = [];
+    try {
+      final response = await apiService.getData(url: EndPoint.getCars(plate));
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        response.data.forEach((e) {
+          list.add(CarModel.fromJson(e));
+        });
+        return Right(list);
+      } else {
+        return left(ServerFailure("Error"));
+      }
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

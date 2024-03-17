@@ -29,6 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
       prefs.setInt(MyCashKey.driverId.name, r.id ?? -1);
       CacheHelper.saveData(key: MyCashKey.driverName, value: r.name);
       CacheHelper.saveData(key: MyCashKey.image, value: r.image);
+      CacheHelper.saveData(key: MyCashKey.type, value: r.type);
       print(UserLocal.driverId);
       emit(LoginSuccess(loginModel: r));
     });
@@ -40,6 +41,10 @@ class LoginCubit extends Cubit<LoginState> {
 
   void passwordOnChange(String? val) {
     params = params.copyWith(password: val);
+  }
+
+  void carOnChange(SearchFieldListItem<CarModel> value) {
+    params = params.copyWith(carId: value.item?.id);
   }
 
   bool isShowPassword = true;
@@ -56,5 +61,19 @@ class LoginCubit extends Cubit<LoginState> {
     CacheHelper.saveData(key: MyCashKey.lang, value: language);
     print(UserLocal.lang);
     emit(ChangeLangState());
+  }
+
+  List<CarModel>? listCars;
+
+  void getCars(String plate) async {
+    emit(GetCarsLoading());
+    final result = await loginRepo.getCars(plate);
+    result.fold((l) {
+      print(l.errMessage);
+      emit(GetCarsFailure());
+    }, (r) {
+      listCars = r;
+      emit(GetCarsSuccess());
+    });
   }
 }

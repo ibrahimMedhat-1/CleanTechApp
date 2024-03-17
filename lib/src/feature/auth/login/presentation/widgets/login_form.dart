@@ -1,6 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/extensions/string_extension.dart';
-import 'package:ct_clean/src/core/utils/pop_up.dart';
 
 GlobalKey<FormState> loginKey = GlobalKey<FormState>();
 
@@ -55,8 +53,39 @@ class LoginForm extends StatelessWidget {
                 ),
                 25.isHeight,
                 LanguageDropDown(
-                  label: AppStrings.chooseTheLanguage.tr(context),
-                ),
+                    label: AppStrings.chooseTheLanguage.tr(context)),
+                25.isHeight, //chooseTheCar
+                SearchField<CarModel>(
+                    hint: AppStrings.chooseTheCar.tr(context),
+                    scrollbarDecoration: ScrollbarDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusDirectional.circular(12.r),
+                      ),
+                    ),
+                    searchInputDecoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                    ),
+                    // suggestionStyle: context.bodySmall,
+                    suggestions: loginCubit.listCars
+                            ?.map((e) => SearchFieldListItem<CarModel>(
+                                "${e.plate}" ?? 'Loading',
+                                item: e,
+                                child: Text("${e.plate}")))
+                            .toList() ??
+                        [],
+                    itemHeight: 50.h,
+                    onSuggestionTap: loginCubit.carOnChange,
+                    onSearchTextChanged: (p0) {
+                      loginCubit.getCars(p0);
+                      return null;
+                    },
+                    maxSuggestionsInViewPort: 6,
+                    suggestionsDecoration: SuggestionDecoration(
+                        color: AppColors.primary3,
+                        borderRadius: BorderRadiusDirectional.circular(10.r))),
+
                 27.isHeight,
                 ButtonWidget(
                   text: AppStrings.login.tr(context),

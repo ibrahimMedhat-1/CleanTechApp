@@ -7,5 +7,6 @@ class UserLocal {
   static int? get missionId => CacheHelper.getData(key: MyCashKey.missionId);
   static String? get driverName => CacheHelper.getData(key: MyCashKey.driverName);
   static String? get image => CacheHelper.getData(key: MyCashKey.image);
+  static int? get type =>CacheHelper.getData(key: MyCashKey.type);
 
 }
