@@ -45,17 +45,17 @@ class TimerBackgroundServiceToSend {
 
   LatLng? positionValue;
 
-  // void getCurrentLocation() async {
-  //   LocationHelper.getStreamLocation().listen((event) {
-  //     positionValue = LatLng(event.latitude, event.longitude);
-  //     // print("lat : ${event.latitude}, lng : ${event.longitude} ");
-  //   });
-  // }
+  void getCurrentLocation() async {
+    LocationHelper.getStreamLocation().listen((event) {
+      positionValue = LatLng(event.latitude, event.longitude);
+      // print("lat : ${event.latitude}, lng : ${event.longitude} ");
+    });
+  }
 
   // Future<Position> get position => LocationHelper.getCurrentLocation();
 
   void sendLocation() async {
-    // getCurrentLocation();
+    getCurrentLocation();
     await CacheHelper.initCacheHelper();
      final SharedPreferences prefs = await SharedPreferences.getInstance();
     // double lat = await position.latitude;
@@ -64,10 +64,10 @@ class TimerBackgroundServiceToSend {
     //   positionValue = LatLng(value.latitude, value.longitude);
     //
     // });
-    LocationHelper.getStreamLocation().listen((event) {
-      positionValue = LatLng(event.latitude, event.longitude);
-      // print("lat : ${event.latitude}, lng : ${event.longitude} ");
-    });
+    // LocationHelper.getStreamLocation().listen((event) {
+    //   positionValue = LatLng(event.latitude, event.longitude);
+    //   // print("lat : ${event.latitude}, lng : ${event.longitude} ");
+    // });
     int driverId =
         // box.read(MyCashKey.driverId.name) ?? 0;
         prefs.getInt(MyCashKey.driverId.name) ?? 0;
