@@ -35,6 +35,9 @@ class ProfileWidget extends StatelessWidget {
                                 : cubit.profileModel?.image ??
                                     'http://via.placeholder.com/350x150',
                             fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Assets.svgs.person.svg();
+                            },
                           ),
               ),
             ),
