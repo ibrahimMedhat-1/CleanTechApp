@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/customs/task_details_appbar.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
   TaskDetailsScreen({super.key, required this.lat, required this.lng});
@@ -10,22 +11,7 @@ class TaskDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-        appBar: AppBar(
-          leading: Container(
-            alignment: Alignment.center,
-            child: Text(
-              AppStrings.taskDetails.tr(context),
-              textAlign: TextAlign.center,
-              style: FontStyles.interSize18_500Black.copyWith(
-                  color: AppColors.white, fontWeight: FontWeight.w700),
-            ),
-          ),
-          actions: [
-            Assets.svgs.logoWhite.svg(width: 120.w),
-            const CustomBackButton(),
-          ],
-          leadingWidth: 150.w,
-        ),
+        appBar: TaskDetailsAppBar(context : context),
         body: BlocProvider.value(
           value: taskDetailsCubit,
           child: Padding(
