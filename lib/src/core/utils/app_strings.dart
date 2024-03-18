@@ -1,4 +1,5 @@
 class AppStrings {
+  // login
 static const String logInToContinue = "logInToContinue";
 static const String mobile = "mobile";
 static const String password = "password";
@@ -8,6 +9,7 @@ static const String english = "english";
 static const String chooseTheLanguage = "chooseTheLanguage";
 static const String language = "language";
 static const String chooseTheCar = "chooseTheCar";
+static const String pleaseSelectACar = "pleaseSelectACar";
 
 
 // Home Screen

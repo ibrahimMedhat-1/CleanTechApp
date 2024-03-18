@@ -74,7 +74,8 @@
   "switch" : " تم التبديل",
   "modification" : "تم التعديل",
   "containersNumber" : "رقم الحاوية",
-  "receivedAmount" : "المبلغ المستلم"
+  "receivedAmount" : "المبلغ المستلم",
+  "pleaseSelectACar" : "برجاء اختيار السيارة"
 
 
 }

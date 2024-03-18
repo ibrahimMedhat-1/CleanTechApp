@@ -43,7 +43,10 @@ class LoginCubit extends Cubit<LoginState> {
     params = params.copyWith(password: val);
   }
 
+  int? carId;
+
   void carOnChange(SearchFieldListItem<CarModel> value) {
+    carId = value.item?.id;
     params = params.copyWith(carId: value.item?.id);
   }
 

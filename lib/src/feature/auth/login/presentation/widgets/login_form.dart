@@ -28,34 +28,35 @@ class LoginForm extends StatelessWidget {
         builder: (context, state) {
           return Form(
             key: loginKey,
-            child: Column(
-              children: [
-                TextFieldWidget(
-                  hint: AppStrings.mobile.tr(context),
-                  borderRadius: 8.r,
-                  color: AppColors.white,
-                  onChanged: loginCubit.mobileOnChange,
-                  validator: context.generalValidate,
-                  keyboardType: TextInputType.phone,
-                ),
-                25.isHeight,
-                TextFieldWidget(
-                  hint: AppStrings.password.tr(context),
-                  isPassword: loginCubit.isShowPassword,
-                  trailingIcon: VisibilityPassword(
-                      pass: loginCubit.isShowPassword,
-                      onPress: () =>
-                          loginCubit.changePasswordVisibilityInLogin()),
-                  borderRadius: 8.r,
-                  color: AppColors.white,
-                  onChanged: loginCubit.passwordOnChange,
-                  validator: context.generalValidate,
-                ),
-                25.isHeight,
-                LanguageDropDown(
-                    label: AppStrings.chooseTheLanguage.tr(context)),
-                25.isHeight, //chooseTheCar
-                SearchField<CarModel>(
+            child: Expanded(
+              child: ListView(
+                children: [
+                  TextFieldWidget(
+                    hint: AppStrings.mobile.tr(context),
+                    borderRadius: 8.r,
+                    color: AppColors.white,
+                    onChanged: loginCubit.mobileOnChange,
+                    validator: context.generalValidate,
+                    keyboardType: TextInputType.phone,
+                  ),
+                  25.isHeight,
+                  TextFieldWidget(
+                    hint: AppStrings.password.tr(context),
+                    isPassword: loginCubit.isShowPassword,
+                    trailingIcon: VisibilityPassword(
+                        pass: loginCubit.isShowPassword,
+                        onPress: () =>
+                            loginCubit.changePasswordVisibilityInLogin()),
+                    borderRadius: 8.r,
+                    color: AppColors.white,
+                    onChanged: loginCubit.passwordOnChange,
+                    validator: context.generalValidate,
+                  ),
+                  25.isHeight,
+                  LanguageDropDown(
+                      label: AppStrings.chooseTheLanguage.tr(context)),
+                  25.isHeight, //chooseTheCar
+                  SearchField<CarModel>(
                     hint: AppStrings.chooseTheCar.tr(context),
                     scrollbarDecoration: ScrollbarDecoration(
                       shape: RoundedRectangleBorder(
@@ -83,22 +84,31 @@ class LoginForm extends StatelessWidget {
                     },
                     maxSuggestionsInViewPort: 6,
                     suggestionsDecoration: SuggestionDecoration(
-                        color: AppColors.primary3,
-                        borderRadius: BorderRadiusDirectional.circular(10.r))),
+                      color: AppColors.primary3,
+                      borderRadius: BorderRadiusDirectional.circular(10.r),
+                    ),
+                  ),
 
-                27.isHeight,
-                ButtonWidget(
-                  text: AppStrings.login.tr(context),
-                  hasElevation: true,
-                  borderRadius: 8.r,
-                  loading: state is LoginLoading,
-                  margin: EdgeInsetsDirectional.symmetric(
-                      horizontal: MediaQuery.sizeOf(context).width * 0.1),
-                  onPressed: () => loginKey.currentState!.validate()
-                      ? loginCubit.login()
-                      : null,
-                ),
-              ],
+                  27.isHeight,
+                  ButtonWidget(
+                      text: AppStrings.login.tr(context),
+                      hasElevation: true,
+                      borderRadius: 8.r,
+                      loading: state is LoginLoading,
+                      margin: EdgeInsetsDirectional.symmetric(
+                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+                      onPressed: () {
+                        if (loginKey.currentState!.validate()) {
+                          if (loginCubit.carId == null) {
+                            flutterToast(
+                                msg: AppStrings.pleaseSelectACar.tr(context));
+                          } else {
+                            loginCubit.login();
+                          }
+                        }
+                      }),
+                ],
+              ),
             ),
           );
         },

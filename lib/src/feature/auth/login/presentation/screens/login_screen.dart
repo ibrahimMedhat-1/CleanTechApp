@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -14,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
     LocationHelper().isLocationEnabled();
     LocationHelper().getPermissionLocation();
   }
+
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
@@ -58,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    25.isHeight,
                     LoginForm(),
                   ],
                 ),
