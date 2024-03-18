@@ -169,16 +169,16 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const AndroidInitializationSettings androidInitializationSettings =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
+AndroidInitializationSettings('@mipmap/ic_launcher');
 const InitializationSettings initializationSettings =
-    InitializationSettings(android: androidInitializationSettings);
+InitializationSettings(android: androidInitializationSettings);
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+FlutterLocalNotificationsPlugin();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   notificationChannelId, // id
   'MY FOREGROUND SERVICE', // title
   description:
-      'This channel is used for important notifications.', // description
+  'This channel is used for important notifications.', // description
   importance: Importance.low, // importance must be at low or higher level
 );
 const notificationChannelId = 'my_foreground';
@@ -215,14 +215,14 @@ void main() async {
   await initializeService();
   // TimerBackgroundServiceToSend().getCurrentLocation();
 
-   runApp(MyApp());
+  runApp(MyApp());
 }
 
 Future<void> initializeService() async {
   final service = FlutterBackgroundService();
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+      AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
   await service.configure(
@@ -261,7 +261,7 @@ Future<void> onStart(ServiceInstance service) async {
       if (await service.isForegroundService()) {
         int rndmIndex = Random().nextInt(100);
         AndroidNotificationDetails androidNotificationDetails =
-            AndroidNotificationDetails(
+        AndroidNotificationDetails(
           '$rndmIndex.0',
           "Clean Tech",
           channelDescription: "This is a channel",
@@ -270,7 +270,7 @@ Future<void> onStart(ServiceInstance service) async {
           showWhen: false,
         );
         NotificationDetails platformChannelSpecifics =
-            NotificationDetails(android: androidNotificationDetails);
+        NotificationDetails(android: androidNotificationDetails);
         await flutterLocalNotificationsPlugin.show(
           rndmIndex,
           "Clean Tech",
@@ -282,13 +282,15 @@ Future<void> onStart(ServiceInstance service) async {
         print("object isForegroundService");
         // callApi();
         // TimerBackgroundServiceToSend().getCurrentLocation();
-        TimerBackgroundServiceToSend().sendLocation();
+        // TimerBackgroundServiceToSend().sendLocation();
+
+        sendLocation();
       } else {
         print("object");
         // callApi();
         // TimerBackgroundServiceToSend().getCurrentLocation();
-        TimerBackgroundServiceToSend().sendLocation();
-
+        // TimerBackgroundServiceToSend().sendLocation();
+        sendLocation();
         flutterLocalNotificationsPlugin.show(
           notificationId,
           'COOL SERVICE',
@@ -307,9 +309,54 @@ Future<void> onStart(ServiceInstance service) async {
   });
 }
 
+StreamSubscription<Position> get getterPosition =>
+    LocationHelper.getStreamLocation().listen((event) => event);
+Position? po;
 
+void sendLocation() async {
+  await CacheHelper.initCacheHelper();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  // double lat = await position.latitude;
+  // final box = GetStorage();
+  // position.then((value) {
+  //   positionValue = LatLng(value.latitude, value.longitude);
+  //
+  // });
+  // LocationHelper.getStreamLocation().listen((event) {
+  //   positionValue = LatLng(event.latitude, event.longitude);
+  //   // print("lat : ${event.latitude}, lng : ${event.longitude} ");
+  // });
 
-//
+  int driverId =
+  // box.read(MyCashKey.driverId.name) ?? 0;
+  prefs.getInt(MyCashKey.driverId.name) ?? 0;
+  if (driverId == 0) {
+    driverId = prefs.getInt(MyCashKey.driverId.name) ?? 0;
+    print("*** ${UserLocal.driverId} ***");
+    // SystemNavigator.pop();
+    // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  }
+  getterPosition.onData((data) {
+    po = data;
+  });
+
+  Dio dio = Dio();
+  dio
+      .post(EndPoint.sendLocationFullLink(
+  position:po == null ? LatLng(0.0, 0.0) : LatLng(po?.latitude ?? 0.0, po?.longitude ?? 0.0),
+  missionId: prefs.getInt(MyCashKey.missionId.name) ?? 0,
+  driverId: UserLocal.driverId ?? 0,
+  ))
+      .then((value) {
+  debugPrint(
+  "AhmedTracing: sendLocation ${value.statusCode} , ${po?.latitude} , ${po?.longitude} ");
+  debugPrint("${value.data}");
+  print("The generalDriverId is ${UserLocal.driverId ?? 0}");
+  }).catchError((e) {
+  debugPrint("AhmedTracing: sendLocation Error is ${e.toString()}");
+  });
+}
+
 // void callApi() async {
 //   Dio dio = Dio();
 //   dio
