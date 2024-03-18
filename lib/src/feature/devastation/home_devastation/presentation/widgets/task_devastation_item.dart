@@ -27,7 +27,7 @@ class TaskDevastationItem extends StatelessWidget {
                 height: double.infinity,
                 width: 24.w,
                 color:
-                    item.missionType == 0 ? AppColors.primary : AppColors.red,
+                    item.companyType == 0 ? AppColors.primary : AppColors.red,
               ),
               3.isWight,
               Column(
