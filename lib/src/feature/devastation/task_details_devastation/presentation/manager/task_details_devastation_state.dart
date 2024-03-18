@@ -7,3 +7,12 @@ class TaskDetailsDevastationInitial extends TaskDetailsDevastationState {}
 class GetTaskDevastationDetailsSuccess extends TaskDetailsDevastationState {}
 class GetTaskDevastationDetailsLoading extends TaskDetailsDevastationState {}
 class GetTaskDevastationDetailsFailure extends TaskDetailsDevastationState {}
+
+class ChangeDevastationStateFailure extends TaskDetailsDevastationState {}
+class ChangeDevastationStateSuccess extends TaskDetailsDevastationState {
+  ChangeDevastationStateSuccess(this.r);
+ final ChangeMissionStateModel r;
+}
+class ChangeDevastationStateLoading extends TaskDetailsDevastationState {}
+
+

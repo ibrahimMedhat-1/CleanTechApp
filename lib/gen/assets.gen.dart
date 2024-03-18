@@ -100,6 +100,26 @@ class $AssetsImagesGen {
   AssetGenImage get customer =>
       const AssetGenImage('assets/images/customer.png');
 
+  /// File path: assets/images/devastation_modification_image.png
+  AssetGenImage get devastationModificationImage =>
+      const AssetGenImage('assets/images/devastation_modification_image.png');
+
+  /// File path: assets/images/devastation_pull_image.png
+  AssetGenImage get devastationPullImage =>
+      const AssetGenImage('assets/images/devastation_pull_image.png');
+
+  /// File path: assets/images/devastation_rebate_image.png
+  AssetGenImage get devastationRebateImage =>
+      const AssetGenImage('assets/images/devastation_rebate_image.png');
+
+  /// File path: assets/images/devastation_switchState_image.png
+  AssetGenImage get devastationSwitchStateImage =>
+      const AssetGenImage('assets/images/devastation_switchState_image.png');
+
+  /// File path: assets/images/devastation_up_image.png
+  AssetGenImage get devastationUpImage =>
+      const AssetGenImage('assets/images/devastation_up_image.png');
+
   /// File path: assets/images/done_icon.png
   AssetGenImage get doneIcon =>
       const AssetGenImage('assets/images/done_icon.png');
@@ -167,6 +187,11 @@ class $AssetsImagesGen {
         carIcon,
         correctIcon,
         customer,
+        devastationModificationImage,
+        devastationPullImage,
+        devastationRebateImage,
+        devastationSwitchStateImage,
+        devastationUpImage,
         doneIcon,
         goToClient,
         home,
@@ -205,6 +230,14 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/call_icon.svg
   SvgGenImage get callIcon => const SvgGenImage('assets/svgs/call_icon.svg');
 
+  /// File path: assets/svgs/collect_images.svg
+  SvgGenImage get collectImages =>
+      const SvgGenImage('assets/svgs/collect_images.svg');
+
+  /// File path: assets/svgs/deserved_amount.svg
+  SvgGenImage get deservedAmount =>
+      const SvgGenImage('assets/svgs/deserved_amount.svg');
+
   /// File path: assets/svgs/have_problem.svg
   SvgGenImage get haveProblem =>
       const SvgGenImage('assets/svgs/have_problem.svg');
@@ -231,6 +264,10 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/question.svg
   SvgGenImage get question => const SvgGenImage('assets/svgs/question.svg');
 
+  /// File path: assets/svgs/switchStateimage.png
+  AssetGenImage get switchStateimage =>
+      const AssetGenImage('assets/svgs/switchStateimage.png');
+
   /// File path: assets/svgs/visibilityField.svg
   SvgGenImage get visibilityField =>
       const SvgGenImage('assets/svgs/visibilityField.svg');
@@ -244,8 +281,10 @@ class $AssetsSvgsGen {
       const SvgGenImage('assets/svgs/whatsapp_icon.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
+  List<dynamic> get values => [
         callIcon,
+        collectImages,
+        deservedAmount,
         haveProblem,
         home,
         logoWhite,
@@ -254,6 +293,7 @@ class $AssetsSvgsGen {
         person,
         primaryLogo,
         question,
+        switchStateimage,
         visibilityField,
         visibilityOffField,
         whatsappIcon

@@ -39,6 +39,7 @@ class TaskDevastationList extends StatelessWidget {
                                     "lng": item.longitude,
                                   }).then((value) {
                                 mapCubit.markers.clear();
+                                homeDevastationCubit.getDevastationMission();
                               });
                             },
                           );

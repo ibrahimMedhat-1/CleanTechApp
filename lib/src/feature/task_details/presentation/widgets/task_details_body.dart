@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/feature/task_details/presentation/widgets/connect_and_management_buttons.dart';
 
 class TaskDetailsBody extends StatefulWidget {
   TaskDetailsBody({super.key});
@@ -15,8 +14,7 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
   void initState() {
     super.initState();
     taskDetailsCubit.getLocation();
-    // taskDetailsCubit.getMissionDetails(widget.item.id ?? 0);
-  }
+   }
 
   @override
   Widget build(BuildContext context) {

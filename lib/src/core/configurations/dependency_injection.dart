@@ -49,5 +49,6 @@ Future<void> setUpLocators() async {
   sl.registerLazySingleton<TaskDetailsDevastationRepo>(
       () => TaskDetailsDevastationRepoImpl(sl()));
   sl.registerLazySingleton<TaskDetailsDevastationCubit>(
-      () => TaskDetailsDevastationCubit(sl()));
+    () => TaskDetailsDevastationCubit(sl())..getStreamLocation(),
+  );
 }

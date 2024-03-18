@@ -11,12 +11,6 @@ class TaskDetailsDevastationRepoImpl extends TaskDetailsDevastationRepo {
   final ApiService apiService;
 
   @override
-  Future<Either<Failures, GlobalModel>> changeMissionState() {
-    // TODO: implement changeMissionState
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<Failures, MissionDevastationModel>> getMissionDetails(
       int missionId) async {
     try {
@@ -27,6 +21,27 @@ class TaskDetailsDevastationRepoImpl extends TaskDetailsDevastationRepo {
         return Right(user);
       } else {
         return left(ServerFailure("Error"));
+      }
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, ChangeMissionStateModel>> changeMissionState(
+      ChangeDevastationMissionParams params) async {
+    print(params.lat);
+    print(params.lng);
+    try {
+      final response = await apiService
+          .postData(url: EndPoint.damarstatus, query: params.toMap(), data: {});
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final user = ChangeMissionStateModel.fromJson(response.data);
+        return Right(user);
+      } else {
+        final user = ChangeMissionStateModel.fromJson(response.data);
+
+        return left(ServerFailure(user.msg ?? 'Error'));
       }
     } catch (e) {
       return left(ServerFailure(e.toString()));

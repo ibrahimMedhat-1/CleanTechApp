@@ -60,6 +60,19 @@ static const String youCanLeaveANoteOrContinueWithoutIt = "youCanLeaveANoteOrCon
 static const String putANote = "putANote";
 static const String back = "back";
 static const String confirmStep = "confirmStep";
+ // v2
+
+static const String deservedAmount = "deservedAmount";
+static const String viewAttachments = "viewAttachments";
+static const String pull = "pull";
+static const String rebate = "rebate";
+static const String modification = "modification";
+static const String switchState = "switch";
+static const String containersNumber = "containersNumber";
+static const String receivedAmount = "receivedAmount";
+
+
+
 
 /// salary Details
 ///

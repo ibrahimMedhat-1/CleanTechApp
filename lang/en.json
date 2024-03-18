@@ -66,5 +66,14 @@
   "sAR" : "SAR",
   "other" : "Other",
   "skip" : "Skip",
-  "chooseTheCar" : "Choose The Car"
+  "chooseTheCar" : "Choose The Car",
+  "deservedAmount" : "Deserved Amount : ",
+  "viewAttachments" : "View Attachments",
+  "pull" : "pull",
+  "rebate" : "rebate",
+  "switch" : "Switch",
+  "modification" : "modification",
+  "containersNumber" : "Containers Number",
+  "receivedAmount" : "Received Amount"
+
  }

@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:shimmer/shimmer.dart';
 
 class StepsWidget extends StatelessWidget {
   const StepsWidget({super.key, required this.missionId});
@@ -25,7 +24,7 @@ class StepsWidget extends StatelessWidget {
                   (index) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
-                    child: buildOneStep(
+                    child: BuildOneStepClass(
                       index: index,
                       title: 'Loading',
                       image: Container(
@@ -42,7 +41,7 @@ class StepsWidget extends StatelessWidget {
             : Column(
                 children: List.generate(
                   StepsDataModel.listSteps(context).length,
-                  (index) => buildOneStep(
+                  (index) => BuildOneStepClass(
                     title: StepsDataModel.listSteps(context)[index].title,
                     index: index,
                     image: StepsDataModel.listSteps(context)[index].image,
@@ -58,13 +57,25 @@ class StepsWidget extends StatelessWidget {
       },
     );
   }
+}
 
-  Widget buildOneStep({
-    required String title,
-    Widget? image,
-    required int index,
-    int currentIndex = 0,
-  }) {
+class BuildOneStepClass extends StatelessWidget {
+  const BuildOneStepClass(
+      {super.key,
+      required this.title,
+      required this.index,
+      this.image,
+      this.currentIndex = 0,
+      this.showTile = true});
+
+  final String title;
+  final Widget? image;
+  final int index;
+  final int currentIndex;
+  final bool showTile;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,13 +94,16 @@ class StepsWidget extends StatelessWidget {
           ],
         ),
         4.isHeight,
-        Container(
-          height: 50.h,
-          width: 2.w,
-          margin: EdgeInsetsDirectional.only(start: 20.w),
-          decoration: BoxDecoration(
-              color: AppColors.gray1, borderRadius: BorderRadius.circular(8.r)),
-        ),
+        showTile
+            ? Container(
+                height: 50.h,
+                width: 2.w,
+                margin: EdgeInsetsDirectional.only(start: 20.w),
+                decoration: BoxDecoration(
+                    color: AppColors.gray1,
+                    borderRadius: BorderRadius.circular(8.r)),
+              )
+            : const SizedBox.shrink(),
         4.isHeight,
       ],
     );

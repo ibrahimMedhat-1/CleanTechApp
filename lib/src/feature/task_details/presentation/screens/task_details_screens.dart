@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/customs/task_details_appbar.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
   TaskDetailsScreen({super.key, required this.lat, required this.lng});

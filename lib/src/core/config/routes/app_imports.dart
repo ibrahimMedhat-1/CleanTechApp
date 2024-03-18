@@ -42,7 +42,14 @@ export 'package:ct_clean/src/feature/task_details/logic/data/task_details_repo_i
 export 'package:get_it/get_it.dart';
 export 'package:ct_clean/src/core/customs/task_details_appbar.dart';
 export 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/task_details_devastation_map.dart';
+export 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/model/change_devastation_mission_params.dart';
+export 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/devastation_steps_widget.dart';
+export 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/model/steps_devastation_model.dart';
+export 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/dialog/amount_and_serial_dialog.dart';
 
+export 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/task_details_devastation_body.dart';
+export 'package:ct_clean/src/feature/task_details/presentation/widgets/connect_and_management_buttons.dart';
+export 'package:shimmer/shimmer.dart';
 
 
 

@@ -3,6 +3,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class TaskDetailsDevastationRepo{
   Future<Either<Failures,MissionDevastationModel>> getMissionDetails(int missionId);
-  Future<Either<Failures,GlobalModel>> changeMissionState();
+  Future<Either<Failures,ChangeMissionStateModel>> changeMissionState(ChangeDevastationMissionParams params);
 
 }

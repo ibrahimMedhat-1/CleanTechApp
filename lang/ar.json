@@ -66,5 +66,15 @@
   "other": "أخرى",
   "sAR": "ر.س",
   "skip" : "تجاوز",
-  "chooseTheCar" : "قم باختيار السيارة"
+  "chooseTheCar" : "قم باختيار السيارة",
+  "deservedAmount" : " المبلغ المستحق  :",
+  "viewAttachments" : "مشاهدة المرفقات",
+  "pull" : "سحب",
+  "rebate": "تنزيل",
+  "switch" : "تبديل",
+  "modification" : "تعديل",
+  "containersNumber" : "رقم الحاوية",
+  "receivedAmount" : "المبلغ المستلم"
+
+
 }

@@ -34,12 +34,13 @@ class TaskDevastationItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    AppStrings.devastation.tr(context),
+                    "${AppStrings.devastation.tr(context)} ${item.missionType}",
                     textAlign: TextAlign.start,
                     style: FontStyles.interSize13_400Black
                         .copyWith(fontSize: 21.sp),
                   ),
-                  Assets.demo.demo2.image(height: 80.h),
+                  // Assets.demo.demo2.image(height: 80.h),
+                  devastationImage
                   // getTypeImage() ?? const SizedBox.shrink(),
                 ],
               ),
@@ -88,19 +89,12 @@ class TaskDevastationItem extends StatelessWidget {
     );
   }
 
-// String getTypeName(BuildContext context) => item.companyType == 0
-//     ? AppStrings.commercial.tr(context)
-//     : item.companyType == 1
-//         ? AppStrings.devastation.tr(context)
-//         : item.companyType == 2
-//             ? AppStrings.compressor.tr(context)
-//             : AppStrings.other.tr(context);
+  Widget get devastationImage => item.missionType == 0
+      ? Assets.images.devastationPullImage.image()
+      : item.missionType == 1
+      ? Assets.images.devastationUpImage.image()
+      : item.missionType == 2
+      ? Assets.images.devastationSwitchStateImage.image()
+      : Assets.images.devastationModificationImage.image();
 
-// Widget? getTypeImage() => item.companyType == 0
-//     ? Assets.demo.demo1.image(height: 80.h)
-//     : item.companyType == 1
-//         ? Assets.demo.demo2.image(height: 80.h)
-//         : item.companyType == 2
-//             ? Assets.demo.demo3.image(height: 80.h)
-//             : Assets.demo.otherCion.image(height: 80.h);
 }
