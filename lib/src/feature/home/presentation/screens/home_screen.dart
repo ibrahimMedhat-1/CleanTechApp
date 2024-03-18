@@ -1,6 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/widgets/double_back.dart';
-import 'package:ct_clean/src/feature/home/presentation/widgets/profile_drivir_in_home.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -58,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const TasksList(),
+            UserLocal.type == 1 ? const TasksList() : TaskDevastationList(),
             20.isHeight
           ],
         ),

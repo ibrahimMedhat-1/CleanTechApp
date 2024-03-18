@@ -1,15 +1,12 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/feature/task_details/presentation/widgets/connect_and_management_buttons.dart';
 
-import '../../../../core/widgets/loading.dart';
-
 class TaskDetailsBody extends StatefulWidget {
   TaskDetailsBody({super.key});
 
   @override
   State<TaskDetailsBody> createState() => _TaskDetailsBodyState();
 }
-
 class _TaskDetailsBodyState extends State<TaskDetailsBody> {
   final homeCubit = sl<HomeCubit>();
   final taskDetailsCubit = sl<TaskDetailsCubit>();
@@ -20,8 +17,6 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
     taskDetailsCubit.getLocation();
     // taskDetailsCubit.getMissionDetails(widget.item.id ?? 0);
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +68,6 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
                             title: AppStrings.placeAddress.tr(context),
                             subTitle: item?.address ?? 'Loading...',
                           ),
-
-                          // BaseText(
-                          //     title: "${AppStrings.taskDetails.tr(context)} :mmnn ",
-                          //     subTitle:
-                          // ),
                         ],
                       ),
                     ),
@@ -110,27 +100,6 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
                     ),
                     19.isHeight,
                     StepsWidget(missionId: item?.id ?? 0),
-                    // BlocProvider.value(
-                    //   value: homeCubit,
-                    //   child: BlocBuilder<HomeCubit, HomeState>(
-                    //     bloc: homeCubit,
-                    //     builder: (context, state) {
-                    //       return BlocConsumer(
-                    //         bloc: taskDetailsCubit,
-                    //         listener: (context, state) {
-                    //           if (state is ChangeMissionStateSuccess) {
-                    //             homeCubit.getMissionsList();
-                    //           }
-                    //         },
-                    //         builder: (context, state) {
-                    //           return StepsWidget(currentIndex: item.currentStatus ?? 0
-                    //               // taskDetailsCubit.currentStepIndex,
-                    //               );
-                    //         },
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
                     24.isHeight,
                     ConnectAndManagementButtons(id: item?.id ?? 0),
                     70.isHeight

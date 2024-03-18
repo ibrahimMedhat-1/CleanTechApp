@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/screens/task_details_devastation_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -25,6 +26,16 @@ class AppRouter {
       case Routes.schedulePreviousTaskScreen:
         return MaterialPageRoute(
           builder: (context) => SchedulePreviousTaskScreen(),
+        );
+      case Routes.taskDetailsDevastationScreen:
+        final args = settings.arguments as Map<String, dynamic>;
+        final lat = args['lat'] as double;
+        final lng = args['lng'] as double;
+        return MaterialPageRoute(
+          builder: (context) => TaskDetailsDevastationScreen(
+            lng: lng,
+            lat: lat,
+          ),
         );
 
       default:
@@ -63,4 +74,6 @@ class Routes {
   static const String taskDetailsScreen = "TaskDetailsScreen";
   static const String salaryDetailsScreen = "SalaryDetailsScreen";
   static const String schedulePreviousTaskScreen = "schedulePreviousTaskScreen";
+  static const String taskDetailsDevastationScreen =
+      "taskDetailsDevastationScreen";
 }
