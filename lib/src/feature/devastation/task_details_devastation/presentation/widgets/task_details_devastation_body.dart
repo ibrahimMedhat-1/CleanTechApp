@@ -158,7 +158,6 @@ class _DevastationDetailsButtonsState extends State<DevastationDetailsButtons> {
                       return AmountAndSerialDialog(
                         missionType: widget.missionType,
                         currentState: item?.currentStatus ?? 0,
-                        missionId: widget.missionId,
                       );
                     },
                   );

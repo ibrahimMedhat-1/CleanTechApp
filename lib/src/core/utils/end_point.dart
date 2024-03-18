@@ -15,6 +15,7 @@ class EndPoint {
   static const String missionsDetails = "/missionsdetails";
   static const String damarMissionsDetails = "/damarmissionsdetails";
   static const String damarstatus = "/damarstatus";
+  static const String checkContainer = "/checkcontainer";
 
   static String getCars(String plate) =>
       "/cars?plate=$plate&language=${UserLocal.lang ?? 'en'}";

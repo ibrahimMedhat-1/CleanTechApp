@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/model/check_container_model.dart';
 import 'package:meta/meta.dart';
 
 part 'task_details_devastation_state.dart';
@@ -34,6 +35,19 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
     }, (r) {
       changeMissionDevastationStateModel = r;
       emit(ChangeDevastationStateSuccess(r));
+    });
+  }
+
+  CheckContainerModel? checkContainerModel;
+
+  void checkContainer(String serial) async {
+    emit(CheckContainerLoading());
+    final result = await repo.checkContainer(serial);
+    result.fold((l) {
+      emit(CheckContainerFailure());
+    }, (r) {
+      checkContainerModel = r;
+      emit(CheckContainerSuccess());
     });
   }
 

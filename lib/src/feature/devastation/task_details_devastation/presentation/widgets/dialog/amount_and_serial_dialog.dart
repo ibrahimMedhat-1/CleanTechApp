@@ -5,11 +5,9 @@ class AmountAndSerialDialog extends StatelessWidget {
     super.key,
     required this.missionType,
     required this.currentState,
-    required this.missionId,
   });
 
   final int missionType;
-  final int missionId;
   final int currentState;
   final taskDDC = sl<TaskDetailsDevastationCubit>();
 
@@ -22,10 +20,10 @@ class AmountAndSerialDialog extends StatelessWidget {
         listener: (context, state) {
           if (state is ChangeDevastationStateSuccess) {
             CustomNavigator.instance.pop();
-            // taskDDC.getMissionDevastationDetails(missionId);
           }
         },
         builder: (context, state) {
+          var model = taskDDC.detailsMissionModel;
           return Padding(
             padding: EdgeInsetsDirectional.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -48,24 +46,7 @@ class AmountAndSerialDialog extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Container(
-                          width: double.infinity,
-                          height: 91.h,
-                          padding: EdgeInsetsDirectional.only(
-                            top: 26.h,
-                            bottom: 18.h,
-                            start: 51.w,
-                            end: 45.w,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadiusDirectional.only(
-                              topEnd: Radius.circular(12.r),
-                              topStart: Radius.circular(12.r),
-                            ),
-                          ),
-                          child: Assets.images.logo.image(fit: BoxFit.cover),
-                        ),
+                        const DialogLogo(),
                         16.isHeight,
                         Padding(
                           padding:
@@ -86,7 +67,7 @@ class AmountAndSerialDialog extends StatelessWidget {
                                                 color: AppColors.white,
                                                 borderRadius: 8.r,
                                                 // controller: taskDetailsCubit.noteController,
-                                                // onChanged: taskDetailsCubit.noteOnChange,
+                                                onChanged: taskDDC.serialNumberOnChange,
                                               )
                                             : const SizedBox.shrink(),
                                         10.isHeight,
@@ -96,7 +77,7 @@ class AmountAndSerialDialog extends StatelessWidget {
                                           color: AppColors.white,
                                           borderRadius: 8.r,
                                           // controller: taskDetailsCubit.noteController,
-                                          // onChanged: taskDetailsCubit.noteOnChange,
+                                          onChanged: taskDDC.amountOnChange,
                                         ),
                                         20.isHeight,
                                       ],
@@ -115,7 +96,7 @@ class AmountAndSerialDialog extends StatelessWidget {
                                 color: AppColors.white,
                                 borderRadius: 8.r,
                                 // controller: taskDetailsCubit.noteController,
-                                // onChanged: taskDetailsCubit.noteOnChange,
+                                onChanged: taskDDC.commentOnChange,
                               ),
                               21.isHeight,
                               Row(
@@ -132,6 +113,14 @@ class AmountAndSerialDialog extends StatelessWidget {
                                   Expanded(
                                       child: ButtonWidget(
                                     text: AppStrings.confirmStep.tr(context),
+                                    color: (model?.missionType == 1 ||
+                                            model?.missionType == 2)
+                                        ? (taskDDC.checkContainerModel?.exist ??
+                                                    false) ==
+                                                false
+                                            ? AppColors.primary3
+                                            : null
+                                        : null,
                                     onPressed: () {
                                       taskDDC.changeMissionState();
                                     },

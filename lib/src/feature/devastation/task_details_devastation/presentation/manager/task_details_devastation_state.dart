@@ -14,5 +14,8 @@ class ChangeDevastationStateSuccess extends TaskDetailsDevastationState {
  final ChangeMissionStateModel r;
 }
 class ChangeDevastationStateLoading extends TaskDetailsDevastationState {}
+class CheckContainerLoading extends TaskDetailsDevastationState {}
+class CheckContainerSuccess extends TaskDetailsDevastationState {}
+class CheckContainerFailure extends TaskDetailsDevastationState {}
 
 

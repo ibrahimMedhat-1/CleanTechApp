@@ -34,7 +34,7 @@ class TaskDevastationItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${AppStrings.devastation.tr(context)} ${item.missionType}",
+                    AppStrings.devastation.tr(context),
                     textAlign: TextAlign.start,
                     style: FontStyles.interSize13_400Black
                         .copyWith(fontSize: 21.sp),

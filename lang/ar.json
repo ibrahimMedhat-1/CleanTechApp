@@ -69,10 +69,10 @@
   "chooseTheCar" : "قم باختيار السيارة",
   "deservedAmount" : " المبلغ المستحق  :",
   "viewAttachments" : "مشاهدة المرفقات",
-  "pull" : "سحب",
-  "rebate": "تنزيل",
-  "switch" : "تبديل",
-  "modification" : "تعديل",
+  "pull" : "تم السحب",
+  "rebate": "تم التنزيل",
+  "switch" : " تم التبديل",
+  "modification" : "تم التعديل",
   "containersNumber" : "رقم الحاوية",
   "receivedAmount" : "المبلغ المستلم"
 

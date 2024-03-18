@@ -1,8 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/helper/error/failures.dart';
-import 'package:ct_clean/src/core/model/global_model.dart';
-import 'package:ct_clean/src/feature/devastation/home_devastation/logic/model/mission_devastation_model.dart';
-import 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/data/task_details_devastation_repo.dart';
+import 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/model/check_container_model.dart';
 import 'package:dartz/dartz.dart';
 
 class TaskDetailsDevastationRepoImpl extends TaskDetailsDevastationRepo {
@@ -32,6 +29,10 @@ class TaskDetailsDevastationRepoImpl extends TaskDetailsDevastationRepo {
       ChangeDevastationMissionParams params) async {
     print(params.lat);
     print(params.lng);
+    print(params.comment);
+    print(params.serial);
+    print(params.amount);
+
     try {
       final response = await apiService
           .postData(url: EndPoint.damarstatus, query: params.toMap(), data: {});
@@ -42,6 +43,23 @@ class TaskDetailsDevastationRepoImpl extends TaskDetailsDevastationRepo {
         final user = ChangeMissionStateModel.fromJson(response.data);
 
         return left(ServerFailure(user.msg ?? 'Error'));
+      }
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, CheckContainerModel>> checkContainer(
+      String serial) async {
+    try {
+      final response = await apiService
+          .getData(url: EndPoint.checkContainer, query: {"serial": serial});
+      final user = CheckContainerModel.fromJson(response.data);
+      if (user.exist == true) {
+        return Right(user);
+      } else {
+        return left(ServerFailure("Error "));
       }
     } catch (e) {
       return left(ServerFailure(e.toString()));
