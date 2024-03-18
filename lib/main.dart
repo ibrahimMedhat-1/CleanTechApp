@@ -293,7 +293,7 @@ Future<void> onStart(ServiceInstance service) async {
         sendLocation();
         flutterLocalNotificationsPlugin.show(
           notificationId,
-          'COOL SERVICE',
+          'Clean Tech',
           'Awesome ${DateTime.now()}',
           const NotificationDetails(
             android: AndroidNotificationDetails(
