@@ -1,4 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/widgets/cached_image.dart';
 
 class TaskDetailsDevastationBody extends StatelessWidget {
   TaskDetailsDevastationBody({super.key});
@@ -97,7 +98,33 @@ class TaskDetailsDevastationBody extends StatelessWidget {
               TextButton(
                   style: ButtonStyle(
                       padding: MaterialStateProperty.all(EdgeInsets.zero)),
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      enableDrag: true,
+                      showDragHandle: true,
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.sizeOf(context).width,
+                        maxHeight: MediaQuery.sizeOf(context).height,
+                      ),
+                      // isScrollControlled: ,
+                      // useRootNavigator: ,
+                      // scrollControlDisabledMaxHeightRatio: ,
+                      // routeSettings: ,
+                      // transitionAnimationController: ,
+                      //  useSafeArea: ,
+                      // isDismissible: ,
+
+
+                      builder: (context) {
+                        return CachedImage(
+                          link: item?.image,
+                          width: MediaQuery.sizeOf(context).width,
+                          height: MediaQuery.sizeOf(context).height,
+                        );
+                      },
+                    );
+                  },
                   child: Row(
                     children: [
                       Assets.svgs.collectImages.svg(),

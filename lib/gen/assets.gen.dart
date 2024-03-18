@@ -100,26 +100,6 @@ class $AssetsImagesGen {
   AssetGenImage get customer =>
       const AssetGenImage('assets/images/customer.png');
 
-  /// File path: assets/images/devastation_modification_image.png
-  AssetGenImage get devastationModificationImage =>
-      const AssetGenImage('assets/images/devastation_modification_image.png');
-
-  /// File path: assets/images/devastation_pull_image.png
-  AssetGenImage get devastationPullImage =>
-      const AssetGenImage('assets/images/devastation_pull_image.png');
-
-  /// File path: assets/images/devastation_rebate_image.png
-  AssetGenImage get devastationRebateImage =>
-      const AssetGenImage('assets/images/devastation_rebate_image.png');
-
-  /// File path: assets/images/devastation_switchState_image.png
-  AssetGenImage get devastationSwitchStateImage =>
-      const AssetGenImage('assets/images/devastation_switchState_image.png');
-
-  /// File path: assets/images/devastation_up_image.png
-  AssetGenImage get devastationUpImage =>
-      const AssetGenImage('assets/images/devastation_up_image.png');
-
   /// File path: assets/images/done_icon.png
   AssetGenImage get doneIcon =>
       const AssetGenImage('assets/images/done_icon.png');
@@ -154,6 +134,9 @@ class $AssetsImagesGen {
   AssetGenImage get question =>
       const AssetGenImage('assets/images/question.png');
 
+  /// File path: assets/images/shab.png
+  AssetGenImage get shab => const AssetGenImage('assets/images/shab.png');
+
   /// File path: assets/images/splash12.png
   AssetGenImage get splash12 =>
       const AssetGenImage('assets/images/splash12.png');
@@ -161,6 +144,15 @@ class $AssetsImagesGen {
   /// File path: assets/images/splash_screen.png
   AssetGenImage get splashScreen =>
       const AssetGenImage('assets/images/splash_screen.png');
+
+  /// File path: assets/images/tabdel.png
+  AssetGenImage get tabdel => const AssetGenImage('assets/images/tabdel.png');
+
+  /// File path: assets/images/tahdel.png
+  AssetGenImage get tahdel => const AssetGenImage('assets/images/tahdel.png');
+
+  /// File path: assets/images/tanzel.png
+  AssetGenImage get tanzel => const AssetGenImage('assets/images/tanzel.png');
 
   /// File path: assets/images/total_commissions.png
   AssetGenImage get totalCommissions =>
@@ -187,11 +179,6 @@ class $AssetsImagesGen {
         carIcon,
         correctIcon,
         customer,
-        devastationModificationImage,
-        devastationPullImage,
-        devastationRebateImage,
-        devastationSwitchStateImage,
-        devastationUpImage,
         doneIcon,
         goToClient,
         home,
@@ -201,8 +188,12 @@ class $AssetsImagesGen {
         messaging,
         placeLogo,
         question,
+        shab,
         splash12,
         splashScreen,
+        tabdel,
+        tahdel,
+        tanzel,
         totalCommissions,
         totalSalary,
         verticalDivider,

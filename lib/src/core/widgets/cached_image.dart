@@ -33,12 +33,12 @@ class CachedImage extends StatelessWidget {
               // placeholder: (context, url) {
               //   return Assets.lottie.noImageLottie.lottie();
               // },
-              // errorWidget: (context, url, error) {
-              //   return Padding(
-              //     padding: const EdgeInsetsDirectional.all(30),
-              //     child: Assets.lottie.empty.lottie(),
-              //   );
-              // },
+              errorWidget: (context, url, error) {
+                return Padding(
+                  padding: const EdgeInsetsDirectional.all(30),
+                  child: Assets.lottie.empty.lottie(),
+                );
+              },
             )
           : Container(
               width: width ?? 30,

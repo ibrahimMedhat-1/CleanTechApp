@@ -90,11 +90,11 @@ class TaskDevastationItem extends StatelessWidget {
   }
 
   Widget get devastationImage => item.missionType == 0
-      ? Assets.images.devastationPullImage.image()
+      ? Assets.images.shab.image()
       : item.missionType == 1
-      ? Assets.images.devastationUpImage.image()
+      ? Assets.images.tanzel.image()
       : item.missionType == 2
-      ? Assets.images.devastationSwitchStateImage.image()
-      : Assets.images.devastationModificationImage.image();
+      ? Assets.images.tabdel.image()
+      : Assets.images.tahdel.image();
 
 }
