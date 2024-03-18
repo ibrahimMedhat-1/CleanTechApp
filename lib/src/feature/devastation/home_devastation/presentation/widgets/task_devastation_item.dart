@@ -1,15 +1,20 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
-class TaskDevastationItem extends StatelessWidget {
+class TaskDevastationItem extends StatefulWidget {
   const TaskDevastationItem({super.key, this.onPress, required this.item});
 
   final VoidCallback? onPress;
   final MissionDevastationModel item;
 
   @override
+  State<TaskDevastationItem> createState() => _TaskDevastationItemState();
+}
+
+class _TaskDevastationItemState extends State<TaskDevastationItem> {
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPress,
+      onTap: widget.onPress,
       child: SizedBox(
         height: 150.h,
         width: 376.w,
@@ -27,7 +32,7 @@ class TaskDevastationItem extends StatelessWidget {
                 height: double.infinity,
                 width: 24.w,
                 color:
-                    item.companyType == 0 ? AppColors.primary : AppColors.red,
+                    widget.item.companyType == 0 ? AppColors.primary : AppColors.red,
               ),
               3.isWight,
               Column(
@@ -59,13 +64,13 @@ class TaskDevastationItem extends StatelessWidget {
                     10.isHeight,
                     BaseText(
                         title: AppStrings.placeName.tr(context),
-                        subTitle: item.company ?? ""),
+                        subTitle: widget.item.company ?? ""),
                     BaseText(
                         title: AppStrings.address.tr(context),
-                        subTitle: item.address ?? ""),
+                        subTitle: widget.item.address ?? ""),
                     BaseText(
                       title: AppStrings.time.tr(context),
-                      subTitle: "${item.time ?? ""} - ${item.date ?? ""}",
+                      subTitle: "${widget.item.time ?? ""} - ${widget.item.date ?? ""}",
                       subTitleFontSize: 14.sp,
                     ),
                     10.isHeight,
@@ -89,12 +94,20 @@ class TaskDevastationItem extends StatelessWidget {
     );
   }
 
-  Widget get devastationImage => item.missionType == 0
+  Widget get devastationImage => widget.item.missionType == 0
       ? Assets.images.shab.image()
-      : item.missionType == 1
+      : widget.item.missionType == 1
       ? Assets.images.tanzel.image()
-      : item.missionType == 2
+      : widget.item.missionType == 2
       ? Assets.images.tabdel.image()
       : Assets.images.tahdel.image();
 
+  // String get title =>
+  //     widget.item.missionType == 0
+  //         ? AppStrings.sahb.tr(context)
+  //         : widget.item.missionType == 1
+  //         ? Assets.images.tanzel.image()
+  //         : widget.item.missionType == 2
+  //         ? Assets.images.tabdel.image()
+  //         : Assets.images.tahdel.image();
 }

@@ -61,6 +61,7 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
 
   void serialNumberOnChange(String val) {
     params = params.copyWith(serial: val);
+    checkContainer(val);
   }
 
   void amountOnChange(String? val) {

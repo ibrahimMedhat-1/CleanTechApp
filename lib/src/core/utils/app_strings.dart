@@ -72,6 +72,8 @@ static const String modification = "modification";
 static const String switchState = "switch";
 static const String containersNumber = "containersNumber";
 static const String receivedAmount = "receivedAmount";
+static const String sahb = "sahb";
+static const String pleaseEnterAValidContainerNumber = "pleaseEnterAValidContainerNumber";
 
 
 

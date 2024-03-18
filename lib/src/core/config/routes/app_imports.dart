@@ -51,6 +51,7 @@ export 'package:ct_clean/src/feature/devastation/task_details_devastation/presen
 export 'package:ct_clean/src/feature/task_details/presentation/widgets/connect_and_management_buttons.dart';
 export 'package:shimmer/shimmer.dart';
 export 'package:ct_clean/src/core/customs/dialog_logo.dart';
+export 'package:ct_clean/src/core/customs/custom_dialog.dart';
 
 
 

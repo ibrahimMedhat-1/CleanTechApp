@@ -75,6 +75,8 @@
   "modification" : "modification",
   "containersNumber" : "Containers Number",
   "receivedAmount" : "Received Amount",
-  "pleaseSelectACar" : "Please Select A Car"
+  "pleaseSelectACar" : "Please Select A Car",
+  "pleaseEnterAValidContainerNumber": "Please Enter A Valid Container Number"
+
 
  }

@@ -1,5 +1,8 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/core/widgets/cached_image.dart';
+import 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/dialog/note_dialog.dart';
+import 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/dialog/sahb_and_tahtel_dialog.dart';
+import 'package:ct_clean/src/feature/devastation/task_details_devastation/presentation/widgets/dialog/tanzel_and_tabdel_dialog.dart';
 
 class TaskDetailsDevastationBody extends StatelessWidget {
   TaskDetailsDevastationBody({super.key});
@@ -115,7 +118,6 @@ class TaskDetailsDevastationBody extends StatelessWidget {
                       //  useSafeArea: ,
                       // isDismissible: ,
 
-
                       builder: (context) {
                         return CachedImage(
                           link: item?.image,
@@ -179,13 +181,19 @@ class _DevastationDetailsButtonsState extends State<DevastationDetailsButtons> {
                     ? AppStrings.theClientHasBeenApproached.tr(context)
                     : getSecondMissionTitle,
                 onPressed: () {
+                  print(item?.missionType);
+                  print((item?.missionType == 0 || item?.missionType == 3));
                   showAdaptiveDialog(
                     context: context,
                     builder: (context) {
-                      return AmountAndSerialDialog(
-                        missionType: widget.missionType,
-                        currentState: item?.currentStatus ?? 0,
-                      );
+                      return (item?.currentStatus == 0)
+                          ? NoteDialog()
+                          : (item?.missionType == 0 || item?.missionType == 3)
+                              ? SehbAndTahtelDialog()
+                              : TanzelAndTabdelDialog();
+                      // AmountAndSerialDialog(
+                      //             missionType: widget.missionType,
+                      //             currentState: item?.currentStatus ?? 0);
                     },
                   );
                 },
