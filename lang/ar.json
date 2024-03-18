@@ -76,7 +76,11 @@
   "containersNumber" : "رقم الحاوية",
   "receivedAmount" : "المبلغ المستلم",
   "pleaseSelectACar" : "برجاء اختيار السيارة",
-  "pleaseEnterAValidContainerNumber" : "برجاء إدخال رقم الحاوية صحيح"
+  "pleaseEnterAValidContainerNumber" : "برجاء إدخال رقم الحاوية صحيح",
+  "lifting" : "سحب",
+  "placeContainer" : "تنزيل",
+  "switchMission" : "تبديل",
+  "modificationWithoutTam" : "تعديل"
 
 
 }

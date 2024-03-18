@@ -39,7 +39,7 @@ class _TaskDevastationItemState extends State<TaskDevastationItem> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    AppStrings.devastation.tr(context),
+                    title,
                     textAlign: TextAlign.start,
                     style: FontStyles.interSize13_400Black
                         .copyWith(fontSize: 21.sp),
@@ -102,12 +102,12 @@ class _TaskDevastationItemState extends State<TaskDevastationItem> {
       ? Assets.images.tabdel.image()
       : Assets.images.tahdel.image();
 
-  // String get title =>
-  //     widget.item.missionType == 0
-  //         ? AppStrings.sahb.tr(context)
-  //         : widget.item.missionType == 1
-  //         ? Assets.images.tanzel.image()
-  //         : widget.item.missionType == 2
-  //         ? Assets.images.tabdel.image()
-  //         : Assets.images.tahdel.image();
+  String get title =>
+      widget.item.missionType == 0
+          ? AppStrings.lifting.tr(context)
+          : widget.item.missionType == 1
+          ? AppStrings.placeContainer.tr(context)
+          : widget.item.missionType == 2
+          ? AppStrings.switchMission.tr(context)
+          : AppStrings.modificationWithoutTam.tr(context);
 }

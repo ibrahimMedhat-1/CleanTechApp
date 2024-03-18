@@ -74,6 +74,10 @@ static const String containersNumber = "containersNumber";
 static const String receivedAmount = "receivedAmount";
 static const String sahb = "sahb";
 static const String pleaseEnterAValidContainerNumber = "pleaseEnterAValidContainerNumber";
+static const String lifting = "lifting";
+static const String placeContainer = "placeContainer";
+static const String switchMission = "switchMission";
+static const String modificationWithoutTam = "modificationWithoutTam";
 
 
 

@@ -76,7 +76,11 @@
   "containersNumber" : "Containers Number",
   "receivedAmount" : "Received Amount",
   "pleaseSelectACar" : "Please Select A Car",
-  "pleaseEnterAValidContainerNumber": "Please Enter A Valid Container Number"
+  "pleaseEnterAValidContainerNumber": "Please Enter A Valid Container Number",
+  "lifting": "Lifting",
+  "placeContainer" : "Place Container",
+  "switchMission" : "Switch",
+  "modificationWithoutTam" : "Modification"
 
 
  }
