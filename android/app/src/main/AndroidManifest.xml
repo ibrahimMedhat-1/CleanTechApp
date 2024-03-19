@@ -53,7 +53,7 @@
         </intent>
     </queries>
     <application
-        android:label="ct_clean"
+        android:label="Clean Technique"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher">
