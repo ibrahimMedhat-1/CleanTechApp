@@ -1,3 +1,4 @@
+import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
     LocationHelper().getPermissionLocation();
     homeCubit.changeIndex(0);
     homeCubit.getMissionsList();
+    mainDriverId = UserLocal.driverId;
 
   }
 

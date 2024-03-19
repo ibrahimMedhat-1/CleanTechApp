@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:dartz/dartz.dart';
 import 'package:get_storage/get_storage.dart';
@@ -22,8 +23,9 @@ class LoginCubit extends Cubit<LoginState> {
     result.fold((l) {
       emit(LoginFailure(msg: l.errMessage));
     }, (r) {
+      mainDriverId = r.id;
       generalDriverId = r.id;
-      print("The generalDriverId is in login Cubit ${generalDriverId}");
+      print("The generalDriverId is in login Cubit ${generalDriverId}& mainDriverId ${mainDriverId}");
       box.write(MyCashKey.driverId.name, r.id);
       CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
       prefs.setInt(MyCashKey.driverId.name, r.id ?? -1);
