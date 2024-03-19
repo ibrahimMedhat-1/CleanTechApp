@@ -124,6 +124,7 @@ class TaskDetailsDevastationBody extends StatelessWidget {
                           link: item?.image,
                           width: MediaQuery.sizeOf(context).width,
                           height: MediaQuery.sizeOf(context).height,
+                          fit: BoxFit.fill,
                         );
                       },
                     );
