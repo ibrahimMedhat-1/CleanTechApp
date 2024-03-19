@@ -1,4 +1,6 @@
+import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:restart_app/restart_app.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     LocationHelper().isLocationEnabled();
     LocationHelper().getPermissionLocation();
+
   }
 
   @override

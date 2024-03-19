@@ -40,8 +40,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
               String title = homeCubit.currentIndex == 0
                   ? AppStrings.home.tr(context)
                   : homeCubit.currentIndex == 1
-                  ? AppStrings.contactTheAdministration.tr(context)
-                  : AppStrings.personalScreen.tr(context);
+                      ? AppStrings.contactTheAdministration.tr(context)
+                      : AppStrings.personalScreen.tr(context);
 
               return Text(
                 title,
@@ -58,7 +58,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
         body: BlocBuilder(
             bloc: homeCubit,
             builder: (context, state) => screens[homeCubit.currentIndex]),
-        bottomNavigationBar: BlocBuilder (
+        bottomNavigationBar: BlocBuilder(
           bloc: homeCubit,
           builder: (context, state) {
             return CurvedNavigationBar(

@@ -2,9 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:dartz/dartz.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:restart_app/restart_app.dart';
 
 part 'login_state.dart';
 
@@ -17,23 +15,23 @@ class LoginCubit extends Cubit<LoginState> {
 
   void login() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final box = GetStorage();
+
     emit(LoginLoading());
     Either<Failures, LoginModel> result = await loginRepo.login(params);
     result.fold((l) {
       emit(LoginFailure(msg: l.errMessage));
     }, (r) {
-      mainDriverId = r.id;
-      generalDriverId = r.id;
-      print("The generalDriverId is in login Cubit ${generalDriverId}& mainDriverId ${mainDriverId}");
-      box.write(MyCashKey.driverId.name, r.id);
-      CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
       prefs.setInt(MyCashKey.driverId.name, r.id ?? -1);
+      CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
+      generalDriverId = r.id;
+      print(
+          "The generalDriverId is in login Cubit ${generalDriverId}& mainDriverId ${mainDriverId}");
       CacheHelper.saveData(key: MyCashKey.driverName, value: r.name);
       CacheHelper.saveData(key: MyCashKey.image, value: r.image);
       CacheHelper.saveData(key: MyCashKey.type, value: r.type);
       print(UserLocal.driverId);
       emit(LoginSuccess(loginModel: r));
+      Restart.restartApp();
     });
   }
 

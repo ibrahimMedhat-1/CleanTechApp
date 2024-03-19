@@ -45,6 +45,7 @@ void main() async {
       Permission.storage.request();
     }
   });
+  mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
   await setUpLocators();
   Bloc.observer = MyBlocObserver();
   await initializeService();
@@ -84,48 +85,48 @@ FutureOr<bool> onIosBackground(ServiceInstance service) async {
 
 @pragma('vm:entry-point')
 Future<void> onStart(ServiceInstance service) async {
-   DartPluginRegistrant.ensureInitialized();
-   Timer.periodic(const Duration(seconds: 10), (timer) async {
+  DartPluginRegistrant.ensureInitialized();
+  Timer.periodic(const Duration(seconds: 10), (timer) async {
     if (service is AndroidServiceInstance) {
       if (await service.isForegroundService()) {
-        int rndmIndex = Random().nextInt(100);
-        AndroidNotificationDetails androidNotificationDetails =
-            AndroidNotificationDetails(
-          '$rndmIndex.0',
-          "Clean Tech",
-          channelDescription: "This is a channel",
-          importance: Importance.max,
-          priority: Priority.high,
-          showWhen: false,
-        );
-        NotificationDetails platformChannelSpecifics =
-            NotificationDetails(android: androidNotificationDetails);
-        await flutterLocalNotificationsPlugin.show(
-          rndmIndex,
-          "Clean Tech",
-          "0.0 , 0.0",
-          platformChannelSpecifics,
-          payload: 'item x',
-        );
+        // int rndmIndex = Random().nextInt(100);
+        // AndroidNotificationDetails androidNotificationDetails =
+        //     AndroidNotificationDetails(
+        //   '$rndmIndex.0',
+        //   "Clean Tech",
+        //   channelDescription: "This is a channel",
+        //   importance: Importance.max,
+        //   priority: Priority.high,
+        //   showWhen: false,
+        // );
+        // NotificationDetails platformChannelSpecifics =
+        //     NotificationDetails(android: androidNotificationDetails);
+        // await flutterLocalNotificationsPlugin.show(
+        //   rndmIndex,
+        //   "Clean Tech",
+        //   "0.0 , 0.0",
+        //   platformChannelSpecifics,
+        //   payload: 'item x',
+        // );
         print("object isForegroundService");
         callApi();
       } else {
         print("object");
         print("object isBackground");
         callApi();
-        flutterLocalNotificationsPlugin.show(
-          notificationId,
-          'Clean Tech',
-          'Awesome ${DateTime.now()}',
-          const NotificationDetails(
-            android: AndroidNotificationDetails(
-              notificationChannelId,
-              'MY FOREGROUND SERVICE',
-              icon: 'ic_bg_service_small',
-              ongoing: true,
-            ),
-          ),
-        );
+        // flutterLocalNotificationsPlugin.show(
+        //   notificationId,
+        //   'Clean Tech',
+        //   'Awesome ${DateTime.now()}',
+        //   const NotificationDetails(
+        //     android: AndroidNotificationDetails(
+        //       notificationChannelId,
+        //       'MY FOREGROUND SERVICE',
+        //       icon: 'ic_bg_service_small',
+        //       ongoing: true,
+        //     ),
+        //   ),
+        // );
       }
     }
   });
@@ -135,18 +136,13 @@ StreamSubscription<Position> get getterPosition =>
     LocationHelper.getStreamLocation().listen((event) => event);
 Position? po;
 
-
 int? mainDriverId;
+
 void callApi() async {
   await CacheHelper.initCacheHelper();
   Dio dio = Dio();
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-   mainDriverId = UserLocal.driverId;
-  // prefs.getInt(MyCashKey.driverId.name);
-  // CacheHelper.getData(key: MyCashKey.driverId);
-  print(mainDriverId);
   if (mainDriverId == null) {
-    mainDriverId = prefs.getInt(MyCashKey.driverId.name);
+    mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
   } else {
     getterPosition.onData((data) {
       dio
@@ -157,8 +153,6 @@ void callApi() async {
             "AhmedTracing:id : $mainDriverId sendLocation ${value.statusCode}latitude=${data.latitude}&longitude=${data.longitude}");
         debugPrint("${value.data}");
         debugPrint("${DateTime.now()}");
-        // showNotification(
-        //     location: "${positionValue?.latitude} , ${positionValue?.longitude}");
       }).catchError((e) {
         debugPrint("AhmedTracing: Error is ${e.toString()}");
       });

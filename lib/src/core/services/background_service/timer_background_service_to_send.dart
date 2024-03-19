@@ -4,7 +4,6 @@ import 'package:ct_clean/src/core/services/background_service/show_notification.
 import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_background_service_android/flutter_background_service_android.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TimerBackgroundServiceToSend {
