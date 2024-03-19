@@ -27,11 +27,13 @@ class PreviousTaskItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      getTypeName(context),
+                      UserLocal.type == 1
+                          ? getTypeName(context)
+                          : titleDevastation(context),
                       style: FontStyles.interSize13_400Black
                           .copyWith(fontSize: 21.sp),
                     ),
-                    getTypeImage(),
+                    UserLocal.type == 1 ? getTypeImage() : devastationImage,
                   ],
                 ),
                 Container(
@@ -42,14 +44,13 @@ class PreviousTaskItem extends StatelessWidget {
                 ),
                 ConstrainedBox(
                   constraints: BoxConstraints(
-
                     maxWidth: MediaQuery.sizeOf(context).width * 0.45,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                       Text.rich(
+                      Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
@@ -109,19 +110,35 @@ class PreviousTaskItem extends StatelessWidget {
                   // width: 40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.r),
-                    color: item.status == 3 ? AppColors.primary : AppColors.red,
+                    color: UserLocal.type == 1
+                        ? (item.status == 3 ? AppColors.primary : AppColors.red)
+                        : (item.status == 2
+                            ? AppColors.primary
+                            : AppColors.red),
                   ),
-                  child: item.status == 3
-                      ? Icon(
-                          Icons.check,
-                          color: AppColors.white,
-                          size: 50.sp,
-                        )
-                      : Icon(
-                          Icons.close,
-                          color: AppColors.white,
-                          size: 50.sp,
-                        ),
+                  child: UserLocal.type == 1
+                      ? (item.status == 3
+                          ? Icon(
+                              Icons.check,
+                              color: AppColors.white,
+                              size: 50.sp,
+                            )
+                          : Icon(
+                              Icons.close,
+                              color: AppColors.white,
+                              size: 50.sp,
+                            ))
+                      : (item.status == 2
+                          ? Icon(
+                              Icons.check,
+                              color: AppColors.white,
+                              size: 50.sp,
+                            )
+                          : Icon(
+                              Icons.close,
+                              color: AppColors.white,
+                              size: 50.sp,
+                            )),
                 )
               ],
             ),
@@ -142,4 +159,22 @@ class PreviousTaskItem extends StatelessWidget {
       : item.companyType == 1
           ? Assets.demo.demo2.image(height: 80.h)
           : Assets.demo.demo3.image(height: 80.h);
+
+  // UserLocal.type == 1 ? old : devastation
+
+  Widget get devastationImage => item.companyType == 0
+      ? Assets.images.shab.image()
+      : item.companyType == 1
+          ? Assets.images.tanzel.image()
+          : item.companyType == 2
+              ? Assets.images.tabdel.image()
+              : Assets.images.tahdel.image();
+
+  String titleDevastation(BuildContext context) => item.companyType == 0
+      ? AppStrings.lifting.tr(context)
+      : item.companyType == 1
+          ? AppStrings.placeContainer.tr(context)
+          : item.companyType == 2
+              ? AppStrings.switchMission.tr(context)
+              : AppStrings.modificationWithoutTam.tr(context);
 }

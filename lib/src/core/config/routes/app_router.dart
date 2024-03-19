@@ -28,14 +28,16 @@ class AppRouter {
           builder: (context) => SchedulePreviousTaskScreen(),
         );
       case Routes.taskDetailsDevastationScreen:
-        final args = settings.arguments as Map<String, dynamic>;
-        final lat = args['lat'] as double;
-        final lng = args['lng'] as double;
+        // final args = settings.arguments as Map<String, dynamic>;
+        // final lat = args['lat'] as double;
+        // final lng = args['lng'] as double;
+      final id = settings.arguments as int;
         return MaterialPageRoute(
           builder: (context) => TaskDetailsDevastationScreen(
-            lng: lng,
-            lat: lat,
-          ),
+            id: id,
+              // lng: lng,
+              // lat: lat,
+              ),
         );
 
       default:

@@ -25,6 +25,7 @@ class HomeCubit extends Cubit<HomeState> {
     Either<Failures, List<MissionModel>> result =
         await homeRepo.getMissionsList();
     result.fold((l) {
+      print(l.errMessage);
       emit(GetMissionsListFailure(l.errMessage));
     }, (r) {
       missionsList = r;

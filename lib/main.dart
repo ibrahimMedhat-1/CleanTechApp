@@ -156,6 +156,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
+// import 'dart:ui';
 
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/core/services/background_service/timer_background_service_to_send.dart';
@@ -287,6 +288,7 @@ Future<void> onStart(ServiceInstance service) async {
         sendLocation();
       } else {
         print("object");
+        print("object isBackground");
         // callApi();
         // TimerBackgroundServiceToSend().getCurrentLocation();
         // TimerBackgroundServiceToSend().sendLocation();
@@ -349,7 +351,7 @@ void sendLocation() async {
   ))
       .then((value) {
   debugPrint(
-  "AhmedTracing: sendLocation ${value.statusCode} , ${po?.latitude} , ${po?.longitude} ");
+  "AhmedTracing: sendLocation ${value.statusCode} , ${po?.latitude} , ${po?.longitude}");
   debugPrint("${value.data}");
   print("The generalDriverId is ${UserLocal.driverId ?? 0}");
   }).catchError((e) {

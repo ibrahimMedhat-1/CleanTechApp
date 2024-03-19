@@ -66,17 +66,44 @@ class MapCubit extends Cubit<MapState> {
 
   CameraPosition setCurrentLocationCameraPosition(
       {required double lat, required double lng}) {
+    print(lat);
+    print(lng);
     final CameraPosition _myCurrentLocationCameraPoition = CameraPosition(
-      target: LatLng(
-        lat,
-        lng,
-      ),
+      target: LatLng(lat, lng),
       bearing: 0.0,
       tilt: 0.0,
-      zoom: 12,
+      zoom: 14,
     );
 
+    // markers.clear();
+    // if (markers.isEmpty) {
+    //   currentMarker = Marker(
+    //     markerId: const MarkerId("1"),
+    //     onTap: () => AppFunctions().openMap(
+    //       lat: lat,
+    //       lng: lng,
+    //     ),
+    //     position: LatLng(lat, lng),
+    //     infoWindow: const InfoWindow(title: "Location"),
+    //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+    //   );
+    //
+    //   addMarker(currentMarker);
+    // }
+
     return _myCurrentLocationCameraPoition;
+  }
+
+  void drawMarker({required double lat, required double lng}) {
+    currentMarker = Marker(
+      markerId: const MarkerId("1"),
+      onTap: () => AppFunctions().openMap(lat: lat, lng: lng),
+      position: LatLng(lat, lng),
+      infoWindow: const InfoWindow(title: "Location"),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+    );
+    markers.add(currentMarker);
+    emit(AddMarkerSuccessInBranches());
   }
 
   Future<void> goToSelectedLocation(
@@ -90,17 +117,19 @@ class MapCubit extends Cubit<MapState> {
         ),
       ),
     );
-    currentMarker = Marker(
-      markerId: const MarkerId("1"),
-      onTap: () => AppFunctions().openMap(
-        lat: lat,
-        lng: lng,
-      ),
-      position: LatLng(lat, lng),
-      infoWindow: const InfoWindow(title: "Location"),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-    );
-    addMarker(currentMarker);
+    if (markers.isEmpty) {
+      currentMarker = Marker(
+        markerId: const MarkerId("1"),
+        onTap: () => AppFunctions().openMap(
+          lat: lat,
+          lng: lng,
+        ),
+        position: LatLng(lat, lng),
+        infoWindow: const InfoWindow(title: "Location"),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+      );
+      addMarker(currentMarker);
+    }
   }
 
   CameraPosition getSelectionCameraPosition(

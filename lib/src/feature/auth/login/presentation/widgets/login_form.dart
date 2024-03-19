@@ -71,7 +71,7 @@ class LoginForm extends StatelessWidget {
                     // suggestionStyle: context.bodySmall,
                     suggestions: loginCubit.listCars
                             ?.map((e) => SearchFieldListItem<CarModel>(
-                                "${e.plate}" ?? 'Loading',
+                                "${e.plate ?? 'Loading'}",
                                 item: e,
                                 child: Text("${e.plate}")))
                             .toList() ??

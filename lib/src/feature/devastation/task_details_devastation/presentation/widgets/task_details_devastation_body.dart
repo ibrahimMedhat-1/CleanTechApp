@@ -28,6 +28,7 @@ class TaskDetailsDevastationBody extends StatelessWidget {
               CustomNavigator.instance.pop();
             }
           }
+
         },
         builder: (context, state) {
           var item = taskDDC.detailsMissionModel;

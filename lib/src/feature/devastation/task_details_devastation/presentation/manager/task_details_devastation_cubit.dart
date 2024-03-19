@@ -1,3 +1,4 @@
+import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/model/check_container_model.dart';
 import 'package:meta/meta.dart';
@@ -8,6 +9,7 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
   TaskDetailsDevastationCubit(this.repo)
       : super(TaskDetailsDevastationInitial());
   TaskDetailsDevastationRepo repo;
+
 
   MissionDevastationModel? detailsMissionModel;
 
@@ -20,7 +22,7 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
     }, (r) {
       detailsMissionModel = r;
       params = params.copyWith(missionId: r.id);
-      emit(GetTaskDevastationDetailsSuccess());
+      emit(GetTaskDevastationDetailsSuccess(r));
     });
   }
 
@@ -29,6 +31,12 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
 
   void changeMissionState() async {
     emit(ChangeDevastationStateLoading());
+    getterPosition.onData((data) {
+      params = params.copyWith(
+        lat: data.latitude,
+        lng: data.longitude,
+      );
+    });
     final result = await repo.changeMissionState(params);
     result.fold((l) {
       emit(ChangeDevastationStateFailure());
