@@ -18,7 +18,10 @@ class ChangeDevastationStateSuccess extends TaskDetailsDevastationState {
 }
 class ChangeDevastationStateLoading extends TaskDetailsDevastationState {}
 class CheckContainerLoading extends TaskDetailsDevastationState {}
-class CheckContainerSuccess extends TaskDetailsDevastationState {}
+class CheckContainerSuccess extends TaskDetailsDevastationState {
+  final bool exit;
+  CheckContainerSuccess(this.exit);
+}
 class CheckContainerFailure extends TaskDetailsDevastationState {}
 
 

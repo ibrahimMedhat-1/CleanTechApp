@@ -5,7 +5,8 @@ import 'package:ct_clean/src/feature/devastation/task_details_devastation/logic/
 part 'task_details_devastation_state.dart';
 
 class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
-  TaskDetailsDevastationCubit(this.repo) : super(TaskDetailsDevastationInitial());
+  TaskDetailsDevastationCubit(this.repo)
+      : super(TaskDetailsDevastationInitial());
   TaskDetailsDevastationRepo repo;
 
   MissionDevastationModel? detailsMissionModel;
@@ -52,7 +53,7 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
       emit(CheckContainerFailure());
     }, (r) {
       checkContainerModel = r;
-      emit(CheckContainerSuccess());
+      emit(CheckContainerSuccess(r.exist ?? false));
     });
   }
 
@@ -67,7 +68,6 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
   void serialNumberOnChange(String val) {
     params = params.copyWith(serial: val);
     checkContainer(val);
-    emit(CheckContainerSuccess());
   }
 
   void amountOnChange(String? val) {

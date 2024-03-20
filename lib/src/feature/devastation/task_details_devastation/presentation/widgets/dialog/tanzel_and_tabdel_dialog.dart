@@ -6,6 +6,8 @@ class TanzelAndTabdelDialog extends StatelessWidget {
 
   TanzelAndTabdelDialog({super.key});
 
+  TextEditingController serialController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -16,6 +18,13 @@ class TanzelAndTabdelDialog extends StatelessWidget {
           if (state is ChangeDevastationStateSuccess) {
             CustomNavigator.instance.pop();
             taskDDC.params = ChangeDevastationMissionParams();
+          }
+          if(state is CheckContainerSuccess){
+            if(state.exit == false){
+              flutterToast(
+                  msg: AppStrings.pleaseEnterAValidContainerNumber
+                      .tr(context));
+            }
           }
         },
         builder: (context, state) {
@@ -30,8 +39,11 @@ class TanzelAndTabdelDialog extends StatelessWidget {
                     hint: AppStrings.containersNumber.tr(context),
                     color: AppColors.white,
                     borderRadius: 8.r,
-                    // controller: taskDetailsCubit.noteController,
-                    onChanged: taskDDC.serialNumberOnChange,
+                    controller: serialController,
+                    onChanged: (value) {
+                      taskDDC.serialNumberOnChange(value);
+                      taskDDC.checkContainer(value);
+                    },
                   ),
                   10.isHeight,
                   TextFieldWidget(
@@ -58,13 +70,23 @@ class TanzelAndTabdelDialog extends StatelessWidget {
                 ],
               ),
               confirmTap: () {
-                if ((taskDDC.checkContainerModel?.exist ?? false) == false) {
-                  flutterToast(
-                      msg: AppStrings.pleaseEnterAValidContainerNumber
-                          .tr(context));
-                } else {
-                  taskDDC.changeMissionState();
+                if (state is CheckContainerSuccess) {
+                  if (state.exit == false) {
+                    flutterToast(
+                        msg: AppStrings.pleaseEnterAValidContainerNumber
+                            .tr(context));
+                  } else {
+                    taskDDC.changeMissionState();
+                  }
                 }
+
+                // if ((taskDDC.checkContainerModel?.exist ?? false) == false) {
+                //   flutterToast(
+                //       msg: AppStrings.pleaseEnterAValidContainerNumber
+                //           .tr(context));
+                // } else {
+                //   taskDDC.changeMissionState();
+                // }
               });
         },
       ),
