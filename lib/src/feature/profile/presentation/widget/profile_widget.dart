@@ -1,5 +1,5 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/extensions/string_extension.dart';
+import 'package:restart_app/restart_app.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key});
@@ -15,8 +15,7 @@ class ProfileWidget extends StatelessWidget {
               width: 104.w,
               height: 103.h,
               child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusDirectional.circular(50.r)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(50.r)),
                 clipBehavior: Clip.antiAlias,
                 child: cubit.profileModel == null
                     ? Icon(
@@ -29,11 +28,9 @@ class ProfileWidget extends StatelessWidget {
                             size: 60.sp,
                           )
                         : Image.network(
-                            cubit.profileModel?.image == null ||
-                                    cubit.profileModel?.image == ''
+                            cubit.profileModel?.image == null || cubit.profileModel?.image == ''
                                 ? 'http://via.placeholder.com/350x150'
-                                : cubit.profileModel?.image ??
-                                    'http://via.placeholder.com/350x150',
+                                : cubit.profileModel?.image ?? 'http://via.placeholder.com/350x150',
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
                               return Assets.svgs.person.svg();
@@ -46,8 +43,7 @@ class ProfileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(
-                      maxWidth: MediaQuery.sizeOf(context).width * 0.5),
+                  constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.5),
                   child: Text(
                     cubit.profileModel?.name ?? ''.loadingString,
                     style: TextStyle(
@@ -86,14 +82,12 @@ class ProfileWidget extends StatelessWidget {
               onPressed: () {
                 CacheHelper.removeData(key: MyCashKey.driverId);
                 CacheHelper.removeData(key: MyCashKey.driverName);
-                CustomNavigator.instance.pushNamedAndRemoveUntil(
-                    Routes.loginScreen, (route) => false);
+                CustomNavigator.instance.pushNamedAndRemoveUntil(Routes.loginScreen, (route) => false);
+                Restart.restartApp();
               },
               icon:
                   // Icon(Icons.logout),
-                  RotatedBox(
-                      quarterTurns: UserLocal.lang == "en" ? 2 : 0,
-                      child: Assets.svgs.logout.svg()),
+                  RotatedBox(quarterTurns: UserLocal.lang == "en" ? 2 : 0, child: Assets.svgs.logout.svg()),
             ),
           ],
         );

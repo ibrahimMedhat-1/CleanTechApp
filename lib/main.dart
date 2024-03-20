@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:math';
 import 'dart:ui';
+
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -8,23 +8,22 @@ const AndroidInitializationSettings androidInitializationSettings =
     AndroidInitializationSettings('@mipmap/ic_launcher');
 const InitializationSettings initializationSettings =
     InitializationSettings(android: androidInitializationSettings);
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   notificationChannelId, // id
   'MY FOREGROUND SERVICE', // title
-  description:
-      'This channel is used for important notifications.', // description
+  description: 'This channel is used for important notifications.', // description
   importance: Importance.low, // importance must be at low or higher level
 );
 const notificationChannelId = 'my_foreground';
 const notificationId = 888;
+int? mainDriverId;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.initCacheHelper();
-  print(UserLocal.lang);
-  print(UserLocal.driverId);
+  // print(UserLocal.lang);
+  // print(UserLocal.driverId);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -45,9 +44,11 @@ void main() async {
       Permission.storage.request();
     }
   });
-  mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
+  // mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
   await setUpLocators();
   Bloc.observer = MyBlocObserver();
+  mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
+  print('ssss${mainDriverId}');
   await initializeService();
   runApp(MyApp());
 }
@@ -55,8 +56,7 @@ void main() async {
 Future<void> initializeService() async {
   final service = FlutterBackgroundService();
   await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
   await service.configure(
     androidConfiguration: AndroidConfiguration(
@@ -86,6 +86,7 @@ FutureOr<bool> onIosBackground(ServiceInstance service) async {
 @pragma('vm:entry-point')
 Future<void> onStart(ServiceInstance service) async {
   DartPluginRegistrant.ensureInitialized();
+  print(mainDriverId);
   Timer.periodic(const Duration(seconds: 10), (timer) async {
     if (service is AndroidServiceInstance) {
       if (await service.isForegroundService()) {
@@ -137,39 +138,37 @@ Future<void> onStart(ServiceInstance service) async {
 StreamSubscription<Position> get getterStreamPosition =>
     LocationHelper.getStreamLocation().listen((event) => event);
 
-
 Position? po;
-int? mainDriverId;
-void getLocation(){
+void getLocation() {
   LocationHelper.getCurrentLocation().then((value) {
     po = value;
-
   });
 }
+
 void callApi() async {
-  await CacheHelper.initCacheHelper();
+  // await CacheHelper.initCacheHelper();
+  // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   Dio dio = Dio();
   if (mainDriverId == null) {
     print("in if $mainDriverId");
-    mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
+    // print(await sharedPreferences.get( MyCashKey.driverId.name));
+    // mainDriverId = await sharedPreferences.get( MyCashKey.driverId.name);
   } else {
     print("in else $mainDriverId");
     print("in else point ${po?.latitude}");
     print("in else point ${po?.longitude}");
-    if(po == null){
+    if (po == null) {
       print("po is null");
       LocationHelper.getCurrentLocation().then((value) {
         po = value;
-
       });
       print("po is null point ${po?.latitude}");
       print("po is null point ${po?.longitude}");
-
-    }else{
+    } else {
       print("${DateTime.now()} lat is ${po?.latitude} , long is ${po?.longitude}");
       dio
           .post(
-          "http://173.249.51.4/ctservices/location?driverId=${mainDriverId ?? 0}&latitude=${po?.latitude}&longitude=${po?.longitude}&missionId=98")
+              "http://173.249.51.4/ctservices/location?driverId=${mainDriverId ?? 0}&latitude=${po?.latitude}&longitude=${po?.longitude}&missionId=98")
           .then((value) {
         debugPrint(
             "AhmedTracing:id : $mainDriverId sendLocation ${value.statusCode}latitude=${po?.latitude}&longitude=${po?.longitude}");

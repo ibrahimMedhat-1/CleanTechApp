@@ -1,3 +1,4 @@
+import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
@@ -7,10 +8,8 @@ class CacheHelper {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  static Future<bool> saveData(
-      {required MyCashKey key, required dynamic value}) async {
-    if (value is String)
-      return await sharedPreferences.setString(key.name, value);
+  static Future<bool> saveData({required MyCashKey key, required dynamic value}) async {
+    if (value is String) return await sharedPreferences.setString(key.name, value);
     if (value is int) return await sharedPreferences.setInt(key.name, value);
     if (value is bool) return await sharedPreferences.setBool(key.name, value);
 
@@ -27,16 +26,4 @@ class CacheHelper {
 }
 
 //cache
-enum MyCashKey {
-  driverId,
-  missionId,
-  driverName,
-  token,
-  lang,
-  image,
-  type,
-  driverBox
-
-  
-  
-}
+enum MyCashKey { driverId, missionId, driverName, token, lang, image, type, driverBox }

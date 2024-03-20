@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
+import 'dart:async';
+
 import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
 import 'package:dartz/dartz.dart';
-import 'package:restart_app/restart_app.dart';
 
 part 'login_state.dart';
 
@@ -20,18 +20,22 @@ class LoginCubit extends Cubit<LoginState> {
     Either<Failures, LoginModel> result = await loginRepo.login(params);
     result.fold((l) {
       emit(LoginFailure(msg: l.errMessage));
-    }, (r) {
+    }, (r) async {
       prefs.setInt(MyCashKey.driverId.name, r.id ?? -1);
-      CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
+      await CacheHelper.saveData(key: MyCashKey.driverId, value: r.id);
+      print(await CacheHelper.getData(key: MyCashKey.driverId));
       generalDriverId = r.id;
-      print(
-          "The generalDriverId is in login Cubit ${generalDriverId}& mainDriverId ${mainDriverId}");
+      print("The generalDriverId is in login Cubit ${generalDriverId}& mainDriverId ${mainDriverId}");
       CacheHelper.saveData(key: MyCashKey.driverName, value: r.name);
       CacheHelper.saveData(key: MyCashKey.image, value: r.image);
       CacheHelper.saveData(key: MyCashKey.type, value: r.type);
       print(UserLocal.driverId);
       emit(LoginSuccess(loginModel: r));
-      Restart.restartApp();
+      mainDriverId = null;
+      mainDriverId = r.id;
+      Timer.periodic(const Duration(seconds: 10), (timer) async {
+        callApi();
+      });
     });
   }
 
