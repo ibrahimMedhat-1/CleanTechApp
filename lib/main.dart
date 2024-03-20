@@ -140,6 +140,7 @@ StreamSubscription<Position> get getterStreamPosition =>
 
 Position? po;
 void getLocation() {
+  // getterPosition.onData((data) {});
   LocationHelper.getCurrentLocation().then((value) {
     po = value;
   });
@@ -165,6 +166,9 @@ void callApi() async {
       print("po is null point ${po?.latitude}");
       print("po is null point ${po?.longitude}");
     } else {
+      LocationHelper.getCurrentLocation().then((value) {
+        po = value;
+      });
       print("${DateTime.now()} lat is ${po?.latitude} , long is ${po?.longitude}");
       dio
           .post(

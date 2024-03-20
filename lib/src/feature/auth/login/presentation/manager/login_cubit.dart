@@ -34,7 +34,21 @@ class LoginCubit extends Cubit<LoginState> {
       mainDriverId = null;
       mainDriverId = r.id;
       Timer.periodic(const Duration(seconds: 10), (timer) async {
-        callApi();
+        await LocationHelper.getCurrentLocation().then((value) {
+          po = value;
+        });
+        print("${DateTime.now()} lat is ${po?.latitude} , long is ${po?.longitude}");
+        Dio()
+            .post(
+                "http://173.249.51.4/ctservices/location?driverId=${mainDriverId ?? 0}&latitude=${po?.latitude}&longitude=${po?.longitude}&missionId=98")
+            .then((value) {
+          debugPrint(
+              "AhmedTracing:id : $mainDriverId sendLocation ${value.statusCode}latitude=${po?.latitude}&longitude=${po?.longitude}");
+          debugPrint("${value.data}");
+          debugPrint("${DateTime.now()}");
+        }).catchError((e) {
+          debugPrint("AhmedTracing: Error is ${e.toString()}");
+        });
       });
     });
   }
