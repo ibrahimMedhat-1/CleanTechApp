@@ -109,10 +109,12 @@ Future<void> onStart(ServiceInstance service) async {
         //   payload: 'item x',
         // );
         print("object isForegroundService");
+        getLocation();
         callApi();
       } else {
         print("object");
         print("object isBackground");
+        getLocation();
         callApi();
         // flutterLocalNotificationsPlugin.show(
         //   notificationId,
@@ -132,30 +134,54 @@ Future<void> onStart(ServiceInstance service) async {
   });
 }
 
-StreamSubscription<Position> get getterPosition =>
+StreamSubscription<Position> get getterStreamPosition =>
     LocationHelper.getStreamLocation().listen((event) => event);
+
+
 Position? po;
-
 int? mainDriverId;
+void getLocation(){
+  LocationHelper.getCurrentLocation().then((value) {
+    po = value;
 
+  });
+}
 void callApi() async {
   await CacheHelper.initCacheHelper();
   Dio dio = Dio();
   if (mainDriverId == null) {
+    print("in if $mainDriverId");
     mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
   } else {
-    getterPosition.onData((data) {
+    print("in else $mainDriverId");
+    print("in else point ${po?.latitude}");
+    print("in else point ${po?.longitude}");
+    if(po == null){
+      print("po is null");
+      LocationHelper.getCurrentLocation().then((value) {
+        po = value;
+
+      });
+      print("po is null point ${po?.latitude}");
+      print("po is null point ${po?.longitude}");
+
+    }else{
+      print("${DateTime.now()} lat is ${po?.latitude} , long is ${po?.longitude}");
       dio
           .post(
-              "http://173.249.51.4/ctservices/location?driverId=${mainDriverId ?? 0}&latitude=${data.latitude}&longitude=${data.longitude}&missionId=98")
+          "http://173.249.51.4/ctservices/location?driverId=${mainDriverId ?? 0}&latitude=${po?.latitude}&longitude=${po?.longitude}&missionId=98")
           .then((value) {
         debugPrint(
-            "AhmedTracing:id : $mainDriverId sendLocation ${value.statusCode}latitude=${data.latitude}&longitude=${data.longitude}");
+            "AhmedTracing:id : $mainDriverId sendLocation ${value.statusCode}latitude=${po?.latitude}&longitude=${po?.longitude}");
         debugPrint("${value.data}");
         debugPrint("${DateTime.now()}");
       }).catchError((e) {
         debugPrint("AhmedTracing: Error is ${e.toString()}");
       });
-    });
+    }
+
+    // getterPosition.onData((data) {
+
+    // });
   }
 }

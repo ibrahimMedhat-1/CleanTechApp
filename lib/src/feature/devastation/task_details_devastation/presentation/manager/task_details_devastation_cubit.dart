@@ -31,7 +31,7 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
 
   void changeMissionState() async {
     emit(ChangeDevastationStateLoading());
-    getterPosition.onData((data) {
+    getterStreamPosition.onData((data) {
       params = params.copyWith(
         lat: data.latitude,
         lng: data.longitude,
