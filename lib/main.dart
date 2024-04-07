@@ -2,17 +2,20 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 const AndroidInitializationSettings androidInitializationSettings =
     AndroidInitializationSettings('@mipmap/ic_launcher');
 const InitializationSettings initializationSettings =
     InitializationSettings(android: androidInitializationSettings);
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   notificationChannelId, // id
   'MY FOREGROUND SERVICE', // title
-  description: 'This channel is used for important notifications.', // description
+  description:
+      'This channel is used for important notifications.', // description
   importance: Importance.low, // importance must be at low or higher level
 );
 const notificationChannelId = 'my_foreground';
@@ -21,6 +24,7 @@ int? mainDriverId;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await CacheHelper.initCacheHelper();
   // print(UserLocal.lang);
   // print(UserLocal.driverId);
@@ -56,7 +60,8 @@ void main() async {
 Future<void> initializeService() async {
   final service = FlutterBackgroundService();
   await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
   await service.configure(
     androidConfiguration: AndroidConfiguration(
@@ -169,7 +174,8 @@ void callApi() async {
       LocationHelper.getCurrentLocation().then((value) {
         po = value;
       });
-      print("${DateTime.now()} lat is ${po?.latitude} , long is ${po?.longitude}");
+      print(
+          "${DateTime.now()} lat is ${po?.latitude} , long is ${po?.longitude}");
       dio
           .post(
               "http://173.249.51.4/ctservices/location?driverId=${mainDriverId ?? 0}&latitude=${po?.latitude}&longitude=${po?.longitude}&missionId=98")
