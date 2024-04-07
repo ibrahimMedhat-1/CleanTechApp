@@ -82,7 +82,8 @@
   "switchMission" : "تبديل",
   "modificationWithoutTam" : "تعديل",
   "theContainerNumberIsAlreadyRegisteredWithAnotherCustomer" : "رقم الحاوية مسجل من قبل عند عميل اخر",
-  "warehouse" : "تم التنزيل في المخزن"
+  "warehouse" : "تم التنزيل في المخزن",
+  "pleaseEnterTheContainerNumber" : "برجاء أدخال رقم الحاوية"
 
 
 }

@@ -80,9 +80,7 @@ static const String lifting = "lifting";
 static const String placeContainer = "placeContainer";
 static const String switchMission = "switchMission";
 static const String modificationWithoutTam = "modificationWithoutTam";
-
-
-
+static const String pleaseEnterTheContainerNumber = "pleaseEnterTheContainerNumber";
 
 /// salary Details
 ///

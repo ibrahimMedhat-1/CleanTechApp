@@ -82,6 +82,7 @@
   "switchMission" : "Switch",
   "modificationWithoutTam" : "Modification",
   "theContainerNumberIsAlreadyRegisteredWithAnotherCustomer" : "The Container Number Is Already Registered With Another Customer",
-  "warehouse" : "Downloaded to store"
+  "warehouse" : "Downloaded to store",
+  "pleaseEnterTheContainerNumber" : "Please Enter The Container Number"
 
  }
