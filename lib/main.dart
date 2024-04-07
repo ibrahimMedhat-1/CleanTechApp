@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 const AndroidInitializationSettings androidInitializationSettings =
@@ -12,11 +10,10 @@ const InitializationSettings initializationSettings =
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
-  notificationChannelId, // id
-  'MY FOREGROUND SERVICE', // title
-  description:
-      'This channel is used for important notifications.', // description
-  importance: Importance.low, // importance must be at low or higher level
+  notificationChannelId,
+  'MY FOREGROUND SERVICE',
+  description: 'This channel is used for important notifications.',
+  importance: Importance.low,
 );
 const notificationChannelId = 'my_foreground';
 const notificationId = 888;
@@ -26,8 +23,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await CacheHelper.initCacheHelper();
-  // print(UserLocal.lang);
-  // print(UserLocal.driverId);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -48,11 +43,9 @@ void main() async {
       Permission.storage.request();
     }
   });
-  // mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
   await setUpLocators();
   Bloc.observer = MyBlocObserver();
   mainDriverId = await CacheHelper.getData(key: MyCashKey.driverId);
-  print('ssss${mainDriverId}');
   await initializeService();
   runApp(MyApp());
 }
@@ -91,50 +84,16 @@ FutureOr<bool> onIosBackground(ServiceInstance service) async {
 @pragma('vm:entry-point')
 Future<void> onStart(ServiceInstance service) async {
   DartPluginRegistrant.ensureInitialized();
-  print(mainDriverId);
   Timer.periodic(const Duration(seconds: 10), (timer) async {
     if (service is AndroidServiceInstance) {
       if (await service.isForegroundService()) {
-        // int rndmIndex = Random().nextInt(100);
-        // AndroidNotificationDetails androidNotificationDetails =
-        //     AndroidNotificationDetails(
-        //   '$rndmIndex.0',
-        //   "Clean Tech",
-        //   channelDescription: "This is a channel",
-        //   importance: Importance.max,
-        //   priority: Priority.high,
-        //   showWhen: false,
-        // );
-        // NotificationDetails platformChannelSpecifics =
-        //     NotificationDetails(android: androidNotificationDetails);
-        // await flutterLocalNotificationsPlugin.show(
-        //   rndmIndex,
-        //   "Clean Tech",
-        //   "0.0 , 0.0",
-        //   platformChannelSpecifics,
-        //   payload: 'item x',
-        // );
         print("object isForegroundService");
         getLocation();
         callApi();
       } else {
-        print("object");
         print("object isBackground");
         getLocation();
         callApi();
-        // flutterLocalNotificationsPlugin.show(
-        //   notificationId,
-        //   'Clean Tech',
-        //   'Awesome ${DateTime.now()}',
-        //   const NotificationDetails(
-        //     android: AndroidNotificationDetails(
-        //       notificationChannelId,
-        //       'MY FOREGROUND SERVICE',
-        //       icon: 'ic_bg_service_small',
-        //       ongoing: true,
-        //     ),
-        //   ),
-        // );
       }
     }
   });
@@ -145,24 +104,16 @@ StreamSubscription<Position> get getterStreamPosition =>
 
 Position? po;
 void getLocation() {
-  // getterPosition.onData((data) {});
   LocationHelper.getCurrentLocation().then((value) {
     po = value;
   });
 }
 
 void callApi() async {
-  // await CacheHelper.initCacheHelper();
-  // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   Dio dio = Dio();
   if (mainDriverId == null) {
     print("in if $mainDriverId");
-    // print(await sharedPreferences.get( MyCashKey.driverId.name));
-    // mainDriverId = await sharedPreferences.get( MyCashKey.driverId.name);
   } else {
-    print("in else $mainDriverId");
-    print("in else point ${po?.latitude}");
-    print("in else point ${po?.longitude}");
     if (po == null) {
       print("po is null");
       LocationHelper.getCurrentLocation().then((value) {
@@ -188,9 +139,5 @@ void callApi() async {
         debugPrint("AhmedTracing: Error is ${e.toString()}");
       });
     }
-
-    // getterPosition.onData((data) {
-
-    // });
   }
 }

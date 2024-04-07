@@ -58,7 +58,8 @@ export 'package:flutter_background_service_android/flutter_background_service_an
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
 // export 'package:permission_handler/permission_handler.dart';
 export 'package:shared_preferences/shared_preferences.dart';
-
+export 'package:firebase_core/firebase_core.dart';
+ 
 
 
 
