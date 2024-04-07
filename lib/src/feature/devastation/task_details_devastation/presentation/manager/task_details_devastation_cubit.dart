@@ -35,6 +35,14 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
         lng: data.longitude,
       );
     });
+    if (params.lat == 0.0 || params.lng == 0.0) {
+      LocationHelper.getCurrentLocation().then(
+        (value) => params = params.copyWith(
+          lat: value.latitude,
+          lng: value.longitude,
+        ),
+      );
+    }
     final result = await repo.changeMissionState(params);
     result.fold((l) {
       emit(ChangeDevastationStateFailure());

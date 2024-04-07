@@ -12,21 +12,23 @@ class MissionDevastationModel {
   int? currentStatus;
   String? image;
   double? amount;
+  int? warehouse;
 
   MissionDevastationModel(
       {this.id,
-        this.missionType,
-        this.companyType,
-        this.company,
-        this.address,
-        this.description,
-        this.latitude,
-        this.longitude,
-        this.date,
-        this.time,
-        this.currentStatus,
-        this.image,
-        this.amount});
+      this.missionType,
+      this.companyType,
+      this.company,
+      this.address,
+      this.description,
+      this.latitude,
+      this.longitude,
+      this.date,
+      this.time,
+      this.currentStatus,
+      this.image,
+      this.warehouse,
+      this.amount});
 
   MissionDevastationModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -42,6 +44,7 @@ class MissionDevastationModel {
     currentStatus = json['current_status'];
     image = json['image'];
     amount = json['amount'];
+    warehouse = json['warehouse'];
   }
 
   Map<String, dynamic> toJson() {
@@ -59,6 +62,7 @@ class MissionDevastationModel {
     data['current_status'] = currentStatus;
     data['image'] = image;
     data['amount'] = amount;
+    data['warehouse'] = warehouse;
     return data;
   }
 }

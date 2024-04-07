@@ -28,7 +28,6 @@ class TaskDetailsDevastationBody extends StatelessWidget {
               CustomNavigator.instance.pop();
             }
           }
-
         },
         builder: (context, state) {
           var item = taskDDC.detailsMissionModel;
@@ -141,7 +140,7 @@ class TaskDetailsDevastationBody extends StatelessWidget {
                 missionId: item?.id ?? 0,
                 missionType: item?.missionType ?? 0,
               ),
-              90.isHeight,
+              70.isHeight,
               DevastationDetailsButtons(
                 missionType: item?.missionType ?? 0,
                 missionId: item?.id ?? 0,
@@ -181,14 +180,16 @@ class _DevastationDetailsButtonsState extends State<DevastationDetailsButtons> {
               child: ButtonWidget(
                 text: (item?.currentStatus ?? 0) == 0
                     ? AppStrings.theClientHasBeenApproached.tr(context)
-                    : getSecondMissionTitle,
+                    : item?.currentStatus == 2
+                        ? AppStrings.warehouse.tr(context)
+                        : getSecondMissionTitle,
                 onPressed: () {
                   print(item?.missionType);
                   print((item?.missionType == 0 || item?.missionType == 3));
                   showAdaptiveDialog(
                     context: context,
                     builder: (context) {
-                      return (item?.currentStatus == 0)
+                      return (item?.currentStatus == 0) || item?.currentStatus == 2
                           ? NoteDialog()
                           : (item?.missionType == 0 || item?.missionType == 3)
                               ? SehbAndTahtelDialog()

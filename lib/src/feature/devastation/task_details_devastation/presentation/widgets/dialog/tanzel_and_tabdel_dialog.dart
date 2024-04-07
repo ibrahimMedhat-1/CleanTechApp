@@ -19,11 +19,10 @@ class TanzelAndTabdelDialog extends StatelessWidget {
             CustomNavigator.instance.pop();
             taskDDC.params = ChangeDevastationMissionParams();
           }
-          if(state is CheckContainerSuccess){
-            if(state.exit == false){
+          if (state is CheckContainerSuccess) {
+            if (state.exit == false) {
               flutterToast(
-                  msg: AppStrings.pleaseEnterAValidContainerNumber
-                      .tr(context));
+                  msg: AppStrings.pleaseEnterAValidContainerNumber.tr(context));
             }
           }
         },
@@ -76,7 +75,14 @@ class TanzelAndTabdelDialog extends StatelessWidget {
                         msg: AppStrings.pleaseEnterAValidContainerNumber
                             .tr(context));
                   } else {
-                    taskDDC.changeMissionState();
+                    if (taskDDC.checkContainerModel?.available == false) {
+                      flutterToast(
+                          msg: AppStrings
+                              .theContainerNumberIsAlreadyRegisteredWithAnotherCustomer
+                              .tr(context));
+                    } else {
+                      taskDDC.changeMissionState();
+                    }
                   }
                 }
 

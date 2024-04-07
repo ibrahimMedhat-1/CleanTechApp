@@ -62,6 +62,7 @@ static const String youCanLeaveANoteOrContinueWithoutIt = "youCanLeaveANoteOrCon
 static const String putANote = "putANote";
 static const String back = "back";
 static const String confirmStep = "confirmStep";
+static const String warehouse = "warehouse";
  // v2
 
 static const String deservedAmount = "deservedAmount";
@@ -74,6 +75,7 @@ static const String containersNumber = "containersNumber";
 static const String receivedAmount = "receivedAmount";
 static const String sahb = "sahb";
 static const String pleaseEnterAValidContainerNumber = "pleaseEnterAValidContainerNumber";
+static const String theContainerNumberIsAlreadyRegisteredWithAnotherCustomer = "theContainerNumberIsAlreadyRegisteredWithAnotherCustomer";
 static const String lifting = "lifting";
 static const String placeContainer = "placeContainer";
 static const String switchMission = "switchMission";

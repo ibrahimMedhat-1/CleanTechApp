@@ -29,6 +29,9 @@ class _DevastationStepsWidgetState extends State<DevastationStepsWidget> {
       },
       builder: (context, state) {
         var cubit = context.read<TaskDetailsDevastationCubit>();
+        var list = cubit.detailsMissionModel?.warehouse == 0
+            ? StepsDevastationDataModel.listSteps(context)
+            : StepsDevastationDataModel.listStepsWithAddWarehouseStep(context);
         return state is ChangeDevastationStateLoading
             ? Column(
                 children: List.generate(
@@ -52,19 +55,22 @@ class _DevastationStepsWidgetState extends State<DevastationStepsWidget> {
               )
             : Column(
                 children: List.generate(
-                  StepsDevastationDataModel.listSteps(context).length,
-                  (index) => BuildOneStepClass(
-                    title: index == 0
-                        ? StepsDevastationDataModel.listSteps(context)[index]
-                            .title
-                        : getSecondMissionTitle,
-                    index: index,
-                    image: StepsDevastationDataModel.listSteps(context)[index]
-                        .image,
-                    currentIndex:
-                        ((cubit.detailsMissionModel?.currentStatus ?? 0) - 1),
-                    showTile: index != 0 ? false : true,
-                  ),
+                  list.length,
+                  (index) {
+                    var item = list[index];
+                    return BuildOneStepClass(
+                        title: index == 2
+                            ? item.title
+                            : index == 0
+                                ? item.title
+                                : getSecondMissionTitle,
+                        index: index,
+                        image: item.image,
+                        currentIndex:
+                            ((cubit.detailsMissionModel?.currentStatus ?? 0) -
+                                1),
+                        showTile: index == list.length - 1 ? false : true);
+                  },
                 ),
               );
       },

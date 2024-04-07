@@ -80,7 +80,9 @@
   "lifting" : "سحب",
   "placeContainer" : "تنزيل",
   "switchMission" : "تبديل",
-  "modificationWithoutTam" : "تعديل"
+  "modificationWithoutTam" : "تعديل",
+  "theContainerNumberIsAlreadyRegisteredWithAnotherCustomer" : "رقم الحاوية مسجل من قبل عند عميل اخر",
+  "warehouse" : "تم التنزيل في المخزن"
 
 
 }
