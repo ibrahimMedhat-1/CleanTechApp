@@ -42,7 +42,7 @@ class TanzelAndTabdelDialog extends StatelessWidget {
                     hint: AppStrings.containersNumber.tr(context),
                     color: AppColors.white,
                     borderRadius: 8.r,
-                    controller: serialController,
+                    // controller: serialController,
                     onChanged: (value) {
                       taskDDC.serialNumberOnChange(value);
                       taskDDC.checkContainer(value);

@@ -12,39 +12,6 @@ class DayAndMonthDropDown extends StatelessWidget {
         return Row(
           children: [
             Expanded(
-                child:
-                    // Dropdown(
-                    //   dropColor: AppColors.white,
-                    //   borderSideColor: AppColors.black,
-                    //   items: cubit.getListMonthByCurrentYear ?? <int>[],
-                    //   itemToString: (value) => cubit.selectedMonth.toString(),
-                    //   itemsColor: AppColors.black,
-                    //   onChanged: cubit.monthOnChange,
-                    //   hint: AppStrings.selectMonth.tr(context),
-                    // ),
-                    //Month
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.black),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      padding: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
-                      child: DropdownButton(
-                                    value: cubit.selectedMonth,
-                                    items: cubit.getListMonthByCurrentYear
-                                        .map((e) => DropdownMenuItem(
-                          value: e,
-                          child: Text(e.toString()),
-                        ))
-                                        .toList(),
-                                    onChanged: cubit.monthOnChange,
-                                    hint: Text(AppStrings.selectMonth.tr(context)),
-                                    underline: const SizedBox.shrink(),
-                                    isExpanded: true,
-                                  ),
-                    )),
-            15.isWight,
-            Expanded(
               child: Dropdown(
                 dropColor: AppColors.white,
                 borderSideColor: AppColors.black,
@@ -58,6 +25,30 @@ class DayAndMonthDropDown extends StatelessWidget {
                 },
                 onChanged: cubit.yearOnChange,
                 hint: AppStrings.selectYear.tr(context),
+              ),
+            ),
+            15.isWight,
+            //Month
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.black),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: EdgeInsetsDirectional.symmetric(horizontal: 10.w),
+                child: DropdownButton(
+                  value: cubit.selectedMonth,
+                  items: cubit.getListMonthByCurrentYear
+                      .map((e) => DropdownMenuItem(
+                            value: e,
+                            child: Text(e.toString()),
+                          ))
+                      .toList(),
+                  onChanged: cubit.monthOnChange,
+                  hint: Text(AppStrings.selectMonth.tr(context)),
+                  underline: const SizedBox.shrink(),
+                  isExpanded: true,
+                ),
               ),
             ),
           ],

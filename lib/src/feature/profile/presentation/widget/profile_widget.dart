@@ -29,8 +29,8 @@ class ProfileWidget extends StatelessWidget {
                           )
                         : Image.network(
                             cubit.profileModel?.image == null || cubit.profileModel?.image == ''
-                                ? 'http://via.placeholder.com/350x150'
-                                : cubit.profileModel?.image ?? 'http://via.placeholder.com/350x150',
+                                ? 'http://via.placeholder.com/150x150'
+                                : cubit.profileModel?.image ?? 'http://via.placeholder.com/150x150',
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
                               return Assets.svgs.person.svg();
