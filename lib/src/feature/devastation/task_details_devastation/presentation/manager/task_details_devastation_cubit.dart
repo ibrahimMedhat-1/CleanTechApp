@@ -27,6 +27,7 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
   ChangeDevastationMissionParams params = ChangeDevastationMissionParams();
   ChangeMissionStateModel? changeMissionDevastationStateModel;
 
+  Future<Position> get position => LocationHelper.getCurrentLocation();
   void changeMissionState() async {
     emit(ChangeDevastationStateLoading());
     getterStreamPosition.onData((data) {
@@ -43,12 +44,20 @@ class TaskDetailsDevastationCubit extends Cubit<TaskDetailsDevastationState> {
         ),
       );
     }
-    final result = await repo.changeMissionState(params);
-    result.fold((l) {
+    LocationHelper.getCurrentLocation().then((val) async {
+      params = params.copyWith(
+        lat: val.latitude,
+        lng: val.longitude,
+      );
+      final result = await repo.changeMissionState(params);
+      result.fold((l) {
+        emit(ChangeDevastationStateFailure());
+      }, (r) {
+        changeMissionDevastationStateModel = r;
+        emit(ChangeDevastationStateSuccess(r));
+      });
+    }).catchError((e) {
       emit(ChangeDevastationStateFailure());
-    }, (r) {
-      changeMissionDevastationStateModel = r;
-      emit(ChangeDevastationStateSuccess(r));
     });
   }
 

@@ -10,7 +10,7 @@ class TaskDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-        appBar: TaskDetailsAppBar(context : context),
+        appBar: TaskDetailsAppBar(context: context),
         body: BlocProvider.value(
           value: taskDetailsCubit,
           child: Padding(
@@ -24,10 +24,7 @@ class TaskDetailsScreen extends StatelessWidget {
                 children: [
                   24.isHeight,
                   const Row(),
-                  TaskDetailsMap(
-                    lat: lat,
-                    lng: lng,
-                  ),
+                  const TaskDetailsMap(),
                   60.isHeight,
                   TaskDetailsBody(),
                 ],
