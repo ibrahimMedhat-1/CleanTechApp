@@ -1,9 +1,8 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-
 import 'core/services/background_service/background_service.dart';
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -63,15 +62,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 navigatorKey: navigationKey,
                 locale: Locale(UserLocal.lang ?? "ar"),
                 supportedLocales: AppLocalizationsSetup.supportedLocales,
-                localeResolutionCallback: AppLocalizationsSetup.localeResolutionCallback,
-                localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
+                localeResolutionCallback:
+                    AppLocalizationsSetup.localeResolutionCallback,
+                localizationsDelegates:
+                    AppLocalizationsSetup.localizationsDelegates,
                 onGenerateRoute: AppRouter().generateRoute,
                 initialRoute: Routes.loginScreen,
                 theme: ThemeData(
                   fontFamily: "Almarai",
                   appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
                   iconTheme: IconThemeData(color: AppColors.primary),
-                  colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+                  colorScheme:
+                      ColorScheme.fromSeed(seedColor: AppColors.primary),
                   useMaterial3: true,
                 ),
               );
