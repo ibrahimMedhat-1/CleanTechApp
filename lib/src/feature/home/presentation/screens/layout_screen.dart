@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:ct_clean/main.dart';
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class LayoutScreen extends StatefulWidget {
-  LayoutScreen({super.key});
+  const LayoutScreen({super.key});
 
   @override
   State<LayoutScreen> createState() => _LayoutScreenState();
@@ -16,6 +19,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   ];
 
   final homeCubit = sl<HomeCubit>();
+  final fcm = FirebaseMessaging.instance;
 
   @override
   void initState() {
@@ -25,7 +29,39 @@ class _LayoutScreenState extends State<LayoutScreen> {
     homeCubit.changeIndex(0);
     homeCubit.getMissionsList();
     mainDriverId = UserLocal.driverId;
+    fcm.setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+    fcm.getNotificationSettings();
+    fcm.requestPermission();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      showLocalNotification();
+    });
+  }
 
+  int rndmIndex = Random().nextInt(100);
+
+  void showLocalNotification() async {
+    AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+      '$rndmIndex.0',
+      "AhmedApp",
+      channelDescription: "Clean Tech",
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: false,
+    );
+    NotificationDetails notificationDetails =
+        NotificationDetails(android: androidNotificationDetails);
+    await flutterLocalNotificationsPlugin.show(
+      rndmIndex,
+      'Clean Tech',
+      "Clean Tech",
+      notificationDetails,
+      payload: 'item x',
+    );
   }
 
   @override

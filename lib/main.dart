@@ -21,13 +21,20 @@ int? mainDriverId;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+    apiKey: "AIzaSyCdpqroglUCQHQtfVa49CmGR-fcPTXgCTs",
+    appId: "1:641668158562:android:2cad24cbdd3a76c6066d3b",
+    messagingSenderId: "641668158562",
+    projectId: "publicstorework",
+  ));
   await CacheHelper.initCacheHelper();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
   await Permission.notification.isDenied.then((value) {
     if (value) {
       Permission.notification.request();
@@ -50,6 +57,7 @@ void main() async {
   runApp(MyApp());
 }
 
+////////////////////////////////////////BACKGROUND SERVICE////////////////////////////////////////////
 Future<void> initializeService() async {
   final service = FlutterBackgroundService();
   await flutterLocalNotificationsPlugin
@@ -103,6 +111,7 @@ StreamSubscription<Position> get getterStreamPosition =>
     LocationHelper.getStreamLocation().listen((event) => event);
 
 Position? po;
+
 void getLocation() {
   LocationHelper.getCurrentLocation().then((value) {
     po = value;
