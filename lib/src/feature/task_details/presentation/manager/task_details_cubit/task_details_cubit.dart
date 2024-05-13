@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
+import 'package:ct_clean/src/core/helper/image_helper.dart';
 
 part 'task_details_state.dart';
 
@@ -36,10 +39,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
     });
   }
 
-  void changeMissionState(
-      {required int missionId,
-      required double lat,
-      required double lng}) async {
+  void changeMissionState({required int missionId, required double lat, required double lng}) async {
     print(" the mission id is $missionId");
     getLocation();
     emit(ChangeMissionStateLoading());
@@ -65,10 +65,7 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
     );
   }
 
-  void skip(
-      {required int missionId,
-      required double lat,
-      required double lng}) async {
+  void skip({required int missionId, required double lat, required double lng}) async {
     emit(ChangeMissionStateLoading());
     final result = await repo.skip(ChangeStateParams(
       missionId: missionId,
@@ -97,6 +94,17 @@ class TaskDetailsCubit extends Cubit<TaskDetailsState> {
     }, (r) {
       missionDetailsModel = r;
       emit(GetMissionDetailsSuccess(missionDetailsModel: r));
+    });
+  }
+
+  File? image;
+
+  void getImage() async {
+    await ImageHelper().pickImageFromGallery().then((value) {
+      if (value != null) {
+        image = File(value.path);
+        emit(GetImage());
+      }
     });
   }
 }

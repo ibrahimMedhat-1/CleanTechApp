@@ -89,7 +89,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
               );
             },
           ),
-          actions: [Assets.svgs.logoWhite.svg(width: 120.w), 15.isWight],
+          actions: [Assets.svgs.logoWhite.svg(width: 120.w), 15.isWidth],
         ),
         body: BlocBuilder(
             bloc: homeCubit,

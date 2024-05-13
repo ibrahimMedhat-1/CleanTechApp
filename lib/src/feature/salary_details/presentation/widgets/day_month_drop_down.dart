@@ -1,5 +1,4 @@
 import 'package:ct_clean/src/core/config/routes/app_imports.dart';
-import 'package:ct_clean/src/core/functions/functions.dart';
 
 class DayAndMonthDropDown extends StatelessWidget {
   const DayAndMonthDropDown({super.key});
@@ -27,7 +26,7 @@ class DayAndMonthDropDown extends StatelessWidget {
                 hint: AppStrings.selectYear.tr(context),
               ),
             ),
-            15.isWight,
+            15.isWidth,
             //Month
             Expanded(
               child: Container(

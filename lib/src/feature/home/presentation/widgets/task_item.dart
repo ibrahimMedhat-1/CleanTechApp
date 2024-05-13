@@ -26,18 +26,16 @@ class TaskItem extends StatelessWidget {
               Container(
                 height: double.infinity,
                 width: 24.w,
-                color:
-                    item.missionType == 0 ? AppColors.primary : AppColors.red,
+                color: item.missionType == 0 ? AppColors.primary : AppColors.red,
               ),
-              3.isWight,
+              3.isWidth,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     getTypeName(context),
                     textAlign: TextAlign.start,
-                    style: FontStyles.interSize13_400Black
-                        .copyWith(fontSize: 21.sp),
+                    style: FontStyles.interSize13_400Black.copyWith(fontSize: 21.sp),
                   ),
                   getTypeImage() ?? const SizedBox.shrink(),
                 ],
@@ -55,12 +53,8 @@ class TaskItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     10.isHeight,
-                    BaseText(
-                        title: AppStrings.placeName.tr(context),
-                        subTitle: item.company ?? ""),
-                    BaseText(
-                        title: AppStrings.address.tr(context),
-                        subTitle: item.address ?? ""),
+                    BaseText(title: AppStrings.placeName.tr(context), subTitle: item.company ?? ""),
+                    BaseText(title: AppStrings.address.tr(context), subTitle: item.address ?? ""),
                     BaseText(
                       title: AppStrings.time.tr(context),
                       subTitle: "${item.time ?? ""} - ${item.date ?? ""}",

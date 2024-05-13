@@ -17,13 +17,12 @@ class NumberTaskDayAndMonth extends StatelessWidget {
                   AppStrings.numberOfDailyTasks.tr(context),
                   style: FontStyles.interSize20_700Primary,
                 ),
-                10.isWight,
+                10.isWidth,
                 FloatingActionButton(
                   onPressed: () {},
                   mini: true,
                   backgroundColor: AppColors.primary3,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.circular(50.r)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(50.r)),
                   child: Text(
                     "${cubit.profileModel?.missionsToday ?? 0}",
                     style: const TextStyle(
@@ -40,13 +39,12 @@ class NumberTaskDayAndMonth extends StatelessWidget {
                   AppStrings.numberOfMonthlyTasks.tr(context),
                   style: FontStyles.interSize20_700Primary,
                 ),
-                10.isWight,
+                10.isWidth,
                 FloatingActionButton(
                   onPressed: () {},
                   mini: true,
                   backgroundColor: AppColors.primary3,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.circular(50.r)),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(50.r)),
                   child: Text(
                     "${cubit.profileModel?.missionsMonth ?? 0}",
                     style: const TextStyle(

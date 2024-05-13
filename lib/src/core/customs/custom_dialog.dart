@@ -12,12 +12,10 @@ class CustomDialog extends StatelessWidget {
   final Widget child;
   final VoidCallback? confirmTap;
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsetsDirectional.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,21 +39,21 @@ class CustomDialog extends StatelessWidget {
                   Spacer(),
                   Row(
                     children: [
-                      10.isWight,
+                      10.isWidth,
                       Expanded(
                         child: ButtonWidget(
                           text: AppStrings.back.tr(context),
                           onPressed: () => CustomNavigator.instance.pop(),
                         ),
                       ),
-                      10.isWight,
+                      10.isWidth,
                       Expanded(
                         child: ButtonWidget(
                           text: AppStrings.confirmStep.tr(context),
                           onPressed: confirmTap,
                         ),
                       ),
-                      10.isWight,
+                      10.isWidth,
                     ],
                   ),
                   20.isHeight

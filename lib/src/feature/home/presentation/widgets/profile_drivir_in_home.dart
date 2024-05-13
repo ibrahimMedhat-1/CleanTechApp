@@ -41,7 +41,7 @@ class ProfileDriverInHome extends StatelessWidget {
                   ),
                 ),
         ),
-        10.isWight,
+        10.isWidth,
         Column(
           children: [
             Text.rich(

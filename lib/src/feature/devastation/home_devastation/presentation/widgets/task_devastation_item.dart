@@ -34,7 +34,7 @@ class _TaskDevastationItemState extends State<TaskDevastationItem> {
                 color:
                     widget.item.companyType == 0 ? AppColors.primary : AppColors.red,
               ),
-              3.isWight,
+              3.isWidth,
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

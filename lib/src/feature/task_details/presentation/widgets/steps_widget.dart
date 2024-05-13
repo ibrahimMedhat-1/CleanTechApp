@@ -89,7 +89,7 @@ class BuildOneStepClass extends StatelessWidget {
                   border: Border.all(color: AppColors.gray1)),
               child: currentIndex >= index ? image : null,
             ),
-            10.isWight,
+            10.isWidth,
             Text(title),
           ],
         ),

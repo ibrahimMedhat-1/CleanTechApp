@@ -21,8 +21,7 @@ class TaskDetailsDevastationBody extends StatelessWidget {
             if (state.r.next != 0) {
               taskDDC.getMissionDevastationDetails(state.r.next ?? 0);
             } else {
-              taskDDC.getMissionDevastationDetails(
-                  taskDDC.detailsMissionModel?.id ?? 0);
+              taskDDC.getMissionDevastationDetails(taskDDC.detailsMissionModel?.id ?? 0);
             }
             if (state.r.next == null) {
               CustomNavigator.instance.pop();
@@ -94,13 +93,12 @@ class TaskDetailsDevastationBody extends StatelessWidget {
                       color: AppColors.primary,
                     ),
                   ),
-                  5.isWight,
+                  5.isWidth,
                   Text("${item?.amount ?? 0.0}"),
                 ],
               ),
               TextButton(
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                  style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
@@ -131,7 +129,7 @@ class TaskDetailsDevastationBody extends StatelessWidget {
                   child: Row(
                     children: [
                       Assets.svgs.collectImages.svg(),
-                      10.isWight,
+                      10.isWidth,
                       Text(AppStrings.viewAttachments.tr(context))
                     ],
                   )),
@@ -154,22 +152,19 @@ class TaskDetailsDevastationBody extends StatelessWidget {
 }
 
 class DevastationDetailsButtons extends StatefulWidget {
-  const DevastationDetailsButtons(
-      {super.key, required this.missionType, required this.missionId});
+  const DevastationDetailsButtons({super.key, required this.missionType, required this.missionId});
 
   final int missionType;
   final int missionId;
 
   @override
-  State<DevastationDetailsButtons> createState() =>
-      _DevastationDetailsButtonsState();
+  State<DevastationDetailsButtons> createState() => _DevastationDetailsButtonsState();
 }
 
 class _DevastationDetailsButtonsState extends State<DevastationDetailsButtons> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TaskDetailsDevastationCubit,
-        TaskDetailsDevastationState>(
+    return BlocBuilder<TaskDetailsDevastationCubit, TaskDetailsDevastationState>(
       builder: (context, state) {
         var cubit = context.read<TaskDetailsDevastationCubit>();
         var item = cubit.detailsMissionModel;
@@ -203,7 +198,7 @@ class _DevastationDetailsButtonsState extends State<DevastationDetailsButtons> {
                 color: AppColors.primary,
               ),
             ),
-            10.isWight,
+            10.isWidth,
             Expanded(
               child: ButtonWidget(
                 onPressed: () => showAdaptiveDialog(

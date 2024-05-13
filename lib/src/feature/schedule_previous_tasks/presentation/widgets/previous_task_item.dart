@@ -22,16 +22,13 @@ class PreviousTaskItem extends StatelessWidget {
             ),
             child: Row(
               children: [
-                5.isWight,
+                5.isWidth,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      UserLocal.type == 1
-                          ? getTypeName(context)
-                          : titleDevastation(context),
-                      style: FontStyles.interSize13_400Black
-                          .copyWith(fontSize: 21.sp),
+                      UserLocal.type == 1 ? getTypeName(context) : titleDevastation(context),
+                      style: FontStyles.interSize13_400Black.copyWith(fontSize: 21.sp),
                     ),
                     UserLocal.type == 1 ? getTypeImage() : devastationImage,
                   ],
@@ -55,8 +52,7 @@ class PreviousTaskItem extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: AppStrings.placeName.tr(context),
-                              style: FontStyles.interSize18_400Primary
-                                  .copyWith(fontSize: 16.sp),
+                              style: FontStyles.interSize18_400Primary.copyWith(fontSize: 16.sp),
                             ),
                             TextSpan(
                               text: item.company ?? "",
@@ -70,8 +66,7 @@ class PreviousTaskItem extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: AppStrings.address.tr(context),
-                              style: FontStyles.interSize18_400Primary
-                                  .copyWith(fontSize: 16.sp),
+                              style: FontStyles.interSize18_400Primary.copyWith(fontSize: 16.sp),
                             ),
                             TextSpan(
                               text: item.address ?? "",
@@ -85,12 +80,10 @@ class PreviousTaskItem extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: AppStrings.time.tr(context),
-                              style: FontStyles.interSize18_400Primary
-                                  .copyWith(fontSize: 16.sp),
+                              style: FontStyles.interSize18_400Primary.copyWith(fontSize: 16.sp),
                             ),
                             TextSpan(
-                              text:
-                                  "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
+                              text: "${item.date ?? ""} ${AppStrings.atTime.tr(context)} ${item.time ?? ""}",
                               style: FontStyles.interSize13_400Black,
                             ),
                           ],
@@ -112,9 +105,7 @@ class PreviousTaskItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8.r),
                     color: UserLocal.type == 1
                         ? (item.status == 3 ? AppColors.primary : AppColors.red)
-                        : (item.status == 2
-                            ? AppColors.primary
-                            : AppColors.red),
+                        : (item.status == 2 ? AppColors.primary : AppColors.red),
                   ),
                   child: UserLocal.type == 1
                       ? (item.status == 3

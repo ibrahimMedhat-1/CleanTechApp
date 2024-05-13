@@ -30,26 +30,22 @@ class HomeScreen extends StatelessWidget {
                         height: 30.h,
                         width: 30.w,
                         child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadiusDirectional.circular(0)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(0)),
                           color: AppColors.primary,
                         ),
                       ),
-                      5.isWight,
+                      5.isWidth,
                       Text(AppStrings.ordinaryTask.tr(context)),
-                      30.isWight,
+                      30.isWidth,
                       SizedBox(
                         height: 30.h,
                         width: 30.w,
                         child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadiusDirectional.circular(0)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(0)),
                           color: AppColors.red,
                         ),
                       ),
-                      5.isWight,
+                      5.isWidth,
                       Text(AppStrings.urgentTask.tr(context)),
                     ],
                   ),

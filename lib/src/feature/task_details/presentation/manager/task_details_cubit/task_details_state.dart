@@ -5,6 +5,8 @@ abstract class TaskDetailsState {}
 
 class TaskDetailsInitial extends TaskDetailsState {}
 
+class GetImage extends TaskDetailsState {}
+
 class ChangeStepsIndexState extends TaskDetailsState {}
 
 class ChangeMissionStateLoading extends TaskDetailsState {}
@@ -22,18 +24,23 @@ class ChangeMissionStateSuccess extends TaskDetailsState {
 }
 
 class SkipStateLoading extends TaskDetailsState {}
+
 class SkipStateSuccess extends TaskDetailsState {}
+
 class SkipStateFailure extends TaskDetailsState {
   final String msg;
 
   SkipStateFailure(this.msg);
 }
 
-class GetMissionDetailsLoading extends TaskDetailsState{}
-class GetMissionDetailsSuccess extends TaskDetailsState{
+class GetMissionDetailsLoading extends TaskDetailsState {}
+
+class GetMissionDetailsSuccess extends TaskDetailsState {
   final MissionDetailsModel missionDetailsModel;
 
-  GetMissionDetailsSuccess({ required this.missionDetailsModel});
+  GetMissionDetailsSuccess({required this.missionDetailsModel});
 }
-class GetMissionDetailsFailure extends TaskDetailsState{}
-class GetStreamLocationState extends TaskDetailsState{}
+
+class GetMissionDetailsFailure extends TaskDetailsState {}
+
+class GetStreamLocationState extends TaskDetailsState {}

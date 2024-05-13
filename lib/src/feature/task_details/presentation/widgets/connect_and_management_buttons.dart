@@ -47,7 +47,9 @@ class _ConnectAndManagementButtonsState
                       ? showAdaptiveDialog(
                           context: context,
                           builder: (context) =>
-                              ConfirmStepDialog(missionId: widget.id),
+                              ConfirmStepDialog(
+                                  stepId: cubit.missionDetailsModel?.currentStatus ?? 0,
+                                  missionId: widget.id),
                         )
                       : null;
                 },
@@ -56,7 +58,7 @@ class _ConnectAndManagementButtonsState
                     : AppColors.primary2,
               ),
             ),
-            10.isWight,
+            10.isWidth,
             // cubit.changeMissionStateModel?.status == 2
             cubit.missionDetailsModel?.currentStatus == 2
                 ? Expanded(
@@ -71,7 +73,7 @@ class _ConnectAndManagementButtonsState
                     ),
                   )
                 : const SizedBox.shrink(),
-            10.isWight,
+            10.isWidth,
             Expanded(
               child: ButtonWidget(
                 onPressed: () => showAdaptiveDialog(

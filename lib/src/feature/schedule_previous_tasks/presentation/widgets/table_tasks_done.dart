@@ -56,7 +56,7 @@ class TableTasksDone extends StatelessWidget {
               AppStrings.numberOfSongsToday.tr(context),
               style: FontStyles.interSize14_800Primary,
             ),
-            5.isWight,
+            5.isWidth,
             Container(
               height: 25.h,
               width: 25.w,
@@ -89,7 +89,7 @@ class TableTasksDone extends StatelessWidget {
               AppStrings.numberOfTasksCompleted.tr(context),
               style: FontStyles.interSize14_800Primary,
             ),
-            5.isWight,
+            5.isWidth,
             Container(
               height: 25.h,
               width: 25.w,
@@ -137,7 +137,7 @@ class TableTasksDone extends StatelessWidget {
                 color: AppColors.white,
               ),
             ),
-            5.isWight,
+            5.isWidth,
             Text(
               AppStrings.tasksNotCompleted.tr(context),
               style: TextStyle(fontSize: 12.sp),
@@ -156,7 +156,7 @@ class TableTasksDone extends StatelessWidget {
                 color: AppColors.white,
               ),
             ),
-            5.isWight,
+            5.isWidth,
             Text(AppStrings.tasksAlreadyCompleted.tr(context),
                 style: TextStyle(fontSize: 12.sp))
           ],
